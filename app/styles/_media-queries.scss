@@ -1,0 +1,44 @@
+@media screen and (max-width: 960px) {
+  
+  .giscus,
+  .other-posts,
+  .post-title {
+    width: auto;
+    margin-left: auto;
+  }
+
+  .toc {
+    display: none;
+  }
+
+  section.hero.post-hero {
+    div.container.hero-body {
+      h1.title.post-title {
+        font-size: 4rem;
+        text-align: left;
+      }
+    }
+  }
+
+  .post-body {
+    margin-right: 0;
+    width: 100%;
+  }
+
+  nav.is-fixed-floating-centre {
+    width: 100%;
+  }
+
+  .footer-float-image {
+    display: none;
+  }
+
+  .product.card {
+    width: 80vw;
+  }
+
+  .product.card .images {
+    width: 100%;
+  }
+
+}

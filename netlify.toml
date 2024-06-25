@@ -1,0 +1,43 @@
+[dev]
+  port = 9000
+
+[functions]
+  directory = "app/lambda"
+
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+
+[[redirects]]
+  conditions = { Language = ["en"], Country = ["US"] }
+  from = '/index.html'
+  to = '/'
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/error"
+  status = 404
+
+[context.deploy-preview]
+  base = '/'
+  publish = "dist/"
+  command = "npm run build:app"
+
+[context.production]
+  base = '/'
+  publish = "dist/"
+  command = "npm run build:app"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    Content-Security-Policy = "frame-ancestors "
+    Permissions-Policy = "interest-cohort=()"
+    cache-control = '''
+      max-age=0,
+      no-cache,
+      no-store,
+      must-revalidate
+    '''

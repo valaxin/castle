@@ -1,0 +1,27 @@
+section.section.posts
+  if cache
+    h1.is-size-1.has-text-weight-bold Blog
+    .grid.posts
+    each post, index in cache
+      cell.box
+        .cell-body
+          a(href= post.stats.uri)
+            h2.title.is-size-2.has-text-weight-bold= post.stats.title
+            if post.stats.comments.summary
+              h3.subtitle.is-size-4= post.stats.comments.summary
+            .tags
+              if post.stats.comments
+                .tag
+                  span.icon.is-small
+                    i.fa-solid.fa-flag-checkered
+                  span= post.stats.comments.creation
+              
+              .tag
+                span.icon.is-small
+                  i.fa-solid.fa-file
+                span= post.stats.size
+              .tag
+                span.icon.is-small
+                  i.fa-solid.fa-glasses
+                span #{post.stats.readtime} Min.
+      

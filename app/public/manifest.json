@@ -1,0 +1,24 @@
+{
+  "name": "castle",
+  "short_name": "castle",
+  "start_url": ".",
+  "display": "minimal-ui",
+  "background_color": "#E2E2E2",
+  "description": "~",
+  "authors": [
+    { "name": "valaxin", "url": "https://github.com/valaxin/"}
+  ],
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "type": "img/png",
+      "size": "256x256"
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "github",
+      "url": "https://github.com/valaxin/castle"
+    }
+  ]
+}

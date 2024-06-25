@@ -1,0 +1,22 @@
+.is-hidden {
+  display: none;
+}
+
+.is-click-through {
+  pointer-events: none;
+  user-select: none;
+}
+
+.is-semi-opaque {
+  opacity: .5;
+  font-size: .75rem;
+  user-select: none;
+  pointer-events: none;
+}
+
+.is-fixed-floating-bottom-right {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 9999;
+}
