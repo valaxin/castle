@@ -31,7 +31,7 @@ export default async function (directory) {
 
   await folder.filter(async (file) => {
     if (file.isFile()) {
-      if (file.name[0] !== process.env.TEMPLATE_PREFIX) {
+      if (file.name[0] !== '_') {
         files.push(
           new HtmlWebpackPlugin({
             hash: true,

@@ -9,7 +9,7 @@
   "type": "module",
   "scripts": {
     "analyze": "rm -rf ./dist && webpack --profile --json > stats.json && webpack-bundle-analyzer stats.json ./dist",
-    "build": "rm -rf ./dist && webpack build",
+    "build": "NODE_ENV=production rm -rf ./dist && webpack build",
     "dev": "rm -rf ./dist && webpack serve --hot"
   },
   "devDependencies": {

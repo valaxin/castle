@@ -24,7 +24,7 @@ export async function PostCollector(directory) {
     for (const filename of filenames) {
       const stats = await stat(join(directory, filename))
       const markdown = await readFile(join(directory, filename), { encoding: 'utf8' })
-      const template = await readFile(join(directory, '../templates/*article.pug'), { encoding: 'utf8' })
+      const template = await readFile(join(directory, '../templates/_article.pug'), { encoding: 'utf8' })
       const title = capitalize(filename.split('.')[0], '-')
       const base = resolve()
       const updated = template.replace('#{markdown-path-here}', `/../markdown/${filename}`)
@@ -99,7 +99,7 @@ export const RenderPugWithData = async function (collection, opts) {
         title: post.stats.comments.title,
       }
 
-      console.log('options object passed to pug', options)
+      // console.log('options object passed to pug', options)
       
       pug.render(post.pug.template, options, (ex, html) => {
         if (!ex) {
