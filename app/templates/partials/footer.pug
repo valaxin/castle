@@ -1,6 +1,12 @@
-footer.footer.global-footer
+footer.footer
   .content
-    h1 footer
+    a(href='/')
+      span= manifest.name
+      span.icon
+        i.fa-solid.fa-square-arrow-up-right
+
+    a(href='#')= manifest.authors[0].name
+
 
 script(src='https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js')
 

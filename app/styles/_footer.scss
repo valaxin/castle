@@ -1,0 +1,21 @@
+footer.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: var(--theme-desktop-width);
+  margin-left: var(--theme-desktop-margin);
+  background-color: var(--bulma-background-color);
+
+  .content {
+    a {
+      span.icon {
+        opacity: 0;
+      }
+      &:hover span.icon {
+        opacity: 1;
+      }
+    }
+  }
+}

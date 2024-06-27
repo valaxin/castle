@@ -1,7 +1,6 @@
 export default (async function () {
   const postBody = document.querySelectorAll('article.content')[0]
   const postHero = document.querySelectorAll('section.hero')[0]
-  const tocWrapper = document.querySelectorAll('div.toc-wrapper')[0]
   const tableof = document.querySelectorAll('div.toc')[0]
 
   const ScrollPosition = () => {
@@ -28,27 +27,34 @@ export default (async function () {
     container.onclick = (e) => {
       document.body.scrollTop = 0
       document.documentElement.scrollTop = 0
-      window.scrollTo({ top: 0, behavior: 'smooth' })
+      window.scrollTo(0, 0)
     }
   }
 
   if (postBody) {
-
     window.onscroll = (event) => {
       let position = ScrollPosition()
-      
-      if (position.scroll >= postHero.clientHeight) {
-        tableof.classList.add('sticky')
-        if (position.scroll >= postBody.clientHeight) {
-          tableof.classList.add('stuck')
-        } else {
-          tableof.classList.remove('stuck')
-        }
-      } else {
-        tableof.classList.remove('sticky')
-      }
+      let sticky = position.scroll - postHero.clientHeight
+      let finished = Math.abs((postHero.clientHeight + postBody.clientHeight) - tableof.clientHeight)
 
-      if (position.scroll >= document.body.offsetHeight / 4) {
+      // console.log({ scroll: position.scroll, sticky, finished, tableof })
+
+      if (
+        // while user is past the hero element but within with post content body.
+        position.scroll >= postHero.clientHeight &&
+        position.scroll <= postBody.clientHeight + postHero.clientHeight
+      ) {
+        if (sticky >= 0) {
+          tableof.style.top = sticky + 'px'
+        }
+      }
+      
+      else {
+        tableof.style.top = 'auto'
+        tableof.style.height = 'auto'
+      }
+      
+      if (position.scroll >= document.body.offsetHeight / 3) {
         ScrollToTopButton('show')
       } else {
         ScrollToTopButton('hide')

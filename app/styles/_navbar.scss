@@ -1,0 +1,21 @@
+
+nav.navbar {
+  width: 60vw;
+  top: 25px;
+  left: 20vw;
+  border-radius: 5px;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  background-color: rgba(255,255,255, .5);
+
+  .navbar-burger {
+    color: var(--bulma-body-color);
+  }
+}
+
+nav.is-fixed-floating-centre {
+  position: fixed;
+  padding: 0 3vw;
+  width: 100vw;
+}

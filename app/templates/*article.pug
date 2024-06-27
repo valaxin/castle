@@ -8,10 +8,9 @@ block content
     section.hero
       div.hero-body
         h1.title= title
-      
-      div.info-body.tags
-        a(href= manifest.authors[0].url).tag.is-hoverable= manifest.authors[0].name
-        .tag= comments.creation
+      div.info-body
+        a(href= manifest.authors[0].url)= manifest.authors[0].author
+        div.created= comments.creation
     
     section.post
       div.toc
@@ -20,8 +19,7 @@ block content
     
     include /partials/additional
 
-
     section.comments
-      script(async crossorigin="anonymous" data-loading="lazy" data-lang="en" data-theme="light" data-input-position="bottom" data-emit-metadata="0" data-reactions-enabled="1" data-strict="0" data-mapping="pathname" data-category-id="DIC_kwDOEogXws4Cfttn" data-category="Comments" data-repo-id="MDEwOlJlcG9zaXRvcnkzMTA5MDg4NjY=" data-repo="valaxin/kame" src="https://giscus.app/client.js")
+      script(async crossorigin="anonymous" data-loading="lazy" data-lang="en" data-theme="light" data-input-position="bottom" data-emit-metadata="0" data-reactions-enabled="0" data-strict="0" data-mapping="pathname" data-category-id="" data-category="Comments" data-repo-id="" data-repo="" src="https://giscus.app/client.js")
   
   include /partials/footer

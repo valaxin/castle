@@ -7,12 +7,6 @@
   display: none;
 }
 
-.toc-list.is-collapsible {
-  .toc-link {
-    padding-right: 15px;
-  }
-}
-
 .toc-link {
   opacity: .5;
   font-size: .75rem;
@@ -24,20 +18,8 @@
 }
 
 div.toc {
-  width: 25%;
-  text-align: right;
   position: relative;
-  float: left;
-  padding-right: 25px;
-}
-
-div.toc.sticky {
-  position: fixed;
-  top: 50px;
-}
-
-div.toc.stuck {
-  opacity: 0;
-  user-select: none;
-  z-index: 1;
+  padding-right: 2rem;
+  width: 20vw;
+  text-align: right;
 }

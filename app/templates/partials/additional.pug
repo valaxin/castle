@@ -1,15 +1,15 @@
-section.other-posts
+section.others
   if current
     if cache
-      .block.mb-5
+      .block
         h1.title Thanks for reading!
         h2.subtitle Some other posts you might enjoy
       
-      .columns
+      .block
         each post in cache
           if post.stats.comments.title === current
             each other in post.others
-              .block.column
+              .box
                 a(href= other.path)
                   h1.title= other.comments.title
                   h2.subtitle= other.comments.summary
