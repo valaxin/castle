@@ -1,5 +1,4 @@
 @media screen and (max-width: 960px) {
-  
   .giscus,
   .other-posts,
   .post-title {
@@ -13,8 +12,7 @@
 
   section.post,
   section.others,
-  section.comments,
-   {
+  section.comments {
     width: var(--theme-mobile-width);
     margin-left: var(--theme-mobile-margin);
   }
@@ -42,5 +40,4 @@
     width: var(--theme-mobile-width);
     margin-left: var(--theme-mobile-margin);
   }
-
 }

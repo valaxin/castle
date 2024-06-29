@@ -5,12 +5,24 @@ footer.footer
       span.icon
         i.fa-solid.fa-square-arrow-up-right
 
-    a(href='#')= manifest.authors[0].name
+    a(href='https://github.com/valaxin')
+      span= manifest.authors[0].name
+      span.icon
+        i.fa-brands.fa-github-square
+
+    a(href='/feed.json')
+      span json
+      span.icon
+        i.fa-solid.fa-rss-square
+    a(href='/feed.xml')
+      span xml
+      span.icon
+        i.fa-solid.fa-rss-square
 
 
 script(src='https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js')
 
 .control.has-icon-left.is-fixed-floating-bottom-right.scroll-up-button.is-hidden
-  button.button.is-inverted
+  button.button
     span.icon-is-left
       i.fa-solid.fa-turn-up

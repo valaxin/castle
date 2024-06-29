@@ -1,17 +1,30 @@
-@import 'normalize';
-@import 'article';
-@import 'navbar';
-@import 'footer';
-@import 'uniques';
-@import 'is-modifiers';
-@import 'table-of-content';
-@import 'media-queries';
+@import "normalize";
+@import "article";
+@import "navbar";
+@import "footer";
+@import "uniques";
+@import "is-modifiers";
+@import "table-of-content";
+@import "media-queries";
 
-$app-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans,
-  Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+$app-font: -apple-system,
+  BlinkMacSystemFont,
+  "Segoe UI",
+  Roboto,
+  Oxygen-Sans,
+  Ubuntu,
+  Cantarell,
+  "Helvetica Neue",
+  sans-serif;
 
-$app-font-code: Consolas, Monaco, Lucida Console, Liberation Mono,
-  DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;
+$app-font-code:
+  Consolas,
+  Monaco,
+  Lucida Console,
+  Liberation Mono,
+  DejaVu Sans Mono,
+  Bitstream Vera Sans Mono,
+  Courier New;
 
 :root {
   scroll-behavior: smooth;
@@ -27,7 +40,18 @@ $app-font-code: Consolas, Monaco, Lucida Console, Liberation Mono,
 
   --theme-mobile-width: 90vw;
   --theme-mobile-margin: 5vw;
-
 }
 
 // * { border: 1px solid red; }
+
+section.posts {
+  h1.title {
+    text-align: right;
+    font-style: italic;
+    font-size: 5rem;
+  }
+
+  margin-top: 75px;
+  width: var(--theme-desktop-width);
+  margin-left: var(--theme-desktop-margin);
+}

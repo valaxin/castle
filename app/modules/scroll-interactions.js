@@ -35,7 +35,7 @@ export default (async function () {
     window.onscroll = (event) => {
       let position = ScrollPosition()
       let sticky = position.scroll - postHero.clientHeight
-      let finished = Math.abs((postHero.clientHeight + postBody.clientHeight) - tableof.clientHeight)
+      let finished = Math.abs(postHero.clientHeight + postBody.clientHeight - tableof.clientHeight)
 
       // console.log({ scroll: position.scroll, sticky, finished, tableof })
 
@@ -47,13 +47,11 @@ export default (async function () {
         if (sticky >= 0) {
           tableof.style.top = sticky + 'px'
         }
-      }
-      
-      else {
+      } else {
         tableof.style.top = 'auto'
         tableof.style.height = 'auto'
       }
-      
+
       if (position.scroll >= document.body.offsetHeight / 3) {
         ScrollToTopButton('show')
       } else {

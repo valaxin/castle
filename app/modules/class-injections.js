@@ -1,18 +1,28 @@
-'use strict';
+'use strict'
+
+function articleContainers(articleSelector) {
+  try {
+    let elements
+    const elementTypes = ['spoilers', 'warning', 'information']
+    const articleBody = document.body.querySelectorAll(articleSelector)[0]
+    for (const type of elementTypes) {
+      elements = articleBody.querySelectorAll(`.${type}`)
+      console.log(elements)
+      for (const el of elements) {
+        const header = `<div class="message-header"><p>${type}</p></div>`
+        el.children[0].classList.add('message-body')
+        el.classList.add('message', `is-${type}`)
+        el.innerHTML = header + el.innerHTML
+      }
+    }
+    return elements
+  } catch (ex) {
+    return ex
+  }
+}
 
 export default (async function () {
-  
-  const blockTypes = ["spoilers", "warning", "information"];
-  const bodySelector = "section.post > article.content";
-  const postBody = document.querySelectorAll(bodySelector)[0];
-  
-  for (const type of blockTypes) {
-    const found = postBody.querySelectorAll(`.${type}`);
-    for (const elem of found) {
-      const header = `<div class="message-header"><p>${type}</p></div>`;
-      elem.children[0].classList.add("message-body");
-      elem.classList.add("message", `is-${type}`);
-      elem.innerHTML = header + elem.innerHTML;
-    }
-  }
-})();
+  const containers = articleContainers('section.post > article.content')
+
+  console.log({ containers })
+})()

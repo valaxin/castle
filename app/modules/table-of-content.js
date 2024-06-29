@@ -1,10 +1,10 @@
 export default function tocOptions(contentSel, headingSel) {
   try {
-    headingSel = headingSel ? "h1, h2, h3" : headingSel;
+    headingSel = headingSel ? 'h1, h2, h3' : headingSel
 
-    const headingMap = {};
-    const content = document.querySelector(contentSel);
-    const headings = content.querySelectorAll(headingSel);
+    const headingMap = {}
+    const content = document.querySelector(contentSel)
+    const headings = content.querySelectorAll(headingSel)
 
     Array.prototype.forEach.call(headings, function (heading) {
       const id = heading.id
@@ -12,15 +12,13 @@ export default function tocOptions(contentSel, headingSel) {
         : heading.textContent
             .trim()
             .toLowerCase()
-            .split(" ")
-            .join("-")
-            .replace(/[!@#$%^?'’&*():]/gi, "")
-            .replace(/\//gi, "-");
-      headingMap[id] = !isNaN(headingMap[id]) ? ++headingMap[id] : 0;
-      headingMap[id]
-        ? (heading.id = id + "-" + headingMap[id])
-        : (heading.id = id);
-    });
+            .split(' ')
+            .join('-')
+            .replace(/[!@#$%^?'’&*():]/gi, '')
+            .replace(/\//gi, '-')
+      headingMap[id] = !isNaN(headingMap[id]) ? ++headingMap[id] : 0
+      headingMap[id] ? (heading.id = id + '-' + headingMap[id]) : (heading.id = id)
+    })
 
     function scrollEndCallback(event) {}
     function onClick(event) {}
@@ -28,19 +26,19 @@ export default function tocOptions(contentSel, headingSel) {
     const options = {
       onClick,
       scrollEndCallback,
-      tocSelector: ".toc",
+      tocSelector: '.toc',
       contentSelector: contentSel,
       headingSelector: headingSel,
       hasInnerContainers: false,
-      linkClass: "toc-link",
-      extraLinkClasses: "",
-      activeLinkClass: "is-active-link",
-      listClass: "toc-list",
-      extraListClasses: "",
-      isCollapsedClass: "is-collapsed",
-      collapsibleClass: "is-collapsible",
-      listItemClass: "toc-list-item",
-      activeListItemClass: "is-active",
+      linkClass: 'toc-link',
+      extraLinkClasses: '',
+      activeLinkClass: 'is-active-link',
+      listClass: 'toc-list',
+      extraListClasses: '',
+      isCollapsedClass: 'is-collapsed',
+      collapsibleClass: 'is-collapsible',
+      listItemClass: 'toc-list-item',
+      activeListItemClass: 'is-active',
       collapseDepth: 0,
       scrollSmooth: true,
       scrollSmoothDuration: 300,
@@ -48,8 +46,8 @@ export default function tocOptions(contentSel, headingSel) {
       headingsOffset: 75,
       throttleTimeout: 50,
       positionFixedSelector: null,
-      positionFixedClass: "is-position-fixed",
-      fixedSidebarOffset: "auto",
+      positionFixedClass: 'is-position-fixed',
+      fixedSidebarOffset: 'auto',
       includeHtml: false,
       includeTitleTags: false,
       orderedList: true,
@@ -58,12 +56,12 @@ export default function tocOptions(contentSel, headingSel) {
       headingLabelCallback: false,
       ignoreHiddenElements: false,
       headingObjectCallback: null,
-      basePath: "",
+      basePath: '',
       disableTocScrollSync: false,
       tocScrollOffset: 0,
-    };
+    }
     return options
   } catch (ex) {
-    console.error("table of contents", ex);
+    console.error('table of contents', ex)
   }
 }

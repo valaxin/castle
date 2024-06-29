@@ -8,21 +8,20 @@ section.post {
 }
 
 section.hero {
-
   div.hero-body h1.title {
     text-align: center;
     font-size: 5rem;
     font-weight: 900;
     font-style: italic;
   }
-  
+
   div.info-body {
     margin: 0 0 25px 0;
     text-align: center;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    
+
     & > * {
       margin: 0 5px;
       font-size: 1rem;
@@ -32,34 +31,34 @@ section.hero {
 }
 
 section.others {
-  width:  var(--theme-desktop-width);
+  width: var(--theme-desktop-width);
   margin-left: var(--theme-desktop-margin);
 }
 
 section.comments {
   width: 100vw;
-  
+
   .giscus {
-    width:  var(--theme-desktop-width);
+    width: var(--theme-desktop-width);
     margin-left: var(--theme-desktop-margin);
   }
 }
 
 article.content {
-  width:  calc(var(--theme-desktop-width) - 20vw);
+  width: calc(var(--theme-desktop-width) - 20vw);
 
   img,
-  blockquote { 
+  blockquote {
     border-radius: var(--bulma-radius);
   }
-  
+
   div.spoiler {
     background-color: var(--bulma-background);
     color: var(--bulma-background);
     user-select: none;
     cursor: help;
     padding: var(--bulma-pre-padding);
-    margin-bottom: 1.50rem;
+    margin-bottom: 1.5rem;
     border-radius: var(--bulma-radius);
 
     &:hover,

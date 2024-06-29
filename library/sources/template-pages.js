@@ -43,7 +43,6 @@ export default async function (directory) {
             minify: false
           })
         )
-        console.log(file.name, 'done!')
       }
     }
   })

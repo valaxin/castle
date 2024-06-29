@@ -1,7 +1,7 @@
 extends /partials/layout
 
 block content
-  
+
   - var current = title
 
   main
@@ -11,15 +11,15 @@ block content
       div.info-body
         a(href= manifest.authors[0].url)= manifest.authors[0].author
         div.created= comments.creation
-    
+
     section.post
       div.toc
       article.content
         include:markdown #{markdown-path-here}
-    
+
     include /partials/additional
 
     section.comments
-      script(async crossorigin="anonymous" data-loading="lazy" data-lang="en" data-theme="light" data-input-position="bottom" data-emit-metadata="0" data-reactions-enabled="0" data-strict="0" data-mapping="pathname" data-category-id="" data-category="Comments" data-repo-id="" data-repo="" src="https://giscus.app/client.js")
-  
+      script(async crossorigin='anonymous' data-loading='lazy' data-lang='en' data-theme='light' data-input-position='bottom' data-emit-metadata='0' data-reactions-enabled='0' data-strict='0' data-mapping='pathname' data-category-id='' data-category='Comments' data-repo-id='' data-repo='' src='https://giscus.app/client.js')
+
   include /partials/footer

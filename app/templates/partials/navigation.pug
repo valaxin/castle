@@ -1,22 +1,28 @@
-nav.navbar(role='navigation' aria-label='main navigation')
-  .navbar-brand
+nav.navbar
+
+  div.navbar-brand
     a.navbar-item(href='/')
       img.is-64x64(src= manifest.icons[0].src)
-    a.navbar-burger(aria-expanded="false" aria-label="menu" role="button")
-      span(aria-hidden="true")
-      span(aria-hidden="true")
-      span(aria-hidden="true")
-      span(aria-hidden="true")
-  .navbar-menu
-    .navbar-start
-      if pages
-        each page in pages
-          - var friendly = page.userOptions.filename.split('.')[0]
-          // exclude pages like a genius
+
+  div.navbar-start
+    if pages
+      each page in pages
+        - var friendly = page.userOptions.filename.split('.')[0]
           if friendly !== 'error'
             if friendly !== 'legal'
               if friendly !== 'index'
                 if friendly !== 'thanks'
-                    a(href= '/' + page.userOptions.filename).navbar-item= friendly
-    .navbar-end
+                  a(href= '/' + page.userOptions.filename).navbar-item= friendly
 
+  div.navbar-end
+    div.navbar-item
+      div.buttons
+        a.button(href='').has-icon
+          span.icon
+            i.fa-solid.fa-moon
+        a.button(href='').has-icon
+          span.icon
+            i.fa-solid.fa-search
+        a.button(href='').has-icon
+          span.icon
+            i.fa-solid.fa-hamburger
