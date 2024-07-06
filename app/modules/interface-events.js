@@ -7,8 +7,8 @@ export default (async function () {
     navbarburger.classList.toggle('is-active')
   })
 
+  /*
   let cachedscrollvalue = 0
-
   document.addEventListener('scroll', (event) => {
     if (window.scrollY > cachedscrollvalue) {
       console.log('going down the page')
@@ -22,4 +22,9 @@ export default (async function () {
 
     cachedscrollvalue = window.scrollY
   })
+  */
 })()
+
+function hamburgerMenu (selector) {}
+
+// export default ()
