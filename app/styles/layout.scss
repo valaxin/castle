@@ -4,8 +4,9 @@
 @import "footer";
 @import "uniques";
 @import "is-modifiers";
-@import "table-of-content";
 @import "media-queries";
+@import "blog-directory";
+@import "product-gallery";
 
 $app-font: -apple-system,
   BlinkMacSystemFont,
@@ -32,26 +33,12 @@ $app-font-code:
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
   --bulma-body-family: #{$app-font};
   --bulma-code-family: #{$app-font-code};
 
-  --theme-desktop-width: 70vw;
-  --theme-desktop-margin: 15vw;
-
+  --theme-desktop-width: 80vw;
+  --theme-desktop-margin: 10vw;
   --theme-mobile-width: 90vw;
   --theme-mobile-margin: 5vw;
-}
-
-// * { border: 1px solid red; }
-
-section.posts {
-  h1.title {
-    text-align: right;
-    font-style: italic;
-    font-size: 5rem;
-  }
-
-  margin-top: 75px;
-  width: var(--theme-desktop-width);
-  margin-left: var(--theme-desktop-margin);
 }

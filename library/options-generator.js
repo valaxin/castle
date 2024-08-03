@@ -5,8 +5,11 @@ import * as url from "url";
 import { join } from "node:path";
 import { readdir, writeFile } from "fs/promises";
 import WebManifest from '../app/public/manifest.json' with { type: 'json' }
+
 import PageCollector from "./sources/template-pages.js";
+import ShopCollector from './sources/gumroad-products.js';
 import { RenderPugWithData, PostCollector } from './sources/markdown-posts.js';
+
 import feeds from './syndication-generator.js';
 
 const __dirname = url.fileURLToPath(new URL("..", import.meta.url));
@@ -50,6 +53,7 @@ await _folders.filter(async folder => {
 // -- ~raw~doggin~ some assignment.
 options.app.pages = await PageCollector(join(options.sys.folders.templates)),
 options.app.cache = await PostCollector(options.sys.folders.markdown)
+options.app.wares = await ShopCollector()
 options.app.posts = await RenderPugWithData(options.app.cache, { dist: 'dist/blog', locals: options.app })
 
 // [prebuild action]

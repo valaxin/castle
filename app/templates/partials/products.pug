@@ -1,0 +1,19 @@
+section.products
+  if wares
+    if wares.success == true
+      h1
+        a(href='/shop.html')
+          span shop
+     
+      div.container
+        each product, index in wares.products
+          div.item
+            a(href= product.short_url)
+              img(src= product.preview_url)
+              h2= product.name
+              h3= product.custom_summary
+              .tags
+                .tag.is-success
+                  span= product.formatted_price
+                .tag.is-warning
+                  span= product.max_purchase_count + ' Available'

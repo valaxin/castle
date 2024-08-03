@@ -4,22 +4,22 @@ block content
 
   - var current = title
 
-  main
+  main#article
     section.hero
-      div.hero-body
-        h1.title= title
-      div.info-body
-        a(href= manifest.authors[0].url)= manifest.authors[0].author
-        div.created= comments.creation
+      h1= title
+      span= manifest.authors[0].name
+      span= comments.creation
 
-    section.post
-      div.toc
+    section.content
       article.content
         include:markdown #{markdown-path-here}
+      div.toc
 
     include /partials/additional
 
     section.comments
-      script(async crossorigin='anonymous' data-loading='lazy' data-lang='en' data-theme='light' data-input-position='bottom' data-emit-metadata='0' data-reactions-enabled='0' data-strict='0' data-mapping='pathname' data-category-id='' data-category='Comments' data-repo-id='' data-repo='' src='https://giscus.app/client.js')
+      h2 Comments
+      script(async="" crossorigin="anonymous" data-loading="lazy" data-lang="en" data-theme="light" data-input-position="bottom" data-emit-metadata="0" data-reactions-enabled="0" data-strict="0" data-mapping="pathname" data-category-id="DIC_kwDOMOBIPc4ChSsU" data-category="Post Comments" data-repo-id="R_kgDOMOBIPQ" data-repo="valaxin/castle" src="https://giscus.app/client.js")
+
 
   include /partials/footer

@@ -1,21 +1,24 @@
 section.posts
   if cache
-    h1.title Blog
-    .directory
-      each post, index in cache
-        .block
-          .block-content.box
-            a(href= post.stats.uri)
-              h2.title= post.stats.title
-              if post.stats.comments.summary
-                h3.subtitle.is-size-4= post.stats.comments.summary
+    h1
+      a(href='/blog.html')
+        span blog
 
-              .tags
-                if post.stats.comments
-                  .tag
-                    span.icon.is-small
-                      i.fa-solid.fa-flag-checkered
-                    span= post.stats.comments.creation
+
+    div
+      each post, index in cache
+        article
+          a(href= post.stats.uri)
+            h2= post.stats.title
+              if post.stats.comments.summary
+                h3= post.stats.comments.summary
+            
+            .tags
+              if post.stats.comments
+                .tag
+                  span.icon.is-small
+                    i.fa-solid.fa-flag-checkered
+                  span= post.stats.comments.creation
                 .tag
                   span.icon.is-small
                     i.fa-solid.fa-file

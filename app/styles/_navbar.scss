@@ -1,20 +1,38 @@
-nav.navbar {
-  width: 60vw;
-  top: 25px;
-  left: 20vw;
-  border-radius: 5px;
-  overflow: hidden;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  background-color: rgba(var(--bulma-border-weak), 0.8);
+nav {
+  width: 80vw;
+  margin: 25px 10vw;
 
-  .navbar-burger {
-    color: var(--bulma-body-color);
+  h1 {
+    margin: 0 25px 0 0;
+    a {
+      font-size: 2.5rem;
+      font-weight: 800;
+      opacity: .5;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
   }
-}
 
-nav.is-fixed-floating-centre {
-  position: fixed;
-  padding: 0 3vw;
-  width: 100vw;
+  div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    justify-items: flex-start;
+    align-content: flex-end;
+    align-items: flex-end;
+
+    a {
+      font-size: 1.25rem;
+      margin: 0 10px .5rem 0;
+      opacity: .5;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
 }

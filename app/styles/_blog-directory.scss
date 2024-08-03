@@ -1,0 +1,44 @@
+section.posts {
+  width: 80vw;
+  margin: 0 10vw 75px 10vw;
+
+  h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    font-style: italic;
+    
+    a {
+      color: var(--bulma-body-color);
+      opacity: .75;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  article {
+    border-left: 4px solid transparent;
+    transition: all ease-in-out 200ms;
+    padding: 10px;
+    margin-left: -10px;
+
+    a {
+      color: var(--bulma-body-color);
+    }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+    }
+
+    .tags {
+      margin-top: 10px;
+    }
+  }
+
+}

@@ -1,4 +1,4 @@
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 900px) {
   .giscus,
   .other-posts,
   .post-title {
@@ -10,7 +10,7 @@
     margin-top: 75px;
   }
 
-  section.post,
+  section.content,
   section.others,
   section.comments {
     width: var(--theme-mobile-width);
@@ -28,12 +28,6 @@
   .post-body {
     margin-right: 0;
     width: 100%;
-  }
-
-  nav.navbar {
-    width: var(--theme-mobile-width);
-    left: var(--theme-mobile-margin);
-    position: fixed;
   }
 
   footer.footer {
