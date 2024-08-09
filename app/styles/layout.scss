@@ -7,15 +7,9 @@
 @import "media-queries";
 @import "blog-directory";
 @import "product-gallery";
+@import "about";
 
-$app-font: -apple-system,
-  BlinkMacSystemFont,
-  "Segoe UI",
-  Roboto,
-  Oxygen-Sans,
-  Ubuntu,
-  Cantarell,
-  "Helvetica Neue",
+$app-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue",
   sans-serif;
 
 $app-font-code:
@@ -33,7 +27,7 @@ $app-font-code:
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
+
   --bulma-body-family: #{$app-font};
   --bulma-code-family: #{$app-font-code};
 

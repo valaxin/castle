@@ -28,7 +28,6 @@ export default async function (directory) {
     withFileTypes: true,
   })
 
-
   await folder.filter(async (file) => {
     if (file.isFile()) {
       if (file.name[0] !== '_') {
@@ -40,7 +39,7 @@ export default async function (directory) {
             scriptLoading: 'module',
             showErrors: true,
             template: join(directory, file.name),
-            minify: false
+            minify: false,
           })
         )
       }

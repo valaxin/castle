@@ -1,36 +1,50 @@
-
 section.products {
-
   h1 {
     font-size: 4rem;
     font-weight: 900;
     font-style: italic;
     width: 80vw;
     margin: 0 10vw 25px 10vw;
-    opacity: .75;
+
+    a {
+      color: var(--bulma-body);
+      opacity: 0.75;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
   }
 
   div.container {
     width: 80vw;
     margin: 0 10vw 50px 10vw;
 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    justify-items: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+
     div.item {
       width: 300px;
       border-radius: 10px;
       padding: 5px;
+      margin: 0 10px 25px 0;
       background: var(--bulma-background-color);
       transition: all ease-in-out 300ms 10ms;
 
       &:hover {
-        
-        img {  
+        img {
           transform: scale(1.05);
-          box-shadow: 0 5px 25px 2px rgba(32,32,32,.4);
+          box-shadow: 0 5px 25px 2px rgba(32, 32, 32, 0.4);
         }
       }
 
       a {
-        color: var(--bulma-body)
+        color: var(--bulma-body);
       }
 
       img {
@@ -43,7 +57,7 @@ section.products {
         font-weight: 700;
         margin: 5px 0 0 0;
       }
-      
+
       h3 {
         margin: 5px 0 0 0;
       }
@@ -54,12 +68,10 @@ section.products {
         .tag {
           transition: all ease-in-out 300ms 10ms;
           &:hover {
-            transform: scale(1.10);
+            transform: scale(1.1);
           }
         }
       }
     }
-
   }
-
 }

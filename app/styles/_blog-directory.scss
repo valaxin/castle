@@ -6,10 +6,10 @@ section.posts {
     font-size: 4rem;
     font-weight: 800;
     font-style: italic;
-    
+
     a {
       color: var(--bulma-body-color);
-      opacity: .75;
+      opacity: 0.75;
 
       &:hover {
         opacity: 1;
@@ -40,5 +40,4 @@ section.posts {
       margin-top: 10px;
     }
   }
-
 }

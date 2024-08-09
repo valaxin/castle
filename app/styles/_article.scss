@@ -1,5 +1,4 @@
 main#article {
-
   section.hero {
     width: 80vw;
     margin: 0 10vw;
@@ -11,7 +10,7 @@ main#article {
     }
     span {
       font-family: var(--bulma-code-family);
-      font-size: .8rem;
+      font-size: 0.8rem;
     }
   }
 
@@ -36,14 +35,13 @@ main#article {
       pre {
         border-radius: 5px;
       }
-
     }
 
     div.toc {
       width: 20vw;
       position: relative;
       top: 35px;
-      right: 0; 
+      right: 0;
       margin: 0 0 0 25px;
       z-index: 9999;
 
@@ -73,12 +71,11 @@ main#article {
       span {
         font-size: 2rem;
         font-weight: 700;
-        opacity: .75;
+        opacity: 0.75;
       }
     }
 
     .article {
-
       > div {
         margin: 10px 0 10px 0;
         background-color: var(--bulma-pre-background);
@@ -93,7 +90,7 @@ main#article {
           &:hover {
             opacity: 1;
           }
-        } 
+        }
 
         h3 {
           font-size: 1.33rem;
@@ -101,16 +98,13 @@ main#article {
         }
 
         .tags {
-          
           .tag {
             margin-right: 10px;
             padding: 0;
           }
         }
-
       }
     }
-
   }
 
   section.comments {

@@ -1,4 +1,17 @@
 extends partials/layout
 
 block content
+
+  main.about
+
+    span Introductions
+    h1 valaxin
+    
+    include partials/about/now
+    include partials/about/projects
+
+    section.social
+      a(href="https://github.com/valaxin" role="button") github
+      a(href="https://codepen.io/valaxin" role="button") codepen 
+
   include partials/footer

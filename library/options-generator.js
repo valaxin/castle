@@ -4,13 +4,13 @@ import 'dotenv/config'
 import * as url from "url";
 import { join } from "node:path";
 import { readdir, writeFile } from "fs/promises";
-import WebManifest from '../app/public/manifest.json' with { type: 'json' }
 
+// locals
+import feeds from './syndication-generator.js';
 import PageCollector from "./sources/template-pages.js";
 import ShopCollector from './sources/gumroad-products.js';
+import WebManifest from '../app/public/manifest.json' with { type: 'json' }
 import { RenderPugWithData, PostCollector } from './sources/markdown-posts.js';
-
-import feeds from './syndication-generator.js';
 
 const __dirname = url.fileURLToPath(new URL("..", import.meta.url));
 
@@ -65,8 +65,8 @@ await writeFile(join(options.sys.folders.public, 'template-data.json'), JSON.str
 });
 
 // [prebuild action]
-// -- generate JSON/XML feeds for syndication
+// -- generate JSON/XML feeds endpoints
 feeds(options)
 
-// off to webpack for final build steps. 
+// off to webpack...
 export default options

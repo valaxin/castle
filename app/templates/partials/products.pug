@@ -15,5 +15,9 @@ section.products
               .tags
                 .tag.is-success
                   span= product.formatted_price
-                .tag.is-warning
-                  span= product.max_purchase_count + ' Available'
+                
+                if product.max_purchase_count !== null
+                  .tag.is-warning
+                    span= product.max_purchase_count + ' Available'
+
+                    
