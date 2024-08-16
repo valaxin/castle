@@ -9,6 +9,7 @@ import { readdir, writeFile } from "fs/promises";
 import feeds from './syndication-generator.js';
 import PageCollector from "./sources/template-pages.js";
 import ShopCollector from './sources/gumroad-products.js';
+import RepoCollector from './sources/github-repositories.js';
 import WebManifest from '../app/public/manifest.json' with { type: 'json' }
 import { RenderPugWithData, PostCollector } from './sources/markdown-posts.js';
 
@@ -54,6 +55,7 @@ await _folders.filter(async folder => {
 options.app.pages = await PageCollector(join(options.sys.folders.templates)),
 options.app.cache = await PostCollector(options.sys.folders.markdown)
 options.app.wares = await ShopCollector()
+options.app.repos = await RepoCollector()
 options.app.posts = await RenderPugWithData(options.app.cache, { dist: 'dist/blog', locals: options.app })
 
 // [prebuild action]

@@ -1,14 +1,16 @@
 footer
-  a(href='/')
-    span= manifest.name
-  a(href='https://github.com/valaxin')
-    span= manifest.authors[0].name
-  a(href='/feed.json')
-    span json
-  a(href='/feed.xml')
-    span xml
 
-script(src='https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js')
+  .links
+    a(href='/')
+      span= manifest.name
+    a(href='https://github.com/valaxin')
+      span= manifest.authors[0].name
+    a(href='/feed.json')
+      span json
+    a(href='/feed.xml')
+      span xml
+  
+  include netlify-newsletter
 
 .control.has-icon-left.is-fixed-floating-bottom-right.scroll-up-button.is-hidden
   button.button

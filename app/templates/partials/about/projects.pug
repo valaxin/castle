@@ -1,2 +1,23 @@
 section.projects
-  // 3 latest public commits github repos
+  if repos
+    h1= "Projects"
+      img(src= repos[0].owner.avatar_url).gh-avatar
+      img(src='')
+  for repo, index in repos
+    .box
+      a(href= repo.html_url)
+        span.icon
+          i.fa-brands.fa-github
+        span= '/' + repo.full_name
+      h2= repo.name
+      h3= repo.description
+      .tags
+        .tag.has-icon
+          span.icon
+            i.fa-solid.fa-code-commit
+        .tag.has-icon
+          span.icon
+            i.fa-solid.fa-paintbrush
+        .tag.has-icon
+          span.icon
+            i.fa-solid.fa-earth-americas
