@@ -8,6 +8,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import options from './library/options-generator.js'
 
 const productionFlag = options.mode === 'development' ? false : true
+const localPugLoader = './library/pug-html-loader.js'
 
 const devServer = {
   static: {
@@ -30,6 +31,8 @@ const devServer = {
   ],
 }
 
+const assetsize_mb = (1024000 * 2.5)
+
 export default {
   mode: productionFlag ? 'production' : 'development',
   devServer,
@@ -39,9 +42,9 @@ export default {
     },
   },
   performance: {
-    hints: productionFlag === true ? 'warning' : false,
-    maxEntrypointSize: 1024000, // 1MB
-    maxAssetSize: 1024000, // 1MB
+    hints: productionFlag ? false : 'warning',
+    maxEntrypointSize: assetsize_mb,
+    maxAssetSize: assetsize_mb
   },
   entry: {
     index: {
@@ -92,7 +95,7 @@ export default {
             loader: 'raw-loader',
           },
           {
-            loader: './library/pug-html-loader.js',
+            loader: localPugLoader,
             options: {
               data: options.app,
             },
@@ -117,10 +120,10 @@ export default {
   resolve: {
     modules: [join(options.entry.base, 'node_modules'), 'node_modules'],
     alias: {
-      '@global': join(options.entry.base, 'node_modules'),
-      '@local': join(options.entry.base, 'app/modules'),
+      '@global' : join(options.entry.base, 'node_modules'),
+      '@local'  : join(options.entry.base, 'app/modules'),
       '@library': join(options.entry.base, 'library'),
-      '@styles': options.sys.folders.styles,
+      '@styles' : options.sys.folders.styles,
     },
     extensions: ['.mjs', '.js', '.scss', '.sass', '.css', '.pug', '.html', '.png', '.webp', '.gif', '.svg'],
   },

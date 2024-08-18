@@ -7,23 +7,26 @@ section.posts
 
     div
       each post, index in cache
-        article
+        article          
           a(href= post.stats.uri)
-            h2= post.stats.title
-              if post.stats.comments.summary
-                h3= post.stats.comments.summary
+            if post.stats.comments.thumbnail
+              img.thumbnail(src= post.stats.comments.thumbnail)
+            .content
+              h2= post.stats.title
+                if post.stats.comments.summary
+                  h3= post.stats.comments.summary
             
-            .tags
-              if post.stats.comments
-                .tag
-                  span.icon.is-small
-                    i.fa-solid.fa-flag-checkered
-                  span= post.stats.comments.creation
-                .tag
-                  span.icon.is-small
-                    i.fa-solid.fa-file
-                  span= post.stats.size
-                .tag
-                  span.icon.is-small
-                    i.fa-solid.fa-glasses
-                  span #{post.stats.readtime} Min.
+              .tags
+                if post.stats.comments
+                  .tag
+                    span.icon.is-small
+                      i.fa-solid.fa-flag-checkered
+                    span= post.stats.comments.creation
+                  .tag
+                    span.icon.is-small
+                      i.fa-solid.fa-file
+                    span= post.stats.size
+                  .tag
+                    span.icon.is-small
+                      i.fa-solid.fa-glasses
+                    span #{post.stats.readtime} Min.

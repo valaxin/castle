@@ -1,3 +1,5 @@
+[//]: # ({"title": "castle/readme", "creation": "01/08/2024", "summary": "The 'readme.md' document for the project presenting this webpage", "thumbnail": "/images/image.webp"})
+
 
 # castle
 
@@ -27,8 +29,8 @@ I'm taking a technology stack consisting of nodejs, webpack, babel, pugjs, markd
 ```plaintext
 [//]: # ({"title": "Title", "creation": "01/01/1970", "summary": "Summary"})
 ```
-
-> * ^ post meta data is encapsulated in this functional abeit strange looking comment syntax.*
+  
+  > *^ post meta data is encapsulated in this functional abeit strange looking comment syntax.*
 
 - Data from GitHub and GumRoad are requested
 - generate rss/json feed data
@@ -36,7 +38,8 @@ I'm taking a technology stack consisting of nodejs, webpack, babel, pugjs, markd
 - provide static site to `/dist` folder for public
 
 > *comments are scarce and sometimes nonsense, this is a personal project to learn and develop and I'm very interested in quality practices, however I ask that this doesn't become a soapbox parlour.*
-
 > *changes to any elements or styles on markdown pages located `/blog/post-name.html` currently wont update on save. You can manually restart the application, or work on the template/element agnostically on another page then bring it to `/app/templates/_article.pug` file.*
 
 *This is **very** much a work in progress.*
+
+![Oleg Prachuk > Pexels](https://images.pexels.com/photos/21419467/pexels-photo-21419467/free-photo-of-view-of-red-toyota-crown-comfort-taxis-on-a-street-in-hong-kong-china.jpeg "Oleg Prachuk > Pexels")

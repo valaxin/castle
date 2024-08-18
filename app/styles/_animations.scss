@@ -1,0 +1,15 @@
+
+@keyframes slight-sticky {
+  from {
+    transform: skew(-20deg) rotate(10deg) translateY(100px);
+  }
+  to {
+    transform: skew(20deg) rotate(-10deg) translateY(200px);
+  }
+}
+
+
+@keyframes fade-in-center-up {
+  from {}
+  to {}
+}
