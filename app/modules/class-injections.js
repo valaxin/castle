@@ -1,8 +1,11 @@
 'use strict'
 
+// adds 'bulma' classes to custom containers within a given blog post
+
 function articleContainers(articleSelector) {
+
   try {
-    let elements
+    let elements = ''
     const elementTypes = ['spoilers', 'warning', 'information']
     const articleBody = document.body.querySelectorAll(articleSelector)[0]
     for (const type of elementTypes) {

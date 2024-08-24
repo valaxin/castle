@@ -1,4 +1,5 @@
 export default (async function () {
+  
   const postBody = document.querySelectorAll('article.content')[0]
   const postHero = document.querySelectorAll('section.hero')[0]
   const tableof = document.querySelectorAll('div.toc')[0]
@@ -36,8 +37,6 @@ export default (async function () {
       let position = ScrollPosition()
       let sticky = position.scroll - postHero.clientHeight
       let finished = Math.abs(postHero.clientHeight + postBody.clientHeight - tableof.clientHeight)
-
-      // console.log({ scroll: position.scroll, sticky, finished, tableof })
 
       if (
         // while user is past the hero element but within with post content body.

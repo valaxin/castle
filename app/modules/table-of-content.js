@@ -1,10 +1,11 @@
-export default function tocOptions(contentSel, headingSel) {
+export default function TableOfContentOptions (contentSelector, headingSelectors) {
   try {
-    headingSel = headingSel ? 'h1, h2, h3' : headingSel
+    
+    headingSelectors = headingSelectors ? 'h1, h2, h3' : headingSelectors
 
     const headingMap = {}
-    const content = document.querySelector(contentSel)
-    const headings = content.querySelectorAll(headingSel)
+    const content = document.querySelector(contentSelelector)
+    const headings = content.querySelectorAll(contentSelelector)
 
     Array.prototype.forEach.call(headings, function (heading) {
       const id = heading.id
@@ -27,8 +28,8 @@ export default function tocOptions(contentSel, headingSel) {
       onClick,
       scrollEndCallback,
       tocSelector: '.toc',
-      contentSelector: contentSel,
-      headingSelector: headingSel,
+      contentSelector: contentSelector,
+      headingSelector: headingSelectors,
       hasInnerContainers: false,
       linkClass: 'toc-link',
       extraLinkClasses: '',
@@ -60,8 +61,9 @@ export default function tocOptions(contentSel, headingSel) {
       disableTocScrollSync: false,
       tocScrollOffset: 0,
     }
+
     return options
   } catch (ex) {
-    console.error('table of contents', ex)
+    console.error('[scrambled] ', ex)
   }
 }

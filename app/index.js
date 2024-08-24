@@ -1,15 +1,18 @@
 import '@global/core-js/stable'
-
 import '@global/bulma'
 import '@global/highlight.js/scss/github-dark.scss'
 import '@styles/layout.scss'
 
-import '@local/class-injections.js'
-import '@local/interface-events.js'
-import '@local/scroll-interactions.js'
+import '@local/class-injections.js'     // self-calling (only needed on article pages)
+import '@local/interface-events.js'     // self-calling (global)
+import '@local/scroll-interactions.js'  // self-calling (global)
+
 import tocOptions from '@local/table-of-content.js'
 
 (async () => {
-  const tocopt = tocOptions('section.content article.content', 'h1, h2, h3, h4')
-  tocbot.init(tocopt)
+  
+  tocbot.init(tocOptions('section.content article.content', 'h1, h2, h3, h4'))
+
+  console.log('setup and running...')
+
 })()
