@@ -9,6 +9,13 @@ nav {
       font-weight: 800;
       opacity: 0.5;
 
+      span.icon img {
+        width: 32px;
+        filter: hue-rotate(32);
+        margin-right: 10px;
+        color: var(--bulma-link-text)
+      }
+
       &:hover {
         opacity: 1;
       }

@@ -1,10 +1,11 @@
 section.products {
-  h1 {
-    font-size: 4rem;
+  width: 80vw;
+
+  h1.title {
+    font-size: 5rem;
     font-weight: 900;
     font-style: italic;
-    width: 80vw;
-    margin: 0 10vw 25px 10vw;
+    margin: 0 10vw 0 10vw;
 
     a {
       color: var(--bulma-body);
@@ -15,10 +16,22 @@ section.products {
       }
     }
   }
+  
+  a.subtext {
+    font-size: 1rem;
+    width: 80vw;
+    margin: 0 10vw 0 10vw;
+    font-weight: 900;
+
+    .plug-icon {
+      color: rgba(230, 128, 233, 1)
+
+    }
+  }
 
   div.container {
     width: 80vw;
-    margin: 0 10vw 50px 10vw;
+    margin: 25px 10vw 50px 10vw;
 
     display: flex;
     flex-direction: row;
@@ -34,7 +47,7 @@ section.products {
       padding: 5px;
       margin: 0 10px 25px 0;
       background: var(--bulma-background-color);
-      transition: all ease-in-out 300ms 10ms;
+      transition: all ease-in-out 200ms 10ms;
 
       &:hover {
         img {
@@ -49,7 +62,7 @@ section.products {
 
       img {
         border-radius: 12px;
-        transition: all ease-in-out 300ms 10ms;
+        transition: all ease-in-out 200ms 10ms;
       }
 
       h2 {
@@ -66,7 +79,7 @@ section.products {
         margin-top: 15px;
 
         .tag {
-          transition: all ease-in-out 300ms 10ms;
+          transition: all ease-in-out 200ms 10ms;
           &:hover {
             transform: scale(1.1);
           }

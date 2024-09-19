@@ -8,7 +8,6 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import options from './library/options-generator.js'
 
 const productionFlag = options.mode === 'development' ? false : true
-const localPugLoader = './library/pug-html-loader.js'
 
 const devServer = {
   static: {
@@ -31,7 +30,7 @@ const devServer = {
   ],
 }
 
-const assetsize_mb = (1024000 * 2.5)
+const assetsize_mb = (1024000 * 2.5) 
 
 export default {
   mode: productionFlag ? 'production' : 'development',
@@ -95,7 +94,7 @@ export default {
             loader: 'raw-loader',
           },
           {
-            loader: localPugLoader,
+            loader: './library/pug-html-loader.js',
             options: {
               data: options.app,
             },

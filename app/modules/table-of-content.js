@@ -1,11 +1,11 @@
-export default function TableOfContentOptions (contentSelector, headingSelectors) {
+export default function TableOfContentOptions (providedContentSelector, headingSelectors) {
   try {
     
     headingSelectors = headingSelectors ? 'h1, h2, h3' : headingSelectors
 
     const headingMap = {}
-    const content = document.querySelector(contentSelelector)
-    const headings = content.querySelectorAll(contentSelelector)
+    const content = document.querySelector(providedContentSelector)
+    const headings = content.querySelectorAll(headingSelectors)
 
     Array.prototype.forEach.call(headings, function (heading) {
       const id = heading.id
@@ -28,7 +28,7 @@ export default function TableOfContentOptions (contentSelector, headingSelectors
       onClick,
       scrollEndCallback,
       tocSelector: '.toc',
-      contentSelector: contentSelector,
+      contentSelector: providedContentSelector,
       headingSelector: headingSelectors,
       hasInnerContainers: false,
       linkClass: 'toc-link',

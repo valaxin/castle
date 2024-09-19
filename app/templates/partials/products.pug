@@ -1,7 +1,11 @@
 section.products
   if wares
     if wares.success == true
-      h1
+      a(href='https://valaxin.gumroad.com/').subtext
+        span  GUMROAD 
+        span.icon.is-small.plug-icon
+          i.fa-solid.fa-bolt
+      h1.title
         a(href='/shop.html')
           span shop
      
@@ -13,11 +17,15 @@ section.products
               h2= product.name
               h3= product.custom_summary
               .tags
-                .tag.is-success
+                .tag.is-price.is-outline
                   span= product.formatted_price
-                
-                if product.max_purchase_count !== null
+
+                if product.published === false
                   .tag.is-warning
-                    span= product.max_purchase_count + ' Available'
+                    span Not Published!
+                else 
+                  if product.max_purchase_count !== null
+                    .tag.is-warning
+                      span= product.max_purchase_count + ' Available'
 
                     

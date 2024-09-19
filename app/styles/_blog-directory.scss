@@ -3,78 +3,71 @@ section.posts {
   margin: 0 10vw 75px 10vw;
 
   h1 {
-    font-size: 4rem;
+    font-size: 5rem;
     font-weight: 800;
     font-style: italic;
+    margin: 5px;
 
     a {
       color: var(--bulma-body-color);
-      opacity: 0.75;
-
-      &:hover {
-        opacity: 1;
-      }
     }
   }
 
-  article {
-    border-left: 4px solid transparent;
-    transition: all ease-in-out 200ms;
-    // margin-left: -10px;
-    margin-bottom: 50px;
-    border-radius: 20px;
-    background-color: var(--bulma-pre-background);
+  div {
+    ol {
+      counter-reset: item;
+      margin-left: 0;
+      padding-left: 0;
 
-    & * { transition: all ease-in-out 200ms; }
+      li {
+        display: block;
+        margin-bottom: .5em;
 
-    &:hover {
-      padding: 10px;
-    }
 
-    &:hover img.thumbnail {
-      top: 0;
-      left: 0;
-      scale: 1;
-    }
+        &::before {
+          content: counter(item);
+          counter-increment: item;
+          width: 2em;
+          margin-left: -2em;
+          margin-top: 1em;
+          float: left;
+        }
 
-    a {
-      color: var(--bulma-body-color);
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      justify-content: start;
-      justify-items: start;
-    }
+        article {
+          margin: 10px 0 20px 0;
 
-    h2 {
-      font-size: 3rem;
-      line-height: 2rem;
-      font-weight: 900;
-    }
+          a {
+            color: var(--bulma-body-color);
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: start;
+            justify-items: start;
 
-    h3 {
-      font-size: 1.5rem;
-      font-weight: 600;
-    }
+            img {
+              display: none;
+            }
 
-    .content {
-      margin: 25px;
-    }
+            div.content {
+              display: flex;
+              flex-direction: column;
+              justify-content: flex-start;
+              justify-items: flex-start;
 
-    img.thumbnail {
-      width: 175px;
-      height: 175px;
-      object-fit: cover;
-      border-radius: 25px;
-      float: left;
-      position: relative;
-      top: 25px;
-      left: -25px;
-      scale: .9;
-    }
+              h2.title {
+                font-size: 3rem;
+                font-weight: 900;
+                text-decoration: underline;
+              }
 
-    .tags {
-      margin-top: 10px;
+              h3.subtitle {
+                font-size: 1.5rem;
+                font-weight: 600;
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
