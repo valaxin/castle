@@ -24,8 +24,13 @@ function articleContainers(articleSelector) {
   }
 }
 
-export default (async function () {
-  const containers = articleContainers('section.post > article.content')
+// add bulma classes when viewport reaches a defined width size
 
-  console.log({ containers })
+export default (async function () {
+  if (window.location.pathname.includes('/blog/')) {
+    const containers = articleContainers('section.content > article.content')
+    if (containers) {
+      console.log('custom-containers:', containers)
+    }
+  }
 })()

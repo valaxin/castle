@@ -1,0 +1,40 @@
+
+span.index-hero {
+  font-size: 3rem;
+  font-weight: 900;
+  margin: 0 10vw 10px 10vw;
+  width: 80vw;
+  // text-shadow: 0 5px 2px rgba(0,0,0,1);
+  // color: white;
+  display: block;
+  border-radius: 5px;
+}
+
+div.float-right.decoration {
+  height: 256px;
+  width: 256px;
+  background: red;
+}
+
+form#quote {
+  width: 60vw;
+  margin: 25px 10vw 50px 10vw;
+}
+
+.resources {
+  width: 80vw;
+  margin: 20px 10vw;
+
+  h3 {
+    font-size: 3rem;
+    font-weight: 900;
+  }
+
+  .container {
+
+    a {
+      margin: 1rem 1.25rem;
+      color: var(--bulma-body);
+    }
+  }
+}

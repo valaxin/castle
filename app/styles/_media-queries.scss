@@ -1,3 +1,5 @@
+
+// MOBILE WIDTH
 @media screen and (max-width: 900px) {
   .giscus,
   .other-posts,
@@ -10,16 +12,54 @@
     margin-top: 75px;
   }
 
+  /*
   section.content,
   section.others,
   section.comments {
-    width: var(--theme-mobile-width);
-    margin-left: var(--theme-mobile-margin);
+    // width: var(--theme-mobile-w);
+    // margin-left: var(--theme-mobile-ml);
+  }
+  */
+
+  main#article section.content article.content {
+    margin-left: var(--theme-mobile-ml);
+    width: var(--theme-mobile-w);
   }
 
-  article.content {
-    width: var(--theme-mobile-width);
+  section.footnotes { 
+    ol {
+      counter-reset: item;
+     
+      li {
+        display: block;
+        background-color: pink;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        margin-bottom: .75rem;
+        margin-left: 2rem;
+        width: 80vw;
+        font-family: var(--bulma-code-family);
+      }
+    }
+
+    li::before {
+      display: inline-block;
+      content: counter(item) "/ ";
+      counter-increment: item;
+      width: 5vw;
+      margin-left: -5vw;
+      background-color: pink;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+    }
   }
+  
+  /*
+  article.content {
+    // width: 100vw;
+    // margin-left: 0;
+  }
+  */
 
   .toc {
     display: none;
@@ -30,8 +70,4 @@
     width: 100%;
   }
 
-  footer.footer {
-    width: var(--theme-mobile-width);
-    margin-left: var(--theme-mobile-margin);
-  }
 }

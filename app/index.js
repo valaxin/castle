@@ -14,6 +14,8 @@ import tocopt from '@local/table-of-content.js'
 
 (async () => {
     
-  tocbot.init(tocopt('section.content > article.content', 'h1, h2, h3, h4'))
+  if (window.location.pathname.includes('/blog/')) {
+    tocbot.init(tocopt('section.content > article.content', 'h1, h2, h3, h4'))
+  }
   
 })()
