@@ -1,24 +1,25 @@
-section.other-posts
+section.others
   if current
     if cache
-      .block.mb-5
-        h1.title Thanks for reading!
-        h2.subtitle Some other posts you might enjoy
-      
-      .columns
+
+      div.thanks
+        h2  Thank You!
+        span Some other posts you might enjoy
+
+      div.article
         each post in cache
           if post.stats.comments.title === current
             each other in post.others
-              .block.column
+              div
                 a(href= other.path)
-                  h1.title= other.comments.title
-                  h2.subtitle= other.comments.summary
-                .tags
-                  .tag
-                    span.icon
-                      i.fa-solid.fa-flag-checkered
-                    span= other.comments.creation
-                  .tag
-                    span.icon
-                      i.fa-solid.fa-glasses
-                    span #{other.readtime} Min.
+                  h3= other.comments.title
+                  h4= other.comments.summary
+                  .tags
+                    .tag
+                      span.icon
+                        i.fa-solid.fa-flag-checkered
+                      span= other.comments.creation
+                    .tag
+                      span.icon
+                        i.fa-solid.fa-glasses
+                      span #{other.readtime} min

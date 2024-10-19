@@ -1,0 +1,123 @@
+main#article {
+  section.hero {
+    width: 80vw;
+    margin: 0 10vw;
+
+    h1 {
+      font-size: 5rem;
+      font-weight: 900;
+      font-style: italic;
+    }
+    span {
+      font-family: var(--bulma-code-family);
+      font-size: 0.8rem;
+    }
+  }
+
+  section.content {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    justify-items: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+
+    article.content {
+      width: 60vw;
+      margin: 25px 0 0 10vw;
+      padding: 25px 0 0 0;
+      font-size: 1.1rem;
+
+      blockquote,
+      img,
+      code,
+      pre {
+        border-radius: 5px;
+      }
+    }
+
+    div.toc {
+      width: 20vw;
+      position: relative;
+      top: 35px;
+      right: 0;
+      margin: 0 0 0 25px;
+      z-index: 9999;
+
+      .toc-link {
+        opacity: 0.5;
+        font-size: 1rem;
+        font-family: var(--bulma-code-family);
+
+        &.is-active-link {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  section.others {
+    width: 80vw;
+    margin: 25px 10vw 0 10vw;
+    z-index: 9999;
+
+    div.thanks {
+      h2 {
+        font-size: 4rem;
+        font-weight: 900;
+      }
+
+      span {
+        font-size: 2rem;
+        font-weight: 700;
+        opacity: 0.75;
+      }
+    }
+
+    .article {
+      > div {
+        margin: 10px 0 10px 0;
+        background-color: var(--bulma-pre-background);
+        border-radius: 5px;
+        padding: 15px;
+        width: 60vw;
+
+        a {
+          color: var(--bulma-color);
+          opacity: 0.9;
+
+          &:hover {
+            opacity: 1;
+          }
+        }
+
+        h3 {
+          font-size: 1.33rem;
+          font-weight: 700;
+        }
+
+        .tags {
+          .tag {
+            margin-right: 10px;
+            padding: 0;
+          }
+        }
+      }
+    }
+  }
+
+  section.comments {
+    & > h2 {
+      font-size: 4rem;
+      font-weight: 800;
+      width: 60vw;
+      margin: 25px 0 0 10vw;
+    }
+
+    .giscus {
+      width: 60vw;
+      margin: 25px 0 50px 10vw;
+    }
+  }
+}

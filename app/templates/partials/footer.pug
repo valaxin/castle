@@ -1,10 +1,20 @@
-footer.footer.global-footer
-  .content
-    h1 footer
+footer
 
-script(src='https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js')
+  .links
+    a(href='/')
+      span= manifest.name
+    a(href='https://github.com/valaxin')
+      span= manifest.authors[0].name
+    a(href='/feed.json')
+      span json
+    a(href='/feed.xml')
+      span xml
+  
+  include form-newsletter
+
+// script(src='https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.18.2/tocbot.min.js')
 
 .control.has-icon-left.is-fixed-floating-bottom-right.scroll-up-button.is-hidden
-  button.button.is-inverted
+  button.button
     span.icon-is-left
       i.fa-solid.fa-turn-up

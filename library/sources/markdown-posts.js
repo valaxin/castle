@@ -8,8 +8,8 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { filters, comments, readtime, capitalize, formatsize } from '../post-data-processors.js'
 
 /**
- * 
- * @param {String} directory 
+ *
+ * @param {String} directory
  * @returns {Array} [{}, ..., {}]
  */
 export async function PostCollector(directory) {
@@ -24,7 +24,7 @@ export async function PostCollector(directory) {
     for (const filename of filenames) {
       const stats = await stat(join(directory, filename))
       const markdown = await readFile(join(directory, filename), { encoding: 'utf8' })
-      const template = await readFile(join(directory, '../templates/*article.pug'), { encoding: 'utf8' })
+      const template = await readFile(join(directory, '../templates/_article.pug'), { encoding: 'utf8' })
       const title = capitalize(filename.split('.')[0], '-')
       const base = resolve()
       const updated = template.replace('#{markdown-path-here}', `/../markdown/${filename}`)
@@ -80,10 +80,10 @@ export async function PostCollector(directory) {
 }
 
 /**
- * 
+ *
  * @param {Array} collection the 'posts' array provided by 'PostCollector'
- * @param {} opts 
- * @returns 
+ * @param {} opts
+ * @returns
  */
 export const RenderPugWithData = async function (collection, opts) {
   const posts = []
@@ -99,8 +99,8 @@ export const RenderPugWithData = async function (collection, opts) {
         title: post.stats.comments.title,
       }
 
-      console.log('options object passed to pug', options)
-      
+      // console.log('options object passed to pug', options)
+
       pug.render(post.pug.template, options, (ex, html) => {
         if (!ex) {
           post.content.html = html

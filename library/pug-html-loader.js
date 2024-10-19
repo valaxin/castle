@@ -5,15 +5,6 @@ import pug from 'pug'
 
 let cachedDeps = []
 
-/**
- * Pug HTML Loader, turns pug templates into html.
- * use relative paths with any unprefixed template.
- * data is provided within `webpack.config.js`
- * @author valaxin
- * @param {String} source pug template string data
- * @returns result of compiling pug templates provided to webpack
- */
-
 export default function (source) {
   let query = {}
   let template = {}

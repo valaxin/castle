@@ -1,0 +1,17 @@
+form(netlify name="contact").form.is-small
+  .label.is-size-7 Sign up for our monthly newsletter and promotions.
+  .field.has-addons
+    p.control.has-icons-left.has-icons-right
+      input.input(placeholder="your@email" type="email" required="true" id="newsletter-signup")
+      span.icon.is-small.is-left
+        i.fas.fa-newspaper
+    p.control.has-icons-right
+      input.button(role="submit" type="submit" value="Sign Up")
+  .field
+    p.control.mt-2
+      span.info.is-size-7.md-2
+        a(href='/#privacy')= 'privacy'
+      span.info.is-size-7.md-2= " &"
+      span.info.is-size-7.md-2
+        a(href='/#terms')= ' terms'
+        

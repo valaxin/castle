@@ -28,10 +28,9 @@ export default async function (directory) {
     withFileTypes: true,
   })
 
-
   await folder.filter(async (file) => {
     if (file.isFile()) {
-      if (file.name[0] !== process.env.TEMPLATE_PREFIX) {
+      if (file.name[0] !== '_') {
         files.push(
           new HtmlWebpackPlugin({
             hash: true,
@@ -40,10 +39,9 @@ export default async function (directory) {
             scriptLoading: 'module',
             showErrors: true,
             template: join(directory, file.name),
-            minify: false
+            minify: false,
           })
         )
-        console.log(file.name, 'done!')
       }
     }
   })

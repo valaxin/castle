@@ -1,9 +1,3 @@
-[dev]
-  port = 9000
-
-[functions]
-  directory = "app/lambda"
-
 [[plugins]]
   package = "@netlify/plugin-lighthouse"
 
@@ -21,12 +15,12 @@
 [context.deploy-preview]
   base = '/'
   publish = "dist/"
-  command = "npm run build:app"
+  command = "npm run build"
 
 [context.production]
   base = '/'
   publish = "dist/"
-  command = "npm run build:app"
+  command = "npm run build"
 
 [[headers]]
   for = "/*"

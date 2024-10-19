@@ -1,76 +1,53 @@
-@import 'defaults';
-@import 'article';
-@import 'is-modifiers';
-@import 'table-of-content';
-@import 'media-queries';
+@import "static/normalize";
+@import "static/animations";
 
-$app-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans,
-  Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+@import "pages/article";
+@import "pages/about";
+@import "pages/index";
+@import "pages/ideas";
 
-$app-font-code: Consolas, Monaco, Lucida Console, Liberation Mono,
-  DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;
+@import "components/navbar";
+@import "components/footer";
+@import "components/blog-directory";
+@import "components/product-gallery";
+
+@import "is-modifiers";
+@import "media-queries";
+@import "uniques";
+
+$app-font: 
+  -apple-system,
+  BlinkMacSystemFont,
+  "Segoe UI",
+  Roboto,
+  Oxygen-Sans,
+  Ubuntu,
+  Cantarell,
+  "Helvetica Neue",
+  sans-serif;
+
+$app-font-code:
+  Consolas,
+  Monaco,
+  Lucida Console,
+  Liberation Mono,
+  DejaVu Sans Mono,
+  Bitstream Vera Sans Mono,
+  Courier New;
 
 :root {
+  scroll-behavior: smooth;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
   --bulma-body-family: #{$app-font};
   --bulma-code-family: #{$app-font-code};
-}
 
-
-.navbar {
-  width: 60vw;
-  // position: fixed;
-  top: 25px;
-  left: 20vw;
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.navbar.away {
-  // position: fixed;
-  top: 25px;
-  left: 20vw;
-}
-
-img {
-  border-radius: 5px;
-}
-
-nav.navbar {
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  background-color: rgba(255,255,255, .5);
-
-  .navbar-burger {
-    color: var(--bulma-body-color);
-  }
-
-}
-
-nav.is-fixed-floating-centre {
-  position: fixed;
-  padding: 0 3vw;
-  width: 100vw;
-}
-
-footer.global-footer {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  align-content: center;
-  padding-left: 3rem;
-}
-
-.footer-float-image {
-  z-index: 0;
-  width: 256px;
-  margin-right: 50px;
-  user-select: none;
-  pointer-events: none;
-  opacity: 1;
-  filter: grayscale(80%);
+  --theme-desktop-w: 80vw;
+  --theme-desktop-ml: 10vw;
+ 
+  --theme-mobile-w: 90vw;
+  --theme-mobile-ml: 5vw;
 }

@@ -1,0 +1,45 @@
+.progress-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 5px;
+  z-index: 9999;
+
+  div {
+    width: 0;
+    background-color: var(--bulma-link-text);
+    height: 4px;
+  }
+}
+
+.toc-link.node-name--H1::before,
+.toc-link.node-name--H2::before,
+.toc-link.node-name--H3::before,
+.toc-link.node-name--H4::before,
+.toc-link.node-name--H5::before,
+.toc-link.node-name--H6::before {
+  display: none;
+}
+
+.spoiler {
+  border-radius: var(--bulma-radius);
+  background-color: black;
+
+  p {
+    padding: 1em 1.25em;
+    color: black;
+    user-select: none;
+    font-weight: var(--bulma-weight-semibold);
+  }
+
+  &:hover {
+    p {
+      color: aliceblue;
+    }
+  }
+}
+
+.spoiler.visible {
+  background-color: aliceblue;
+}

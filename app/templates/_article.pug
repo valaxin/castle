@@ -1,0 +1,25 @@
+extends /partials/layout
+
+block content
+
+  - var current = title
+
+  main#article
+    section.hero
+      h1= title
+      span= manifest.authors[0].name
+      span= comments.creation
+
+    section.content
+      article.content
+        include:markdown #{markdown-path-here}
+      div.toc
+
+    include /partials/additional
+
+    section.comments
+      h2 Comments
+      script(async="" crossorigin="anonymous" data-loading="lazy" data-lang="en" data-theme="preferred_color_scheme" data-input-position="bottom" data-emit-metadata="0" data-reactions-enabled="0" data-strict="0" data-mapping="pathname" data-category-id="DIC_kwDOMOBIPc4ChSsU" data-category="Post Comments" data-repo-id="R_kgDOMOBIPQ" data-repo="valaxin/castle" src="https://giscus.app/client.js")
+
+
+  include /partials/footer
