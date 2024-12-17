@@ -5,26 +5,20 @@ import { readdir, stat, readFile } from 'fs/promises'
 import moment from 'moment'
 import pug from 'pug'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-import { filters, comments, readtime, capitalize, formatsize } from '../post-data-processors.js'
+import { filters, comments, readtime, capitalize, formatsize } from '../support/md-parsers.js'
 
-/**
- *
- * @param {String} directory
- * @returns {Array} [{}, ..., {}]
- */
-export async function PostCollector(directory) {
+export async function Posts(directory) {
+  const _article = '../templates/_article.pug'
   const posts = []
   const limit = 2
   const words = 200
 
   try {
     const filenames = await readdir(directory)
-
-    // !! iterate over each possible post !! //
     for (const filename of filenames) {
       const stats = await stat(join(directory, filename))
       const markdown = await readFile(join(directory, filename), { encoding: 'utf8' })
-      const template = await readFile(join(directory, '../templates/_article.pug'), { encoding: 'utf8' })
+      const template = await readFile(join(directory, _article), { encoding: 'utf8' })
       const title = capitalize(filename.split('.')[0], '-')
       const base = resolve()
       const updated = template.replace('#{markdown-path-here}', `/../markdown/${filename}`)
@@ -54,7 +48,6 @@ export async function PostCollector(directory) {
       posts.push(post)
     }
 
-    // !! other related posts attached to each post !! //
     for (const selected of posts) {
       const others = []
       for (const post of posts) {
@@ -79,13 +72,7 @@ export async function PostCollector(directory) {
   }
 }
 
-/**
- *
- * @param {Array} collection the 'posts' array provided by 'PostCollector'
- * @param {} opts
- * @returns
- */
-export const RenderPugWithData = async function (collection, opts) {
+export async function RenderPugWithPostData(collection, opts) {
   const posts = []
 
   try {
@@ -99,8 +86,6 @@ export const RenderPugWithData = async function (collection, opts) {
         title: post.stats.comments.title,
       }
 
-      // console.log('options object passed to pug', options)
-
       pug.render(post.pug.template, options, (ex, html) => {
         if (!ex) {
           post.content.html = html
@@ -111,9 +96,7 @@ export const RenderPugWithData = async function (collection, opts) {
       })
 
       post.stats.uri = join(opts.dist.split('/')[1], post.filename.replace('.md', '.html'))
-
       post.stats.dist = opts.dist
-
       const pluginOptions = {
         hash: true,
         inject: true,
@@ -130,4 +113,27 @@ export const RenderPugWithData = async function (collection, opts) {
     console.error(ex)
     return ex
   }
+}
+
+export async function Pages(directory) {
+  const files = []
+  const folder = await readdir(directory, { recursive: false, withFileTypes: true })
+  await folder.filter(async (file) => {
+    if (file.isFile()) {
+      if (file.name[0] !== '_') {
+        files.push(
+          new HtmlWebpackPlugin({
+            hash: true,
+            inject: true,
+            filename: file.name.replace('pug', 'html'),
+            scriptLoading: 'module',
+            showErrors: true,
+            template: join(directory, file.name),
+            minify: false,
+          })
+        )
+      }
+    }
+  })
+  return files
 }

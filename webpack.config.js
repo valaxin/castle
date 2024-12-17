@@ -5,7 +5,7 @@
 import { join, resolve } from 'node:path'
 import CopyPlugin from 'copy-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import options from './library/options-generator.js'
+import options from './library/prebuild.js'
 
 const productionFlag = options.mode === 'development' ? false : true
 
@@ -34,6 +34,7 @@ const assetsize_mb = (1024000 * 2.5)
 
 export default {
   mode: productionFlag ? 'production' : 'development',
+  stats: 'errors-only',
   devServer,
   optimization: {
     splitChunks: {
@@ -77,13 +78,20 @@ export default {
             loader: 'css-loader',
             options: {
               sourceMap: true,
+              modules: {
+                mode: 'global',
+              }
             },
           },
           {
             loader: 'sass-loader',
             options: {
               sourceMap: true,
-              api: 'modern'
+              api: 'modern',
+              sassOptions: {
+                quietDeps: true,
+                charset: false
+              }
             },
           },
         ],
@@ -95,7 +103,7 @@ export default {
             loader: 'raw-loader',
           },
           {
-            loader: './library/pug-html-loader.js',
+            loader: './library/support/pug-html-loader.js',
             options: {
               data: options.app,
             },

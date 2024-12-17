@@ -5,19 +5,24 @@ import { join } from 'node:path'
 import { createHmac } from 'node:crypto'
 import { Feed } from 'feed'
 
+const TITLE = 'valaxin/blog'
+const DESCRIPTION = TITLE
+const DOMAIN = 'valaxin'
+const TLD = 'dev'
+
 export default async function (options) {
   try {
     const feed = new Feed({
-      title: 'valaxin/blog',
-      description: 'valaxin/blog',
-      id: 'https://valaxin.dev/',
-      link: 'https://valaxin.dev/',
-      language: 'en', // optional, used only in RSS 2.0, possible values: http://www.w3.org/TR/REC-html40/struct/dirlang.html#langcodes
+      title: TITLE,
+      description: DESCRIPTION,
+      id: `https://${DOMAIN}.${TLD}/`,
+      link: `https://${DOMAIN}.${TLD}/`,
+      language: 'en',
       image: '/favicon.png',
       favicon: '/favicon.png',
       copyright: 'ATTRIBUTION-NONCOMMERCIAL-SHAREALIKE 4.0 INTERNATIONAL',
-      updated: new Date(2024, 1, 1), // optional, default = today
-      generator: false, // optional, default = 'Feed for Node.js'
+      updated: new Date(2024, 1, 1),
+      generator: false,
       feedLinks: {
         json: '/feed.json',
         atom: '/feed.xml',
@@ -30,11 +35,9 @@ export default async function (options) {
     })
 
     for (const post of options.app.cache) {
-      // create hash value for id
       const seed = `${post.stats.comments.creation}${post.stats.uri}`
       const salt = options.app.manifest.authors[0].name
       const hash = await createHmac('md5', salt).update(seed).digest('base64url')
-
       const item = {
         id: hash,
         title: post.stats.title,

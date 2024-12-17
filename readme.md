@@ -13,11 +13,11 @@ A javascript written, server side rendered, netlify hosted, webspace. Somewhere 
 
 On build the app looks into the `/app/markdown` folder reading each `.md`, info from is used to contruct a pug template wrapper using `/app/templates/_article.pug`.
 
-The technology stack consists of nodejs, webpack, babel, pugjs, markdown, scss. The idea is that I build a fully functional modern web space one can easily post to, use as a portfolio, display code examples, etc. With an internal design that's flexible and modern following functional and reusable patterns.
+The technology stack consists of `nodejs`, `webpack`, `pugjs`, `markdown`, `scss`. The idea here is to build out a fully functional modern webspace that someone can easily post content too, use as a portfolio, display code examples, etc. With an internal design that is flexible following functional and reusable patterns.
 
 ---
 
-## Init Story (Prebuild Steps)
+## `castle/library/scaffold.js`
 
 1. The directory containing the page templates for the project is read
 2. The directory containing markdown blog posts for the project is read
@@ -25,7 +25,7 @@ The technology stack consists of nodejs, webpack, babel, pugjs, markdown, scss. 
 ```plaintext
 [//]: # ({"title": "Title", "creation": "01/01/1970", "summary": "Summary"})
 ```
-*post meta data is encapsulated in this comment syntax.*
+*post meta data is encapsulated in this comment syntax. as the first line in the document*
 
 3. Data from GitHub, GumRoad, <strike>Spotify</strike>, <strike>Twitch</strike>, and <strike>BlueSky</strike> are requested
 4. Generate rss/json feed data

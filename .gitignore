@@ -18,6 +18,7 @@
 /app/views/.temp
 /app/public/feed.*
 /app/public/template-data.json
+/app/public/manifest.json
 
 # output from 'npm run analyze'
 stats.json

@@ -1,7 +1,7 @@
 import 'dotenv/config'
-import moment from 'moment'
+// import moment from 'moment'
 
-export default async function RepoCollector () {
+export default async function GitHubRepositories() {
   try {
     const url = `https://api.github.com/users/${process.env.GITHUB_USERNAME}/repos`
     const response = await fetch(url, { method: 'GET' })
@@ -9,6 +9,7 @@ export default async function RepoCollector () {
     const json = JSON.parse(resp)
     return json
   } catch (ex) {
-    console.error('uh-oh!', ex)
+    console.error(ex)
+    return ex
   }
 }

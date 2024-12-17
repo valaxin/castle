@@ -1,3 +1,7 @@
+@use "bulma";
+@use "@global/highlight.js/scss/github-dark.scss";
+@use "@global/tocbot/src/scss/tocbot.scss";
+
 @use "static/normalize";
 @use "static/animations";
 
