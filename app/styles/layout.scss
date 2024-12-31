@@ -8,12 +8,13 @@
 @use "pages/article";
 @use "pages/about";
 @use "pages/index";
-@use "pages/ideas";
+@use "pages/now";
 
 @use "components/navbar";
 @use "components/footer";
 @use "components/blog-directory";
 @use "components/product-gallery";
+@use "components/hero-grid";
 
 @use "is-modifiers";
 @use "media-queries";

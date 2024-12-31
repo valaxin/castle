@@ -19,6 +19,7 @@
 /app/public/feed.*
 /app/public/template-data.json
 /app/public/manifest.json
+/app/public/sitemap.xml
 
 # output from 'npm run analyze'
 stats.json

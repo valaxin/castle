@@ -10,12 +10,14 @@ import GumRoadProducts from './data/products.js'
 import GitHubrepositories from './data/repositories.js'
 import Syndication from './support/syndication.js'
 import WebManifest from './support/manifest.js'
+import SitemapXML from './data/sitemap.js'
 
 const __dirname = url.fileURLToPath(new URL('..', import.meta.url))
 
 // 0. Initalized
 const options = {
-  sys: {},
+  sys: {
+},
   mode: process.env.NODE_ENV ? process.env.NODE_ENV : 'development',
   server: {
     host: '127.0.0.1',
@@ -49,6 +51,7 @@ await _folders.filter(async (folder) => {
 })
 
 // 2,1. Assign the client template data to `options.app` key.
+options.app.map = SitemapXML()
 options.app.manifest = WebManifest()
 options.app.pages = await Pages(options.sys.folders.templates)
 options.app.cache = await Posts(options.sys.folders.markdown)
@@ -70,8 +73,6 @@ await writeFile(
     }
   }
 )
-
-
 // 3,2. Save data to be seen at 'host:post/template-data.json'
 await writeFile(
   join(options.sys.folders.public, 'template-data.json'),
@@ -83,8 +84,19 @@ await writeFile(
     }
   }
 )
-// 4. generate JSON/XML feeds endpoints
+// 4,1. generate JSON/XML feeds endpoints
 Syndication(options)
 
+// 4,2. Save data to be seen at 'host:port/sitemap.xml'
+await writeFile(
+  join(options.sys.folders.public, 'sitemap.xml'),
+  JSON.stringify(options.app.map),
+  'utf8',
+  (ex) => {
+    if (ex) {
+      console.error(ex)
+    }
+  }
+)
 // 5. Done...
 export default options

@@ -1,5 +1,4 @@
 import 'dotenv/config'
-// import moment from 'moment'
 
 export default async function GitHubRepositories() {
   try {

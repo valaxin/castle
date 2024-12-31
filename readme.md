@@ -25,13 +25,16 @@ The technology stack consists of `nodejs`, `webpack`, `pugjs`, `markdown`, `scss
 ```plaintext
 [//]: # ({"title": "Title", "creation": "01/01/1970", "summary": "Summary"})
 ```
+> [!NOTE]
+> I think maybe also having a tag break could work.
+> as then with css this can be hidden to the client... 
+
 *post meta data is encapsulated in this comment syntax. as the first line in the document*
 
 3. Data from GitHub, GumRoad, <strike>Spotify</strike>, <strike>Twitch</strike>, and <strike>BlueSky</strike> are requested
 4. Generate rss/json feed data
 5. Provide all above data to front end via JSON
 6. Provide static site to `/dist` folder for public via webpack
-
 
 > [!NOTE]  
 > *Code comments are scarce and sometimes nonsense, this is a personal project to learn and develop my own abilities.*
@@ -40,5 +43,21 @@ Changes to any elements or styles on markdown pages located `/blog/post-name.htm
 
 > [!WARNING]
 > *This is **very** much a work in progress.*
+> Anything is subject to change at any time without any more warning than this.
 
-"app/library/options-generator.js" is our starting point effectively, within there are collector modules that obtain json data saving it to what is basically a large template data object this is passed to webpack and subsiquently pug however please note that articles using the `_article.pug` template are rendered separately until a better method of providing markdown handling within the template.
+---
+
+> Since Github gave us `Copilot` for free here's what it has to say about my project.
+
+### This project is a personal webspace built using JavaScript, Node.js, Webpack, Pug, Markdown, and SCSS. It is designed to be server-side rendered and hosted on Netlify
+
+#### The main features include
+
+- Markdown Articles: Articles are written in Markdown, wrapped with Pug templates, and converted to HTML during the build process.
+- Static Site Generation: The project generates a static site, which is output to the /dist folder.
+- Blog and Pages: It includes a blog section where Markdown files from the markdown directory are processed and rendered as HTML pages.
+- Table of Contents: The project uses tocbot to generate a table of contents for blog posts.
+- Styling: The project uses SCSS for styling, with various components and layout styles defined.
+- Data Integration: It fetches data from external sources like GitHub and GumRoad to display on the site.
+- RSS/JSON Feeds: It generates RSS and JSON feed data for the blog posts.
+The project aims to be a flexible and modern webspace for posting content, displaying a portfolio, and sharing code examples.

@@ -16,6 +16,7 @@
   base = '/'
   publish = "dist/"
   command = "npm run build"
+  functions = "app/lambda"
 
 [context.production]
   base = '/'

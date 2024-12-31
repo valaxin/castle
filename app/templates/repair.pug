@@ -1,0 +1,38 @@
+extends partials/layout
+
+block content
+  
+  
+  .hero
+    span.index-hero Eletronics Repair & Modification
+    span.index-hero Software Development
+  
+    .grid.is-col-min-12
+      .cell
+        .cell-icon
+          img(src="images/requested.svg")
+        h2
+          span 1.
+          | Requested
+        p Outline below what you wish to have repaired or modified. Be as detailed as possible about the leadup, errors, and previous repair attempts.
+      .cell
+        .cell-icon
+          img(src="images/received.svg")
+        h2 
+          span 2.
+          | Received
+        p We'll provide you with an inital prognosis quote for the work, once accepted and we receive your device it's triaged for us to provide an final quote quote.
+        .i.bg-icon
+      .cell
+        .cell-icon
+          img(src="images/repaired.svg")
+        h2
+          span 3.
+          | Repaired
+        p Troughly tested and cleaned, and backed by a 120 day warranty, Sealed and shipped! All customers be able to track the progress of their devices' repair and transport online.
+        .i.bg-icon
+  
+    include partials/offerings-grid
+    include partials/form-proposal-new
+
+  include partials/footer
