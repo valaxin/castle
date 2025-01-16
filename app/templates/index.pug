@@ -1,8 +1,56 @@
 extends partials/layout
 
 block content
+  .decoration-container
+  .container.index-content
 
-  .hero
-    h1.title Hi!👋
+    .content
+      h1.title Hello World
 
+    .content
+      h3.subtitle My handle on most everything is 
+       span.highlighted valaxin
+       |  I am passionate about 
+       span.highlighted.index-build 🔩building, 
+       span.highlighted.index-fix  🛠️fixing,  
+       | and 
+       span.highlighted.index-mod 🕹️modifying
+       | electronics and software for both fun and profit.
+      
+      .block
+        span.index-blurb This is my personal webspace, it's where I share projects, experiences, and services. You can also register for a repair, get in contact, or consume the media I share about repairs, mods, etc.
+  br
+  br
+  .grid.is-col-min-12.index-first-cta
+    
+    a(href='/repair.html')  
+      .cell
+        span Mail-Order
+        h2.title Repair
+        h3.subtitle iPhones/Android, Computers, Tablets, Data Recovery Cleanings, and more.
+        i.icon.fa-solid.fa-arrow-right
+    
+    a(href='/shop.html')  
+      .cell
+        span parts & services
+        h2.title Shop
+        h3.subtitle We have a variety of parts and services available for you.
+        i.icon.fa-solid.fa-arrow-right
+    
+    a(href='/blog.html')  
+      .cell
+        span professional
+        h2.title blog
+        h3.subtitle writings about stuff I make, internet culture, music and more.
+        i.icon.fa-solid.fa-arrow-right
+  br
+  br
+  h2.projects-title Public Projects
+  .grid.is-col-min-12
+    for repo in repos
+      a(href=repo.html_url target="_blank")
+        .cell
+          h3.title #{repo.name}
+          p #{repo.description}
+  
   include partials/footer

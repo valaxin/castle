@@ -1,6 +1,7 @@
 
-span.index-hero {
-  font-size: 3rem;
+.index-hero,
+.index-content {
+  font-size: 3.5rem;
   font-weight: 900;
   margin: 0 10vw 10px 10vw;
   width: 80vw;
@@ -11,7 +12,6 @@ span.index-hero {
 div.float-right.decoration {
   height: 256px;
   width: 256px;
-  background: red;
 }
 
 .resources {
@@ -20,6 +20,7 @@ div.float-right.decoration {
   h3 {
     font-size: 3rem;
     font-weight: 900;
+    line-break: strict;
   }
 
   .container {
@@ -31,17 +32,60 @@ div.float-right.decoration {
   }
 }
 
+
+body > h2.projects-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-decoration: underline;
+}
+
 .banner {
   width: 100vw;
-
-
+  height: 30vh;
+  
   .item {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: red;
   }
 }
+
+.index-first-cta {
+  a .cell h2 {
+    font-size: 5rem;
+  }
+
+  a .cell h3 {
+    margin-top: 15px;
+  }
+}
+
+
+.index-blurb {
+  // background-color: var(--bulma-scheme-main);
+  // background-color: var(--bulma-body-color);
+}
+
+i.icon-big { 
+  font-size: 5rem;
+  width: 5rem;
+  height: 5rem;
+  float: left;
+  margin-right: 15px;
+  color: var(--bulma-font-color);
+}
+
+.decoration-container {
+  position: absolute;
+  bottom: -150vh;
+  left: 0;
+  height: 75vh;
+  width: 100vw;
+  background-color: lightcoral;
+  z-index: -1;
+}
+
 
 @media (prefers-color-scheme: dark) {
   .cell-icon img {

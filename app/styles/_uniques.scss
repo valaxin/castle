@@ -43,3 +43,45 @@
 .spoiler.visible {
   background-color: aliceblue;
 }
+
+
+
+.highlighted {
+  position: relative;
+  display: inline-block;
+
+  &::after {
+    content: '';
+    animation-name: expand-width;
+    height: calc(5rem + 10px);
+    line-break: strict;
+    width: 100%;
+    position: absolute;
+    top: -4px;
+    left: 0px;
+    background: rgba(221, 212, 85, 0.5);
+    z-index: -1;
+    transform: rotate(-3deg);
+  }
+
+  &:nth-child(1)::after {
+    background: rgba(131, 109, 217, 0.5);
+    transform: rotate(3deg);
+  }
+
+  &:nth-child(2)::after {
+    background: rgba(55, 210, 238, 0.5);
+    transform: rotate(-2deg);
+  }
+
+  &:nth-child(3)::after {
+    background: rgba(244, 72, 109, 0.5);
+    transform: rotate(-6deg);
+  }
+
+  &:nth-child(4)::after {
+    background: rgba(119, 226, 103, 0.5);
+    transform: rotate(4deg);
+  }
+
+}

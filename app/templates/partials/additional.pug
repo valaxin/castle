@@ -6,11 +6,11 @@ section.others
         h2  Thank You!
         span Some other posts you might enjoy
 
-      div.article
+      div.grid.is-col-min-12
         each post in cache
           if post.stats.comments.title === current
             each other in post.others
-              div
+              div.cell
                 a(href= other.path)
                   h3= other.comments.title
                   h4= other.comments.summary

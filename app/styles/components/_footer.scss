@@ -1,4 +1,5 @@
 footer {
+  // background: red;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -7,9 +8,7 @@ footer {
   align-content: baseline;
   align-items: baseline;
   width: 100vw;
-  // margin: 0 10vw;
   padding: 50px 0 50px 0;
-  background-color: var(--bulma-pre-background);
 
   .links {
     margin: 0 10vw;
@@ -31,9 +30,4 @@ footer {
       opacity: .5;
     }
   }
-
-  form#newsletter-signup {
-    
-  }
-
 }
