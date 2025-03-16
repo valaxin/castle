@@ -47,40 +47,28 @@ block content
         i.icon.fa-solid.fa-arrow-right
   br
   br
-  h2.projects-section-title Github 📦
+  h2.projects-section-title Projects 📦
   .grid.is-col-min-12
-    for repo in repos
-      a(href=repo.html_url target="_blank")
-        .cell
-          h3.title #{repo.name}
-          p #{repo.description}
-  
-  h2.showcased-section-title ✨ CodePen
-  .grid.is-col-min-12
-    a(href="https://codepen.io/valaxin/details/AXMbyX" target="_blank")
-      .cell
-        h3.title Basic CSS3 Slider
-        p Just a basic slider with button controls on the bottom
-        .tags
-          .tag May 27, 2013
-          .tag 413 Loves
-          .tag 210930 Views
-    a(href="https://codepen.io/valaxin/details/BjepPG" target="_blank")
-      .cell
-        h3.title Another Toggle
-        p simple bool toggle
-        .tags
-          .tag February 18, 2016
-          .tag 147 Loves
-          .tag 25894 Views
-    
-    a(href="https://codepen.io/valaxin/details/XdBKBe" target="_blank")
-      .cell
-        h3.title Simple Check
-        p small checkmark styled to look pleasing and provide clear feedback
-        .tags
-          .tag April 21, 2016
-          .tag 42 Loves
-          .tag 2774 View
+    for repo, i in repos
+      if i < 3
+        a(href=repo.html_url target="_blank")
+          .cell
+            h3.title #{repo.name}
+            if repo.description
+              p #{repo.description}
+            else
+              p No Description.
+            .project-info.tags
+              .tag.is-info= repo.language
+              .tag.is-outlined Created: #{`${String(new Date(repo.created_at)).split(' ').slice(1, 4).join('/')}`}
+              .tag.is-outlined Updated: #{`${String(new Date(repo.updated_at)).split(' ').slice(1, 4).join('/')}`}
+              .tag.is-outlined #{repo.stargazers_count} Stars
+              
+  include partials/codepen-projects
+  include partials/repair
+  include partials/products
 
+  section.products
+    h1.title Affliate Links Are Below Here [todo!]
+  include partials/directory
   include partials/footer

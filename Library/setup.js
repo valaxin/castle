@@ -4,20 +4,18 @@ import 'dotenv/config'
 import * as url from 'url'
 import { join } from 'node:path'
 import { readdir, writeFile } from 'fs/promises'
-
-import { Pages, Posts, RenderPugWithPostData } from './data/content.js'
-import GumRoadProducts from './data/products.js'
-import GitHubrepositories from './data/repositories.js'
-import Syndication from './support/syndication.js'
-import WebManifest from './support/manifest.js'
-import SitemapXML from './data/sitemap.js'
+import { Pages, Posts, RenderPugWithPostData } from './sources/original-content.js'
+import GumRoadProducts from './sources/gumroad-products.js'
+import GitHubrepositories from './sources/github-repositories.js'
+import Syndication from './utilites/rss-generator.js'
+import WebManifest from './utilites/manifest-data.js'
+import SitemapXML from './sources/sitemap.js'
 
 const __dirname = url.fileURLToPath(new URL('..', import.meta.url))
 
-// 0. Initalized
+// 0. Initalized Options
 const options = {
-  sys: {
-},
+  sys: {},
   mode: process.env.NODE_ENV ? process.env.NODE_ENV : 'development',
   server: {
     host: '127.0.0.1',
@@ -62,7 +60,7 @@ options.app.repos = await GitHubrepositories()
 //      HTML document a `/blog` sub folder `of `/dist`.
 options.app.posts = await RenderPugWithPostData(options.app.cache, { dist: 'dist/blog', locals: options.app })
 
-// 3,1. Save data to be see at 'host:port/manifest.json'
+// 3,1. Save data to be seen at 'host:port/manifest.json'
 await writeFile(
   join(options.sys.folders.public, 'manifest.json'),
   JSON.stringify(options.app.manifest),
@@ -73,30 +71,23 @@ await writeFile(
     }
   }
 )
+
 // 3,2. Save data to be seen at 'host:post/template-data.json'
-await writeFile(
-  join(options.sys.folders.public, 'template-data.json'),
-  JSON.stringify(options.app),
-  'utf8',
-  (ex) => {
-    if (ex) {
-      console.error(ex)
-    }
+await writeFile(join(options.sys.folders.public, 'template-data.json'), JSON.stringify(options.app), 'utf8', (ex) => {
+  if (ex) {
+    console.error(ex)
   }
-)
+})
+
 // 4,1. generate JSON/XML feeds endpoints
 Syndication(options)
 
 // 4,2. Save data to be seen at 'host:port/sitemap.xml'
-await writeFile(
-  join(options.sys.folders.public, 'sitemap.xml'),
-  JSON.stringify(options.app.map),
-  'utf8',
-  (ex) => {
-    if (ex) {
-      console.error(ex)
-    }
+await writeFile(join(options.sys.folders.public, 'sitemap.xml'), JSON.stringify(options.app.map), 'utf8', (ex) => {
+  if (ex) {
+    console.error(ex)
   }
-)
+})
+
 // 5. Done...
 export default options

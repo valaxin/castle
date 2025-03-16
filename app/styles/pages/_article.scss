@@ -58,9 +58,14 @@ main#article {
   }
 
   section.others {
-    width: 80vw;
-    margin: 25px 0 0 0;
+    // width: 80vw;
+    // margin: 25px 0 0 0;
     z-index: 9999;
+
+    > .grid {
+      width: 60vw;
+      margin: 0;
+    }
 
     div.thanks {
       h2 {
@@ -77,7 +82,7 @@ main#article {
 
     .article {
       > div {
-        margin: 10px 0 10px 0;
+        // margin: 10px 0 10px 0;
         background-color: var(--bulma-pre-background);
         border-radius: 5px;
         padding: 15px;

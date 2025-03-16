@@ -1,12 +1,14 @@
+import 'dotenv/config'
+
 export default function WebManifest() {
   return {
-    name: 'castle',
-    short_name: 'castle',
+    name: `${process.env.PKGNAME}`,
+    short_name: `${process.env.PKGNAME}`,
     start_url: '.',
     display: 'minimal-ui',
     background_color: '#E2E2E2',
     description: '~',
-    authors: [{ name: 'valaxin', url: 'https://github.com/valaxin/' }],
+    authors: [{ name: `${process.env.USERNAME}`, url: `https://github.com/${process.env.USERNAME}` }],
     icons: [
       {
         src: '/favicon.png',
@@ -17,7 +19,7 @@ export default function WebManifest() {
     related_applications: [
       {
         platform: 'github',
-        url: 'https://github.com/valaxin/castle',
+        url: `https://github.com/${process.env.USERNAME}/${process.env.PKGNAME}`,
       },
     ],
   }

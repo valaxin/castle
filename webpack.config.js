@@ -5,7 +5,7 @@
 import { join, resolve } from 'node:path'
 import CopyPlugin from 'copy-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import options from './library/prebuild.js'
+import options from './library/setup.js'
 
 const productionFlag = options.mode === 'development' ? false : true
 
@@ -103,7 +103,7 @@ export default {
             loader: 'raw-loader',
           },
           {
-            loader: './library/support/pug-html-loader.js',
+            loader: './library/utilites/pug-html-loader.js',
             options: {
               data: options.app,
             },

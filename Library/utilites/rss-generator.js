@@ -1,13 +1,14 @@
 'use strict'
 
+import 'dotenv/config'
 import { writeFile } from 'fs/promises'
 import { join } from 'node:path'
 import { createHmac } from 'node:crypto'
 import { Feed } from 'feed'
 
-const TITLE = 'valaxin/blog'
-const DESCRIPTION = TITLE
-const DOMAIN = 'valaxin'
+const TITLE = `${process.env.USERNAME}/blog`
+const DESCRIPTION = '~'
+const DOMAIN = `${process.env.USERNAME}`
 const TLD = 'dev'
 
 export default async function (options) {
@@ -28,9 +29,9 @@ export default async function (options) {
         atom: '/feed.xml',
       },
       author: {
-        name: 'valaxin',
-        email: 'hey@valaxin.dev',
-        link: 'https://github.com/valaxin',
+        name: `${process.env.USERNAME}`,
+        email: '-',
+        link: `https://github.com/${process.env.USERNAME}`,
       },
     })
 

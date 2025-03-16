@@ -3,15 +3,15 @@
 import hljs from 'highlight.js'
 import markdownit from 'markdown-it'
 
-import markdownitContainer from 'markdown-it-container'
-import * as markdownitEmoji from 'markdown-it-emoji'
-import markdownitAbbr from 'markdown-it-abbr'
-import * as markdownitDecorate from 'markdown-it-decorate'
-import markdownitMark from 'markdown-it-mark'
-import markdownitFootnote from 'markdown-it-footnote'
 import markdownitIns from 'markdown-it-ins'
 import markdownitSub from 'markdown-it-sub'
 import markdownitSup from 'markdown-it-sup'
+import markdownitAbbr from 'markdown-it-abbr'
+import markdownitMark from 'markdown-it-mark'
+import markdownitFootnote from 'markdown-it-footnote'
+import markdownitContainer from 'markdown-it-container'
+import * as markdownitEmoji from 'markdown-it-emoji'
+import * as markdownitDecorate from 'markdown-it-decorate'
 import * as markdownitVideo from 'markdown-it-video'
 
 let count = 0

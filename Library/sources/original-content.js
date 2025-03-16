@@ -5,7 +5,7 @@ import { readdir, stat, readFile } from 'fs/promises'
 import moment from 'moment'
 import pug from 'pug'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-import { filters, comments, readtime, capitalize, formatsize } from '../support/md-parsers.js'
+import { filters, comments, readtime, capitalize, formatsize } from '../utilites/markdown-parser.js'
 
 export async function Posts(directory) {
   const _article = '../templates/_article.pug'

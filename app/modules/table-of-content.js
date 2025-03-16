@@ -24,6 +24,8 @@ export default function TableOfContentOptions (providedContentSelector, headingS
     function scrollEndCallback(event) {}
     function onClick(event) {}
 
+    // literally every option is defined
+    // copy/pasted from the documentation
     const options = {
       onClick,
       scrollEndCallback,

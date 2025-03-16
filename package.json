@@ -11,7 +11,7 @@
     "analyze": "rm -rf ./dist && webpack --profile --json > stats.json && webpack-bundle-analyzer stats.json ./dist",
     "build": "NODE_ENV=production rm -rf ./dist && webpack build",
     "clean": "rm -rf ./app/public/template-data.json ./app/public/feed.xml ./app/public/feed.json ./app/public/manifest.json",
-    "dev": "echo 'removing previous /dist folder' && rm -rf ./dist && node --no-experimental-require-module --experimental-print-required-tla ./node_modules/.bin/webpack serve --hot"
+    "dev": "NODE_ENV=development echo 'Removed existing \"/dist\" directory.' && rm -rf ./dist && echo 'Starting application in \"DEVELOPMENT\" Mode.' && node --no-experimental-require-module --experimental-print-required-tla ./node_modules/.bin/webpack serve --hot"
   },
   "dependencies": {
     "@babel/core": "^7.26.0",
@@ -49,6 +49,10 @@
     "webpack": "^5.97.1",
     "webpack-bundle-analyzer": "^4.10.2",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^5.2.0"
+    "webpack-dev-server": "^5.2.0",
+    "xml2js": "^0.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
   }
 }

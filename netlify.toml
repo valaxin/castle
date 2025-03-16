@@ -23,6 +23,9 @@
   publish = "dist/"
   command = "npm run build"
 
+[functions]
+  lambda = '/dist'
+
 [[headers]]
   for = "/*"
   [headers.values]
