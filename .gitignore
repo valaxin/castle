@@ -5,21 +5,12 @@
 # os
 .DS_Store
 
-# optional
-/.todo
-
 # configuration files and logs are
 /*.log
 /*.env
 
 # directories/files that are generated during build process
-/functions
 /dist
-/app/views/.temp
-/app/public/feed.*
-/app/public/template-data.json
-/app/public/manifest.json
-/app/public/sitemap.xml
 
-# output from 'npm run analyze'
-stats.json
+# temp
+/.old-storage

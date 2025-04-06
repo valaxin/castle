@@ -1,0 +1,12 @@
+extends /layout
+
+block content
+
+  main#article
+    section.hero
+      h1= data.meta.title
+      h2= data.meta.author
+      h3= data.birthtime
+
+    section.content
+      include:markdown #{markdown-path-here}

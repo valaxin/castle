@@ -2,49 +2,40 @@
 
 'use strict'
 
+// es6 webpack configuration file
+
 import { join, resolve } from 'node:path'
+
 import CopyPlugin from 'copy-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import options from './library/prebuild.js'
 
-const productionFlag = options.mode === 'development' ? false : true
+import options from './support/prebuild.js'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+
+// true = production
+const mode = options.mode === 'production' ? true : false
 
 const devServer = {
-  static: {
-    directory: options.sys.folders.public,
-  },
-  devMiddleware: {
-    publicPath: '/',
-  },
-  hot: !productionFlag,
+  static: { directory: 'src/public' },
+  devMiddleware: { publicPath: '/' },
+  hot: true,
   compress: false,
-  host: options.server.host,
-  port: options.server.port,
-  proxy: [
-    {
-      context: ['/.netlify/functions'],
-      target: 'http://localhost:9000',
-      secure: false,
-      pathRewrite: { '^/.netlify/functions': '' },
-    },
-  ],
+  proxy: [],
 }
 
-const assetsize_mb = (1024000 * 2.5) 
-
 export default {
-  mode: productionFlag ? 'production' : 'development',
+  devServer: mode ? {} : devServer,
+  mode: options.mode,
   stats: 'errors-only',
-  devServer,
   optimization: {
     splitChunks: {
       chunks: 'all',
     },
   },
   performance: {
-    hints: productionFlag ? false : 'warning',
-    maxEntrypointSize: assetsize_mb,
-    maxAssetSize: assetsize_mb
+    hints: mode ? false : 'warning',
+    maxEntrypointSize: 1024000 * 2.5,
+    maxAssetSize: 1024000 * 2.5
   },
   entry: {
     index: {
@@ -73,14 +64,14 @@ export default {
       {
         test: /\.(s(a|c)ss|css)$/,
         use: [
-          productionFlag === true ? 'style-loader' : MiniCssExtractPlugin.loader,
+          mode !== true ? 'style-loader' : MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
               sourceMap: true,
               modules: {
                 mode: 'global',
-              }
+              },
             },
           },
           {
@@ -90,8 +81,8 @@ export default {
               api: 'modern',
               sassOptions: {
                 quietDeps: true,
-                charset: false
-              }
+                charset: false,
+              },
             },
           },
         ],
@@ -103,9 +94,12 @@ export default {
             loader: 'raw-loader',
           },
           {
-            loader: './library/support/pug-html-loader.js',
+            loader: './support/pug-html-loader.js',
             options: {
-              data: options.app,
+              data: {
+                posts: options.app.blog.posts,
+                title: 'castle'
+              },
             },
           },
         ],
@@ -117,22 +111,27 @@ export default {
     new CopyPlugin({
       patterns: [
         {
-          from: options.sys.folders.public,
+          from: resolve('src/public'),
           to: './',
         },
       ],
     }),
-    ...options.app.pages,
-    ...options.app.posts,
+    new HtmlWebpackPlugin({
+      template: '/src/views/index.pug',
+      filename: 'index.html'
+    }),
+    ...options.app.blog.pluginInstances
   ],
   resolve: {
-    modules: [join(options.entry.base, 'node_modules'), 'node_modules'],
+    modules: [ resolve('node_modules') ],
     alias: {
-      '@global' : join(options.entry.base, 'node_modules'),
-      '@local'  : join(options.entry.base, 'app/modules'),
-      '@library': join(options.entry.base, 'library'),
-      '@styles' : options.sys.folders.styles,
+      '@npm': resolve('node_modules'),
+      '@web': resolve('src/javascript'),
+      '@css': resolve('src/styles'),
+      '@lib': resolve('support'),
     },
-    extensions: ['.mjs', '.js', '.scss', '.sass', '.css', '.pug', '.html', '.png', '.webp', '.gif', '.svg'],
+    extensions: [
+      '.mjs', '.js', '.scss', '.css', '.pug'
+    ],
   },
 }
