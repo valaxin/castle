@@ -1,9 +1,10 @@
 extends layout
 
 block content
-  h1= title
-
   if posts
-    .posts
-    each post in posts
-      a(href= post.data.slug)= post.data.title
+    main
+      h1.title /
+      ol.posts
+        each post in posts
+          li
+            a(href= post.data.slug)= post.data.title

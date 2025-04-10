@@ -1,5 +1,79 @@
-$color: pink;
+$app-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+$app-font-code: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;
+
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 body {
-  background: $color;
+  padding: 50px 25px;
+  font-family: $app-font;
+}
+
+pre {
+  padding: 12px 8px;
+  border-radius: 5px;
+
+  code {
+    font-family: $app-font-code;
+    font-size: 10pt;
+  }
+}
+
+img {
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+@media (prefers-color-scheme: dark) {
+  kbd {
+    background-color: rgb(48, 48, 48);
+    padding: 3px 6px;
+    border-radius: 5px;
+    border: 1px solid rgb(45, 45, 78);
+  }
+}
+
+
+@media (prefers-color-scheme: light) {
+  kbd {
+    background-color: white;
+    padding: 3px 6px;
+    border-radius: 5px;
+    border: 1px solid grey;
+  }
+}
+
+.spoiler {
+  background: darkslategrey;
+  color: darkslategrey;
+  border-radius: 5px;
+  padding: 8px 10px;
+  margin: 15px 0;
+}
+
+.warning {
+  background: orange;
+  border-radius: 5px;
+  padding: 8px 10px;
+  margin: 15px 0;
+}
+
+.information {
+  background: lightseagreen;
+  border-radius: 5px;
+  padding: 8px 10px;
+  margin: 15px 0;
+}
+
+main {
+  max-width: 960px;
+  width: 90vw;
+}
+
+.task-list-item {
+  list-style: none;
 }

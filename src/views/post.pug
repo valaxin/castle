@@ -1,12 +1,13 @@
 extends /layout
 
 block content
+  a(href="/") ← index
 
   main#article
     section.hero
-      h1= data.meta.title
-      h2= data.meta.author
-      h3= data.birthtime
+      h1.title= data.meta.title
+      h2.subtitle #{data.meta.author} @ #{data.birthtime}
+    br
 
     section.content
       include:markdown #{markdown-path-here}

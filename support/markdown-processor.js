@@ -8,16 +8,21 @@ import { readdirSync, statSync, readFileSync } from 'fs'
 
 import hljs from 'highlight.js'
 import markdownit from 'markdown-it'
-import markdownitIns from 'markdown-it-ins'
-import markdownitSub from 'markdown-it-sub'
-import markdownitSup from 'markdown-it-sup'
-import markdownitMark from 'markdown-it-mark'
-import markdownitAbbr from 'markdown-it-abbr'
-import markdownitFootnote from 'markdown-it-footnote'
-import markdownitContainer from 'markdown-it-container'
+
+import { ins } from '@mdit/plugin-ins'
+import { sub } from '@mdit/plugin-sub'
+import { sup } from '@mdit/plugin-sup'
+import { mark } from '@mdit/plugin-mark'
+import { abbr } from '@mdit/plugin-abbr'
+import { tasklist } from '@mdit/plugin-tasklist'
+import { footnote } from '@mdit/plugin-footnote'
+import { container } from '@mdit/plugin-container'
+import { imgLazyload } from "@mdit/plugin-img-lazyload";
+
+import markdownitKbd from 'markdown-it-kbd'
 import * as markdownitEmoji from 'markdown-it-emoji'
-import * as markdownitDecorate from 'markdown-it-decorate'
 import * as markdownitVideo from 'markdown-it-video'
+
 
 let count = 0
 
@@ -38,19 +43,22 @@ function filter(markdown) {
       },
     })
 
-    // define all the filters to be used...
-    md.use(markdownitContainer, 'warning', [])
-    md.use(markdownitContainer, 'spoiler', [])
-    md.use(markdownitContainer, 'information', [])
-    md.use(markdownitDecorate.default, [])
+    md.use(container, { name: 'warning' })
+    md.use(container, { name: 'spoiler' })
+    md.use(container, { name: 'information' })
+    md.use(imgLazyload, [])
+    md.use(ins, [])
+    md.use(sub, [])
+    md.use(sup, [])
+    md.use(abbr, [])
+    md.use(mark, [])
+    md.use(footnote, [])
+    md.use(tasklist, [])
+    
+    // md.use(markdownitDecorate.default, [])
     md.use(markdownitEmoji.full, [])
-    md.use(markdownitAbbr, [])
-    md.use(markdownitIns, [])
-    md.use(markdownitSub, [])
-    md.use(markdownitSup, [])
-    md.use(markdownitMark, [])
-    md.use(markdownitFootnote, [])
     md.use(markdownitVideo.default, [])
+    md.use(markdownitKbd, [])
 
     // increment post count
     count++
@@ -111,8 +119,11 @@ function formatsize(bytes) {
   }
 }
 
+function newFilter (markdown) {
+
+}
+
 export function processMarkdown(directory, locals, outputdir) {
-  // set...
   const article_template = '../views/post.pug'
   const posts = []
   const pluginInstances = []
@@ -120,19 +131,13 @@ export function processMarkdown(directory, locals, outputdir) {
   const limit = 2
   const words = 200
 
-  // begin...
   try {
     const filenames = readdirSync(directory)
-
-    // loop over each file in directory
     for (const filename of filenames) {
-      // collect post and info about
       const stats = statSync(join(directory, filename))
       const markdown = readFileSync(join(directory, filename), encoding)
       const template = readFileSync(join(directory, article_template), encoding)
       const title = capitalize(filename.split('.')[0], '-')
-
-      // create outgoing post object with processed information
       const post = {
         filename,
         content: {
@@ -149,16 +154,11 @@ export function processMarkdown(directory, locals, outputdir) {
           dist: outputdir,
         },
       }
-
-      // push to array outside of loop
       posts.push(post)
     }
 
-    // once created we loop again
     for (const selected of posts) {
       const others = []
-      // then for each we loop each post selecting the
-      // first n=%limit% that isn't 'this' post
       for (const post of posts) {
         if (selected.filename != post.filename) {
           if (others.length < limit) {
@@ -172,13 +172,9 @@ export function processMarkdown(directory, locals, outputdir) {
           }
         }
       }
-
       selected.others = others
     }
 
-    // ... looping again each post, this time
-    // ... to render the html with pug and pass it
-    // to html-webpack-plugin
     for (const post of posts) {
       Object.assign(locals, post)
       const renderOptions = Object.assign(

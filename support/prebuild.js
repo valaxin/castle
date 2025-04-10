@@ -1,5 +1,7 @@
 import 'dotenv/config'
 import { processMarkdown } from './markdown-processor.js'
+import { writeFileSync } from 'fs'
+import { resolve } from 'path'
 
 const mode = process.env.NODE_ENV === 'production' ? true : false
 
@@ -22,10 +24,9 @@ const defaults = {
   },
 }
 
-//
-defaults.app.blog = processMarkdown('src/markdown', {}, 'dist/blog')
+Object.assign(defaults.app, { blog: processMarkdown('src/markdown', {}, 'dist/blog') })
 
-console.log(defaults.app.blog.posts)
+console.log(defaults.app)
 
 // ---
 
