@@ -2,6 +2,9 @@ import 'dotenv/config'
 import { processMarkdown } from './markdown-processor.js'
 import { writeFileSync } from 'fs'
 import { resolve } from 'path'
+import manifest from './manifest.js'
+
+import { githubRepositoryData } from './remote-data.js'
 
 const mode = process.env.NODE_ENV === 'production' ? true : false
 
@@ -24,26 +27,20 @@ const defaults = {
   },
 }
 
-Object.assign(defaults.app, { blog: processMarkdown('src/markdown', {}, 'dist/blog') })
+// add to object
+Object.assign(defaults.app, {
+  manifest,
+  blog: processMarkdown('src/markdown', {}, 'dist/blog'),
+  pages: [],
+})
 
-console.log(defaults.app)
+githubRepositoryData(process.env.USERNAME, process.env.GITHUB).then((data) => {
+  defaults.app.github = data
+  writeFileSync(resolve('src/public', 'template.json'), JSON.stringify(defaults.app), { encoding: 'utf-8' })
+}).catch(err => {
+  console.log(err)
+})
 
-// ---
-
-// [PREBUILD] Assign information to different keys within `options` object.
-// 1. Define a folders object to hold the `/app` directory information
-//    filter out files saving only folder names and paths.
-
-// 2,1. Assign the client template data to `options.app` key.
-// 2,2. Process pug wrapped markdown template, and place the
-//      HTML document a `/blog` sub folder `of `/dist`.
-
-// 3,1. Save data to be see at 'host:port/manifest.json'
-// 3,2. Save data to be seen at 'host:post/template-data.json'
-
-// 4,1. generate JSON/XML feeds endpoints
-// 4,2. Save data to be seen at 'host:port/sitemap.xml'
-
-// 5. Done...
+writeFileSync(resolve('src/public', 'manifest.json'), JSON.stringify(defaults.app.manifest), { encoding: 'utf-8' })
 
 export default defaults

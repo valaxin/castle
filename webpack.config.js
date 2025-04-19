@@ -85,6 +85,9 @@ export default {
               },
             },
           },
+          {
+            loader: 'postcss-loader',
+          },
         ],
       },
       {
@@ -97,6 +100,7 @@ export default {
             loader: './support/pug-html-loader.js',
             options: {
               data: {
+                manifest: options.app.manifest,
                 posts: options.app.blog.posts,
                 title: 'castle'
               },

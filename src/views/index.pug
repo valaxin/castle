@@ -1,10 +1,11 @@
 extends layout
 
 block content
-  if posts
-    main
-      h1.title /
+  main
+    h1.title= title
+    if posts
       ol.posts
         each post in posts
           li
             a(href= post.data.slug)= post.data.title
+  include components/footer

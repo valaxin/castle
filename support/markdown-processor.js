@@ -17,16 +17,13 @@ import { abbr } from '@mdit/plugin-abbr'
 import { tasklist } from '@mdit/plugin-tasklist'
 import { footnote } from '@mdit/plugin-footnote'
 import { container } from '@mdit/plugin-container'
-import { imgLazyload } from "@mdit/plugin-img-lazyload";
+import { imgLazyload } from "@mdit/plugin-img-lazyload"
 
 import markdownitKbd from 'markdown-it-kbd'
 import * as markdownitEmoji from 'markdown-it-emoji'
 import * as markdownitVideo from 'markdown-it-video'
 
-
-let count = 0
-
-function filter(markdown) {
+function filter (markdown) {
   try {
     const md = markdownit({
       html: true,
@@ -55,15 +52,10 @@ function filter(markdown) {
     md.use(footnote, [])
     md.use(tasklist, [])
     
-    // md.use(markdownitDecorate.default, [])
     md.use(markdownitEmoji.full, [])
     md.use(markdownitVideo.default, [])
     md.use(markdownitKbd, [])
-
-    // increment post count
-    count++
-
-    // return
+    
     return md.render(markdown)
   } catch (err) {
     console.error(err)
@@ -117,10 +109,6 @@ function formatsize(bytes) {
     console.error(err)
     return err
   }
-}
-
-function newFilter (markdown) {
-
 }
 
 export function processMarkdown(directory, locals, outputdir) {

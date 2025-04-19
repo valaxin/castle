@@ -1,0 +1,5 @@
+nav.nav
+  h1= title
+  if pages
+    each page of pages
+      a(href= page.slug)= page.name

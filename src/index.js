@@ -1,4 +1,11 @@
-import '@npm/core-js/stable';
-import '@css/layout.scss';
+import '@css/layout.scss'
+import client from '@web/client.js'
 
-(async () => { console.log('hello world!') })();
+(async () => { 
+  
+  'use strict'
+
+  client.blog.toc('section.content', 'h1, h2, h3', { pathname: '/blog/' })
+  console.log('[client.js] - Running...')
+
+})()

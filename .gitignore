@@ -11,6 +11,9 @@
 
 # directories/files that are generated during build process
 /dist
+/src/public/template.json
+/src/public/manifest.json
 
 # temp
 /.old-storage
+

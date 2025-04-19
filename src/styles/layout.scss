@@ -11,48 +11,72 @@ $app-font-code: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans M
 body {
   padding: 50px 25px;
   font-family: $app-font;
-}
+  max-width: 960px;
+  width: 80vw;
 
-pre {
-  padding: 12px 8px;
-  border-radius: 5px;
+  img {
+    max-width: 100%;
+    border-radius: 5px;
+  }
 
-  code {
-    font-family: $app-font-code;
-    font-size: 10pt;
+  blockquote {
+    border-radius: 5px;
+  }
+  
+  pre {
+    border-radius: 5px;
+    code {
+      font-family: $app-font-code;
+      font-size: 10pt;
+    }
   }
 }
 
-img {
-  max-width: 100%;
-  border-radius: 5px;
+.table-of-contents {
+  height: calc(100vh - 300px);
+  width: 20vw;
+  position: fixed;
+  top: 20vh;
+  right: 10vw;
+}
+
+footer {
+  height: 25vh;
+  width: 100vw;
+  border-top: 2px solid red;
 }
 
 @media (prefers-color-scheme: dark) {
   kbd {
-    background-color: rgb(48, 48, 48);
+    background-color: rgba(10,10,10,1);
     padding: 3px 6px;
     border-radius: 5px;
-    border: 1px solid rgb(45, 45, 78);
+    border: 1px solid black;
+    color: white;
   }
 }
 
-
 @media (prefers-color-scheme: light) {
   kbd {
-    background-color: white;
     padding: 3px 6px;
     border-radius: 5px;
-    border: 1px solid grey;
+    background-color: white;
+    border: 1px solid black;
+    color: black;
   }
 }
 
 .spoiler {
-  background: darkslategrey;
-  color: darkslategrey;
+  background: black;
+  color: black;
+  user-select: none;
   border-radius: 5px;
   padding: 8px 10px;
   margin: 15px 0;
+
+  &:hover {
+    color: white;
+  }
 }
 
 .warning {
@@ -63,15 +87,10 @@ img {
 }
 
 .information {
-  background: lightseagreen;
+  background: lightblue;
   border-radius: 5px;
   padding: 8px 10px;
   margin: 15px 0;
-}
-
-main {
-  max-width: 960px;
-  width: 90vw;
 }
 
 .task-list-item {

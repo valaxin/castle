@@ -4,6 +4,7 @@ block content
   a(href="/") ← index
 
   main#article
+    #toc.toc.table-of-contents
     section.hero
       h1.title= data.meta.title
       h2.subtitle #{data.meta.author} @ #{data.birthtime}
@@ -11,3 +12,5 @@ block content
 
     section.content
       include:markdown #{markdown-path-here}
+
+  include /components/footer
