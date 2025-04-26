@@ -23,6 +23,14 @@ const devServer = {
   proxy: [],
 }
 
+const pugData = {
+  title: 'castle',
+  github: options.app.github,
+  gumroad: options.app.gumroad,
+  posts: options.app.blog.posts,
+  manifest: options.app.manifest
+}
+
 export default {
   devServer: mode ? {} : devServer,
   mode: options.mode,
@@ -98,13 +106,7 @@ export default {
           },
           {
             loader: './support/pug-html-loader.js',
-            options: {
-              data: {
-                manifest: options.app.manifest,
-                posts: options.app.blog.posts,
-                title: 'castle'
-              },
-            },
+            options: { data: pugData },
           },
         ],
       },

@@ -4,7 +4,7 @@ import { writeFileSync } from 'fs'
 import { resolve } from 'path'
 import manifest from './manifest.js'
 
-import { githubRepositoryData } from './remote-data.js'
+import { repositories, products } from './remote-data.js'
 
 const mode = process.env.NODE_ENV === 'production' ? true : false
 
@@ -27,20 +27,21 @@ const defaults = {
   },
 }
 
-// add to object
 Object.assign(defaults.app, {
   manifest,
   blog: processMarkdown('src/markdown', {}, 'dist/blog'),
   pages: [],
 })
 
-githubRepositoryData(process.env.USERNAME, process.env.GITHUB).then((data) => {
-  defaults.app.github = data
-  writeFileSync(resolve('src/public', 'template.json'), JSON.stringify(defaults.app), { encoding: 'utf-8' })
-}).catch(err => {
-  console.log(err)
-})
 
+defaults.app.github = await repositories(process.env.USERNAME, process.env.GITHUB),
+defaults.app.gumroad = await products(process.env.GUMROAD)
+
+writeFileSync(resolve('src/public', 'template.json'), JSON.stringify(defaults.app), { encoding: 'utf-8' })
 writeFileSync(resolve('src/public', 'manifest.json'), JSON.stringify(defaults.app.manifest), { encoding: 'utf-8' })
 
+console.log(defaults)
+
+
 export default defaults
+

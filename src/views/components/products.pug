@@ -1,0 +1,14 @@
+if gumroad
+  h2 products
+  section.products
+    ul.carousel
+      each product in gumroad.products
+        li
+          img(src= product.preview_url).preview
+          h2.title= product.name
+          h3.subtitle #{product.description}
+        
+
+    
+  
+    
