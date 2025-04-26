@@ -36,28 +36,6 @@ body {
   }
 }
 
-.spoiler,
-.information,
-.warning {
-  background: orange;
-  border-radius: 5px;
-  padding: 8px 10px;
-  margin: 15px 0;
-}
-
-.information {
-  background: lightblue;
-}
-
-.spoiler {
-  background: black;
-  color: black;
-  user-select: none;
-
-  &:hover {
-    color: white;
-  }
-}
 
 .carousel {
   overflow-x: auto;
