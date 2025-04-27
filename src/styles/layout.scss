@@ -1,8 +1,7 @@
 $app-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 $app-font-code: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;
 
-@use 'reset.css';
-@use 'blog-article';
+@use 'article';
 @use 'global/nav';
 @use 'global/footer';
 
@@ -13,8 +12,18 @@ $app-font-code: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans M
   -moz-osx-font-smoothing: grayscale;
 }
 
+@media screen and (max-width: 400px) {
+  #toc { display: none; }
+
+  .carousel {
+    grid-auto-columns: 80%;
+    gap: .75rem;
+  }
+}
+
 body {
   font-family: $app-font;
+
 }
 
 @media (prefers-color-scheme: dark) {
@@ -51,5 +60,12 @@ body {
 
   > li {
     scroll-snap-align: center;
+    background-color: var(--bulma-code-background);
+    padding: 15px;
+
+
+    img {
+      border-radius: 5px;
+    }
   }
 }

@@ -1,4 +1,4 @@
-[//]: # ({"title": "Example Article","creation": "01/01/1999", "author": "valaxin", "summary": "Covering most if not all of the available features when writing a markdown post in this enviroment."})
+[//]: # ({"title": "Example Article","creation": "01/01/1999", "author": "valaxin", "summary": "Covering most if not all of the available features when writing a markdown post in this enviroment.", "tags": ["test", "technology", "blog"]})
 
 > This document is to outline some concepts employed within the project. Starting with the front and moving into the back covering the phalosphy in the design choices I've made.
 
@@ -128,3 +128,13 @@ looks like
 - [x] Learn Markdown
 - [ ] Learn Frontend Development
 - [ ] Learn Full Stack Development
+
+---
+
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula.
+
+> Porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.
+
+Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus.
+
+Tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc.

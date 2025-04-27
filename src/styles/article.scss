@@ -31,9 +31,49 @@ main.article {
     width: 75%;
 
     .post-hero {
+      min-height: 25vh;
+      padding: 25px 0;
+
+      .title {
+        font-size: 4rem;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+        padding: 6px 10px;
+        margin-top: 15px;
+        border-radius: 5px;
+        background: var(--bulma-title-color);
+        color: var(--bulma-hr-background-color);
+      }
     }
 
     .post-content {
+
+      iframe {
+        width: 100%;
+        height: 480px;
+        border-radius: 5px;
+      }
+
+      blockquote {
+        background: var(--bulma-code-background);
+        border-left: 10px solid var(--bulma-info);
+        margin: 10px 0;
+        padding: 8px 8px 8px 16px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+      }
+
+      h1 {
+        font-size: 3rem;
+        font-weight: 700;
+      }
+
+      pre {
+        margin: 10px 0;
+        border-radius: 5px;
+      }
 
       img {
         border-radius: 5px;
@@ -43,8 +83,9 @@ main.article {
       p {}
 
       ol {
-        margin-left: 25px;
       }
+
+      ul {}
 
       .task-list-item {}
 
