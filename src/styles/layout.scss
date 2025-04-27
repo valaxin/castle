@@ -3,6 +3,7 @@ $app-font-code: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans M
 
 @use 'reset.css';
 @use 'blog-article';
+@use 'global/nav';
 @use 'global/footer';
 
 :root {

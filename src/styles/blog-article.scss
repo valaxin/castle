@@ -1,76 +1,79 @@
-main#article {}
+main.article {
+  display: flex;
+  width: 80vw;
+  margin: 0 10vw;
 
-.toc {
-  float: left;
-  position: sticky;
-  width: 25vw;
-}
-section.hero {
-  width: 100vw;
-  height: 75vh;
-  padding: 25px 0;
-}
+  .table-of-contents {
+    position: fixed;
+    display: block;
+    width: 25%;
+    top: 70px;
+    right: 0;
 
-section.content {
-  width: 75vw;
-  background: green;
-  /*
-  h1 {}
-  h2 {}
-  h3 {}
-  h4 {}
-  h5 {}
-  h6 {}
-  img {
-    max-width: 100%;
-    border-radius: 5px;
-  }
+    ol.toc-list {
+      border-left: none;
 
-  blockquote {
-    border-radius: 5px;
+      li.toc-list-item {
+        a.toc-link {
+          &::before {
+            background: none;
+          }
+        }
+      }
+    }
+
+    ol, li, ul {
+      list-style: none;
+    }
   }
   
-  pre {
-    border-radius: 5px;
-    code {
-      font-family: $app-font-code;
-      font-size: 10pt;
+  .post {
+    width: 75%;
+
+    .post-hero {
+    }
+
+    .post-content {
+
+      img {
+        border-radius: 5px;
+        border: 1px solid rgba(255,255,255,.75)
+      }
+
+      p {}
+
+      ol {
+        margin-left: 25px;
+      }
+
+      .task-list-item {}
+
+      .spoiler,
+      .information,
+      .warning {
+        background: var(--bulma-warning);
+        border-radius: 5px;
+        padding: 8px 10px;
+        margin: 15px 0;
+      }
+    
+      .information {
+        background: var(--bulma-info);
+      }
+    
+      .spoiler {
+        background: black;
+        color: black;
+        user-select: none;
+    
+        &:hover {
+          color: white;
+        }
+      }
+    }
+
+    .post-comments {
+      background: red;
     }
   }
-  p {}
-  a {}
-  span {}
-
-  .task-list-item {
-    list-style: none;
-  }
-  */
-  .spoiler,
-  .information,
-  .warning {
-    background: orange;
-    border-radius: 5px;
-    padding: 8px 10px;
-    margin: 15px 0;
-  }
-
-  .information {
-    background: lightblue;
-  }
-
-  .spoiler {
-    background: black;
-    color: black;
-    user-select: none;
-
-    &:hover {
-      color: white;
-    }
-  }
- }
-section.comments {
-  grid-column: span 4 / span 4;
-  grid-column-start: 2;
-  grid-row-start: 5;
-  background: purple;
 }

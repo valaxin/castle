@@ -5,7 +5,7 @@ import client from '@web/client.js'
   
   'use strict'
 
-  client.blog.toc('section.content', 'h1, h2, h3', { pathname: '/blog/' })
+  client.blog.toc('.post-content', 'h1, h2, h3', { pathname: '/blog/' })
   console.log('[client.js] - Running...')
 
 })()

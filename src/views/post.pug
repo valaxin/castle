@@ -1,20 +1,16 @@
 extends /layout
 
 block content
-  a(href="/") ← index
 
-  main#article
-    section.hero
-      h1.title= data.meta.title
-      h2.subtitle #{data.meta.author} @ #{data.birthtime}
-    br
-
-    section.content
-      include:markdown #{markdown-path-here}
-
-    #toc.toc.table-of-contents
-
-    section.comments
-      script(async crossorigin="anonymous" data-loading="lazy" data-lang="en" data-theme="light" data-input-position="bottom" data-emit-metadata="0" data-reactions-enabled="1" data-strict="0" data-mapping="pathname" data-category-id="DIC_kwDOEogXws4Cfttn" data-category="Comments" data-repo-id="MDEwOlJlcG9zaXRvcnkzMTA5MDg4NjY=" data-repo="valaxin/kame" src="https://giscus.app/client.js")
+  main.article
+    .post
+      .post-hero
+        h1.title= data.meta.title
+        h2.subtitle #{data.meta.author} @ #{data.birthtime}
+      .post-content
+        include:markdown #{markdown-path-here}
+      .post-comments
+        script(async crossorigin="anonymous" data-loading="lazy" data-lang="en" data-theme="light" data-input-position="bottom" data-emit-metadata="0" data-reactions-enabled="1" data-strict="0" data-mapping="pathname" data-category-id="DIC_kwDOEogXws4Cfttn" data-category="Comments" data-repo-id="MDEwOlJlcG9zaXRvcnkzMTA5MDg4NjY=" data-repo="valaxin/kame" src="https://giscus.app/client.js")
+    #toc.table-of-contents
   
   include /components/footer
