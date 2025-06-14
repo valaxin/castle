@@ -1,4 +1,5 @@
-import toc_options from './modules/table-of-contents.js';
+import toc_options from './modules/table-of-contents.js'
+import './modules/color-scheme.js'
 
 export default {
   blog: {

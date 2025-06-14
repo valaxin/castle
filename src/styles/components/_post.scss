@@ -65,9 +65,25 @@ main.article {
         border-bottom-right-radius: 5px;
       }
 
+      h1, h2, h3 {
+        &:hover::before {
+          content: '#';
+          font-size: rem;
+          font-size: inherit;
+          position: relative;
+          margin-left: -25px;
+          transition: all ease-in-out 200ms;
+        }
+      }
+
       h1 {
         font-size: 3rem;
         font-weight: 700;
+      }
+
+      h2 {
+        font-size: 2rem;
+        font-weight: 500;
       }
 
       pre {

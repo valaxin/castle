@@ -1,0 +1,19 @@
+if posts
+  .posts
+    ul.carousel
+      each post in posts
+        a(href= post.data.slug)
+          li.carousel__item
+            img.carousel__item-backdrop
+            div.carousel__item-mask
+            div.carousel__item-info
+              h1.carousel__item-info-title= post.data.title
+              h2.carousel__item-info-subtitle= post.data.meta.summary
+            div.carousel__item-banner
+              ul.carousel__item-banner-tags
+                li.carousel__item-banner-tags-tag
+                  span.is-outline= post.data.meta.author
+                li.carousel__item-banner-tags-tag
+                  span.is-outline= post.data.meta.creation
+                li.carousel__item-banner-tags-tag
+                  span.is-outline= post.data.size

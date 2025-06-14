@@ -1,0 +1,20 @@
+extends /../layout
+
+block content
+
+  main.article
+    .post
+      .post-hero
+        h1.title= data.meta.title
+        h2.subtitle #{data.meta.author} @ #{data.birthtime}
+        if data.meta.tags
+          .tags
+            each tag in data.meta.tags
+              span= tag
+      .post-content
+        include:markdown #{markdown-path-here}
+      .post-comments
+        // script(async crossorigin="anonymous" data-loading="lazy" data-lang="en" data-theme="light" data-input-position="bottom" data-emit-metadata="0" data-reactions-enabled="1" data-strict="0" data-mapping="pathname" data-category-id="DIC_kwDOEogXws4Cfttn" data-category="Comments" data-repo-id="MDEwOlJlcG9zaXRvcnkzMTA5MDg4NjY=" data-repo="valaxin/castle" src="https://giscus.app/client.js")
+    #toc.table-of-contents
+  
+  include /../components/footer

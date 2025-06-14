@@ -1,26 +1,25 @@
 if gumroad
-  h2 products
-  section.products
+  .products
     ul.carousel
       each product in gumroad.products
-        li.product
-          a(href= product.short_url)
-            img(src= product.preview_url)
-            h2= product.name
-            h3= product.custom_summary
-            .tags
-              .tag.is-price.is-outline
-                span= product.formatted_price
-              
-              if product.published === false
-                .tag.is-warning
-                  span Not Published!
-              else 
+        a(href='/#')
+          li.carousel__item
+            img.carousel__item-backdrop(src= product.preview_url)
+            div.carousel__item-mask
+            div.carousel__item-info
+              h1.carousel__item-info-name= product.name
+              h2.carousel__item-info-subtitle= product.custom_summary
+            div.carousel__item-banner
+              ul.carousel__item-info-tags
+                li.carousel__item-info-tag
+                  span.is-price.is-outline= product.formatted_price
+                if product.published === false
+                  li.carousel__item-info-tag
+                    span Not Published!
+                else 
                 if product.max_purchase_count !== null
-                  .tag.is-warning
+                  li.carousel__item-info-tag.tag.is-warning
                     span= product.max_purchase_count + ' Available'
-        
-
     
   
     

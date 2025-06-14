@@ -5,6 +5,7 @@ import moment from 'moment'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { join, resolve } from 'path'
 import { readdirSync, statSync, readFileSync } from 'fs'
+import staticData from './static-data.js'
 
 import hljs from 'highlight.js'
 import markdownit from 'markdown-it'
@@ -17,13 +18,13 @@ import { abbr } from '@mdit/plugin-abbr'
 import { tasklist } from '@mdit/plugin-tasklist'
 import { footnote } from '@mdit/plugin-footnote'
 import { container } from '@mdit/plugin-container'
-import { imgLazyload } from "@mdit/plugin-img-lazyload"
+import { imgLazyload } from '@mdit/plugin-img-lazyload'
 
 import markdownitKbd from 'markdown-it-kbd'
 import * as markdownitEmoji from 'markdown-it-emoji'
 import * as markdownitVideo from 'markdown-it-video'
 
-function filter (markdown) {
+function filter(markdown) {
   try {
     const md = markdownit({
       html: true,
@@ -51,11 +52,11 @@ function filter (markdown) {
     md.use(mark, [])
     md.use(footnote, [])
     md.use(tasklist, [])
-    
+
     md.use(markdownitEmoji.full, [])
     md.use(markdownitVideo.default, [])
     md.use(markdownitKbd, [])
-    
+
     return md.render(markdown)
   } catch (err) {
     console.error(err)
@@ -112,7 +113,7 @@ function formatsize(bytes) {
 }
 
 export function processMarkdown(directory, locals, outputdir) {
-  const article_template = '../views/post.pug'
+  const article_template = '../views/pages/post.pug'
   const posts = []
   const pluginInstances = []
   const encoding = { encoding: 'utf8' }
@@ -130,7 +131,7 @@ export function processMarkdown(directory, locals, outputdir) {
         filename,
         content: {
           markdown,
-          template: template.replace('#{markdown-path-here}', `/../markdown/${filename}`),
+          template: template.replace('#{markdown-path-here}', `/../../markdown/${filename}`),
         },
         data: {
           title,
@@ -139,8 +140,9 @@ export function processMarkdown(directory, locals, outputdir) {
           readtime: readtime(words, markdown),
           birthtime: moment(stats.birthtime).format('MM DD YYYY hh:mm:ss a'),
           slug: join(outputdir.split('/')[1], filename.replace('.md', '.html')),
-          dist: outputdir,
+          dist: outputdir
         },
+        static: staticData[1]
       }
       posts.push(post)
     }
@@ -167,7 +169,7 @@ export function processMarkdown(directory, locals, outputdir) {
       Object.assign(locals, post)
       const renderOptions = Object.assign(
         {
-          basedir: resolve('src/views'),
+          basedir: resolve('src/views/pages'),
           // debug: true,
           // cache: true,
           filters: {

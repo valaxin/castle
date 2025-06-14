@@ -1,0 +1,28 @@
+nav.navbar.navigation {
+  // border: 1px solid red;
+  position: relative;
+  height: 50px;
+  width: 50vw;
+  margin: 5vh 5vw;
+  display: flex;
+  flex-direction: row;
+
+  .navbar-start {
+    overflow: hidden;
+
+    a.title {
+      font-size: 4rem;
+      margin-right: 50px;
+    }
+    
+    a {
+      margin-right: 10px;
+    }
+  }
+
+  .navbar-end {
+    button: {
+      border: none;
+    }
+  }
+}

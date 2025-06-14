@@ -2,18 +2,13 @@
 
 'use strict'
 
-// es6 webpack configuration file
-
 import { join, resolve } from 'node:path'
-
 import CopyPlugin from 'copy-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-
 import options from './support/prebuild.js'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 
-// true = production
-const mode = options.mode === 'production' ? true : false
+const mode = options.defaults.mode === 'production' ? true : false
 
 const devServer = {
   static: { directory: 'src/public' },
@@ -23,17 +18,9 @@ const devServer = {
   proxy: [],
 }
 
-const pugData = {
-  title: 'castle',
-  github: options.app.github,
-  gumroad: options.app.gumroad,
-  posts: options.app.blog.posts,
-  manifest: options.app.manifest
-}
-
 export default {
   devServer: mode ? {} : devServer,
-  mode: options.mode,
+  mode: options.defaults.mode,
   stats: 'errors-only',
   optimization: {
     splitChunks: {
@@ -47,12 +34,12 @@ export default {
   },
   entry: {
     index: {
-      import: resolve(options.entry.directory, options.entry.filename),
+      import: resolve(options.defaults.entry.directory, options.defaults.entry.filename),
     },
   },
   output: {
-    path: resolve(options.output.directory),
-    filename: `[name].${options.output.filename}`,
+    path: resolve(options.defaults.output.directory),
+    filename: `[name].${options.defaults.output.filename}`,
   },
   module: {
     rules: [
@@ -106,7 +93,7 @@ export default {
           },
           {
             loader: './support/pug-html-loader.js',
-            options: { data: pugData },
+            options: { data: options.pdata },
           },
         ],
       },
@@ -123,10 +110,10 @@ export default {
       ],
     }),
     new HtmlWebpackPlugin({
-      template: '/src/views/index.pug',
+      template: '/src/views/pages/index.pug',
       filename: 'index.html'
     }),
-    ...options.app.blog.pluginInstances
+    ...options.defaults.app.blog.pluginInstances
   ],
   resolve: {
     modules: [ resolve('node_modules') ],

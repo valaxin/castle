@@ -5,6 +5,7 @@ import { resolve } from 'path'
 import manifest from './manifest.js'
 
 import { repositories, products } from './remote-data.js'
+import staticData from './static-data.js'
 
 const mode = process.env.NODE_ENV === 'production' ? true : false
 
@@ -33,15 +34,21 @@ Object.assign(defaults.app, {
   pages: [],
 })
 
-
 defaults.app.github = await repositories(process.env.USERNAME, process.env.GITHUB),
 defaults.app.gumroad = await products(process.env.GUMROAD)
+defaults.app.static = staticData
 
 writeFileSync(resolve('src/public', 'template.json'), JSON.stringify(defaults.app), { encoding: 'utf-8' })
 writeFileSync(resolve('src/public', 'manifest.json'), JSON.stringify(defaults.app.manifest), { encoding: 'utf-8' })
 
-console.log(defaults)
+const pdata = {
+  title: 'castle',
+  posts: defaults.app.blog.posts,
+  github: defaults.app.github,
+  gumroad: defaults.app.gumroad,
+  manifest: defaults.app.manifest,
+  static: defaults.app.static[1]
+}
 
-
-export default defaults
+export default { defaults, pdata }
 
