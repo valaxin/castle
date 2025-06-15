@@ -1,5 +1,5 @@
-export default [
-  'static',
+export const staticData = [
+  'staticData',
   {
     title: 'castle',
     owner: 'valaxin',
@@ -22,3 +22,25 @@ export default [
     },
   },
 ]
+
+export const manifest = {
+  short_name: 'castle',
+  name: 'castle ',
+  icons: [
+    {
+      src: '/favicon-192x192.png',
+      sizes: '192x192',
+      type: 'image/png',
+    },
+    {
+      src: '/favicon-512x512.png',
+      sizes: '512x512',
+      type: 'image/png',
+    },
+  ],
+  start_url: '.',
+  display: 'standalone',
+  theme_color: '#000000',
+  background_color: '#ffffff',
+}
+

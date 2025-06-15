@@ -9,7 +9,7 @@ import '@npm/highlight.js'
 import '@npm/highlight.js/styles/github.css'
 
 (async () => { 
-  'use strict'
+  'use strict'  
   client.blog.toc('.post-content', 'h1, h2, h3', { pathname: '/blog/' })
   console.log('[client.js] - Running...')
 })()

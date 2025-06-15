@@ -5,7 +5,7 @@ import moment from 'moment'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { join, resolve } from 'path'
 import { readdirSync, statSync, readFileSync } from 'fs'
-import staticData from './static-data.js'
+import { staticData } from './data-local.js'
 
 import hljs from 'highlight.js'
 import markdownit from 'markdown-it'

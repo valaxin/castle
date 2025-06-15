@@ -2,10 +2,9 @@ import 'dotenv/config'
 import { processMarkdown } from './markdown-processor.js'
 import { writeFileSync } from 'fs'
 import { resolve } from 'path'
-import manifest from './manifest.js'
 
-import { repositories, products } from './remote-data.js'
-import staticData from './static-data.js'
+import { repositories, products } from './data-remote.js'
+import { staticData, manifest } from './data-local.js'
 
 const mode = process.env.NODE_ENV === 'production' ? true : false
 
@@ -41,7 +40,7 @@ defaults.app.static = staticData
 writeFileSync(resolve('src/public', 'template.json'), JSON.stringify(defaults.app), { encoding: 'utf-8' })
 writeFileSync(resolve('src/public', 'manifest.json'), JSON.stringify(defaults.app.manifest), { encoding: 'utf-8' })
 
-const pdata = {
+const pugdata = {
   title: 'castle',
   posts: defaults.app.blog.posts,
   github: defaults.app.github,
@@ -50,5 +49,5 @@ const pdata = {
   static: defaults.app.static[1]
 }
 
-export default { defaults, pdata }
+export default { defaults, pugdata }
 

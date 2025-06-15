@@ -2,7 +2,7 @@
 
 'use strict'
 
-import { join, resolve } from 'node:path'
+import { resolve } from 'node:path'
 import CopyPlugin from 'copy-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import options from './support/prebuild.js'
@@ -93,7 +93,7 @@ export default {
           },
           {
             loader: './support/pug-html-loader.js',
-            options: { data: options.pdata },
+            options: { data: options.pugdata },
           },
         ],
       },
