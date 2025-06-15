@@ -24,7 +24,15 @@ body {
 
 body > main.content {
   margin-top: 50px;
+
+  h1.page-title {
+    font-size: 5rem;
+    margin-top: 50px;
+    margin-left: 5vw;
+    font-weight: 900;
 }
+}
+
 
 @media (prefers-color-scheme: dark) {
   kbd {

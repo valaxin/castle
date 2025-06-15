@@ -6,7 +6,7 @@
   width: 100vw;
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: 50%;
+  grid-auto-columns: 75%;
   list-style: none;
   gap: 2rem;
 
@@ -14,6 +14,9 @@
     scroll-snap-align: center;
     background-color: var(--bulma-code-background);
     list-style: none;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 10px;
 
     img {
       border-radius: 5px;
@@ -28,16 +31,14 @@ div.posts {
   .carousel {
     &__item {
       padding: 15px 20px;
-      border-radius: 5px;
       margin-bottom: 25px;
-      border: 1px solid transparent;
 
       &-banner {
         &-tags {
-          margin: 0;
-          color: pink;
+          margin-top: 25px;
+          margin-left: -10px;
           &-tag {
-            color: red;
+            color: pink;
           }
         }
       }

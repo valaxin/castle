@@ -2,8 +2,6 @@ if static
   nav.navbar.navigation
     div.navbar-start
       a(href='/').title= title
-      each page in static.pages
-        a.button.navbar-item(href= page.href)= page.title
     div.navbar-end
       button.button(data-colorpref="auto")
         i.fa.fa-desktop

@@ -10,11 +10,11 @@ if gumroad
               h1.carousel__item-info-name= product.name
               h2.carousel__item-info-subtitle= product.custom_summary
             div.carousel__item-banner
-              ul.carousel__item-info-tags
-                li.carousel__item-info-tag
+              ul.carousel__item-info-tags.tags
+                li.carousel__item-info-tag.tag
                   span.is-price.is-outline= product.formatted_price
                 if product.published === false
-                  li.carousel__item-info-tag
+                  li.carousel__item-info-tag.tag
                     span Not Published!
                 else 
                 if product.max_purchase_count !== null
