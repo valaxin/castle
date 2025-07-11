@@ -1,3 +1,31 @@
+/**
+ * @module pug-html-loader
+ * @description
+ * A custom Webpack loader for compiling Pug templates to HTML.
+ * Supports passing options and data via loader query, handles dependencies,
+ * and enables caching for efficient builds.
+ *
+ * @requires pug
+ * @requires dotenv/config
+ * @requires loader-utils
+ *
+ * @function
+ * @param {string} source - The raw Pug template source code.
+ * @returns {string} The compiled HTML output.
+ *
+ * @example
+ * // In your Webpack config:
+ * {
+ *   test: /\.pug$/,
+ *   use: [
+ *     {
+ *       loader: path.resolve('support/pug-html-loader.js'),
+ *       options: { data: { title: 'My Page' } }
+ *     }
+ *   ]
+ * }
+ */
+
 'use strict'
 
 import pug from 'pug'

@@ -5,7 +5,7 @@ import moment from 'moment'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import { join, resolve } from 'path'
 import { readdirSync, statSync, readFileSync } from 'fs'
-import { staticData } from './data-local.js'
+import { site, manifest } from './data-local.js'
 
 import hljs from 'highlight.js'
 import markdownit from 'markdown-it'
@@ -113,7 +113,7 @@ function formatsize(bytes) {
 }
 
 export function processMarkdown(directory, locals, outputdir) {
-  const article_template = '../views/pages/post.pug'
+  const article_template = '../views/pages/_post.pug'
   const posts = []
   const pluginInstances = []
   const encoding = { encoding: 'utf8' }
@@ -142,7 +142,7 @@ export function processMarkdown(directory, locals, outputdir) {
           slug: join(outputdir.split('/')[1], filename.replace('.md', '.html')),
           dist: outputdir
         },
-        static: staticData[1]
+        static: site
       }
       posts.push(post)
     }

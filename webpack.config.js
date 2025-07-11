@@ -10,6 +10,8 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 
 const mode = options.defaults.mode === 'production' ? true : false
 
+/* --- */
+
 const devServer = {
   static: { directory: 'src/public' },
   devMiddleware: { publicPath: '/' },
@@ -17,6 +19,8 @@ const devServer = {
   compress: false,
   proxy: [],
 }
+
+/* --- */
 
 export default {
   devServer: mode ? {} : devServer,
@@ -112,6 +116,10 @@ export default {
     new HtmlWebpackPlugin({
       template: '/src/views/pages/index.pug',
       filename: 'index.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: '/src/views/pages/blog.pug',
+      filename: 'blog.html'
     }),
     ...options.defaults.app.blog.pluginInstances
   ],
