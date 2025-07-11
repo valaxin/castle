@@ -8,10 +8,8 @@
   "main": "/src/index.js",
   "type": "module",
   "scripts": {
-    "analyze": "rm -rf ./dist && webpack --profile --json > stats.json && webpack-bundle-analyzer stats.json ./dist",
-    "build": "NODE_ENV=production rm -rf ./dist && node --no-experimental-require-module --experimental-print-required-tla ./node_modules/.bin/webpack build",
-    "clean": "rm -rf ./src/public/template-data.json ./src/public/feed.xml ./src/public/feed.json ./src/public/manifest.json",
-    "dev": "echo 'removing previous /dist folder and some generated public files' && rm -rf ./dist && npm run clean && node --no-experimental-require-module --experimental-print-required-tla ./node_modules/.bin/webpack serve --hot --port=3000"
+    "build": "NODE_ENV=production node ./node_modules/.bin/webpack build",
+    "dev": "NODE_ENV=development node ./node_modules/.bin/webpack serve --hot --port=3000"
   },
   "dependencies": {
     "@babel/core": "^7.27.4",

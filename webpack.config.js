@@ -21,7 +21,8 @@ const devServer = {
 /* --- */
 
 export default {
-  devServer: mode ? null : devServer,
+  devtool: mode ? false : 'eval',
+  devServer: mode ? false : devServer,
   mode: mode ? 'production' : 'development',
   entry: {
     index: {
