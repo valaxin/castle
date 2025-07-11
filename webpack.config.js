@@ -2,13 +2,11 @@
 
 'use strict'
 
-import { resolve } from 'node:path'
-import CopyPlugin from 'copy-webpack-plugin'
-import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import options from './support/prebuild.js'
-import HtmlWebpackPlugin from 'html-webpack-plugin'
+import 'dotenv/config'
+import { resolve } from 'path'
+import HtmlBundlerPlugin from 'html-bundler-webpack-plugin'
 
-const mode = options.defaults.mode === 'production' ? true : false
+const mode = process.env.NODE_ENV === 'production' ? true : false
 
 /* --- */
 
@@ -23,116 +21,72 @@ const devServer = {
 /* --- */
 
 export default {
-  devServer: mode ? {} : devServer,
-  mode: options.defaults.mode,
-  stats: 'errors-only',
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-    },
-  },
-  performance: {
-    hints: mode ? false : 'warning',
-    maxEntrypointSize: 1024000 * 2.5,
-    maxAssetSize: 1024000 * 2.5
-  },
+  devServer: mode ? null : devServer,
+  mode: mode ? 'production' : 'development',
   entry: {
     index: {
-      import: resolve(options.defaults.entry.directory, options.defaults.entry.filename),
+      import: './src/index.js',
     },
   },
   output: {
-    path: resolve(options.defaults.output.directory),
-    filename: `[name].${options.defaults.output.filename}`,
+    path: resolve('dist'),
+    filename: `bundle.[name].[hash:8].js`,
   },
   module: {
     rules: [
       {
-        test: /\.(js|mjs|ts|tsx)$/,
-        include: resolve(process.cwd(), 'src'),
+        test: /\.(js|mjs|cjs)$/,
+        include: resolve('src/scripts'),
         loader: 'babel-loader',
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.(ico|png|jp?g|webp|svg)$/,
         type: 'asset/resource',
+        generator: {
+          filename: 'img/[name].[hash:8][ext][query]',
+        },
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
+        generator: {
+          filename: 'fnt/[name].[hash:8][ext][query]',
+        },
       },
       {
-        test: /\.(s(a|c)ss|css)$/,
-        use: [
-          mode !== true ? 'style-loader' : MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true,
-              modules: {
-                mode: 'global',
-              },
-            },
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true,
-              api: 'modern',
-              sassOptions: {
-                quietDeps: true,
-                charset: false,
-              },
-            },
-          },
-          {
-            loader: 'postcss-loader',
-          },
-        ],
-      },
-      {
-        test: /\.pug$/,
-        use: [
-          {
-            loader: 'raw-loader',
-          },
-          {
-            loader: './support/pug-html-loader.js',
-            options: { data: options.pugdata },
-          },
-        ],
+        test: /\.s?css$/,
+        use: ['css-loader', 'sass-loader'],
       },
     ],
   },
   plugins: [
-    new MiniCssExtractPlugin({ filename: '[name].css' }),
-    new CopyPlugin({
-      patterns: [
-        {
-          from: resolve('src/public'),
-          to: './',
+    new HtmlBundlerPlugin({
+      preprocessor: 'pug',
+      entry: {
+        index: 'src/views/index.pug',
+      },
+      js: {
+        filename: 'js/[name].[contenthash:8].js',
+      },
+      css: {
+        filename: 'css/[name].[contenthash:8].css',
+      },
+      data: {
+        self: {
+          title: 'castle',
+          theme: {
+            color: '#FFFFFF',
+          },
         },
-      ],
+      },
     }),
-    new HtmlWebpackPlugin({
-      template: '/src/views/pages/index.pug',
-      filename: 'index.html'
-    }),
-    new HtmlWebpackPlugin({
-      template: '/src/views/pages/blog.pug',
-      filename: 'blog.html'
-    }),
-    ...options.defaults.app.blog.pluginInstances
   ],
   resolve: {
-    modules: [ resolve('node_modules') ],
     alias: {
-      '@npm': resolve('node_modules'),
-      '@web': resolve('src/javascript'),
-      '@css': resolve('src/styles'),
-      '@lib': resolve('support'),
+      '@images': resolve('src/images'),
+      '@styles': resolve('src/styles'),
+      '@scripts': resolve('src/scripts'),
     },
-    extensions: [
-      '.mjs', '.js', '.scss', '.css', '.pug'
-    ],
+    extensions: ['.mjs', '.cjs', '.js', '.scss', '.css'],
   },
 }

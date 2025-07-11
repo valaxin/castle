@@ -1,19 +1,13 @@
-/.vscode
-/node_modules
-/.netlify
+node_modules
+.vscode
+.netlify
 
 # os
 .DS_Store
 
-# configuration files and logs are
+# configuration files and logs
 /*.log
 /*.env
 
-# directories/files that are generated during build process
+# generated directories
 /dist
-/src/public/template.json
-/src/public/manifest.json
-
-# temp
-/.old-storage
-

@@ -1,15 +1,8 @@
-
-@use 'components/post';
-@use 'components/navbar';
-@use 'components/footer';
-@use 'components/queries';
-@use 'components/carousel';
-
 $app-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 $app-font-code: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;
 
-$app-global-width: 86vw;
-$app-global-horz-margin: 25px;
+$app-global-width: 94vw;
+$app-global-horz-margin: 3vw;
 
 :root {
   font-synthesis: none;
@@ -20,41 +13,20 @@ $app-global-horz-margin: 25px;
 
 body {
   font-family: $app-font;
-}
-
-body > main.content {
-  margin-top: 50px;
-
-  h1.page-title {
-    font-size: 5rem;
-    margin-top: 50px;
-    margin-left: 5vw;
-    font-weight: 900;
-}
-}
-
-
-@media (prefers-color-scheme: dark) {
-  kbd {
-    background-color: rgba(10,10,10,1);
-    padding: 3px 6px;
-    border-radius: 5px;
-    border: 1px solid black;
-    color: white;
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  kbd {
-    padding: 3px 6px;
-    border-radius: 5px;
-    background-color: white;
-    border: 1px solid black;
-    color: black;
-  }
-}
-
-nav.navbar {
   width: $app-global-width;
-  margin: 25px $app-global-horz-margin;
+  margin: 0 $app-global-horz-margin;
 }
+
+h1.title {
+  font-size: 4rem;
+  font-weight: 900;
+}
+
+/* mobile and tablet styles */
+@media only screen and (max-width: 600px) {}
+@media only screen and (max-width: 960px) {}
+
+/* color schemes */
+
+@media (prefers-color-scheme: dark) {}
+@media (prefers-color-scheme: light) {}

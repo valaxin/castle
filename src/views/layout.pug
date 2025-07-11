@@ -1,18 +1,14 @@
 doctype html
-html(lang="en" data-theme="auto")
+html(lang='en' data-theme='auto')
   head
-    meta(charset="utf-8")
-    meta(name="robots" content="noindex, nofollow")
-    meta(name="viewport" content="width=device-width, initial-scale=1, user-scalable=no")
-    meta(http-equiv="x-ua-compatible" content="ie=edge")
-    meta(name="theme-color" content="")
-    meta(name="mobile-web-app-capable" content="yes")
-    meta(name="apple-mobile-web-app-status-bar-style" content="black")
-    link(rel="apple-touch-icon" href="/favicon.png")
-    link(rel="shortcut icon" href="/favicon.png" type="img/png")
-    link(rel="manifest" href="/manifest.json")
-    link(rel="stylesheet" href="/layout.css")
-    title= title
+    meta(charset='utf-8')
+    meta(name='robots' content='noindex, nofollow')
+    meta(name='viewport' content='width=device-width, initial-scale=1, user-scalable=no')
+    meta(http-equiv='x-ua-compatible' content='ie=edge')
+    meta(name='theme-color' content= self.theme.color)
+    link(rel='shortcut icon' href='@images/favicon.png' type='img/png')
+    link(rel='stylesheet' href='@styles/layout.scss')
+    script(src='@scripts/main.js' type='text/javascript' defer='defer')
+    title= self.title
   body
-    include partials/navigation
     block content
