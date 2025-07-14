@@ -8,7 +8,8 @@ html(lang='en' data-theme='auto')
     meta(name='theme-color' content= self.theme.color)
     link(rel='shortcut icon' href='@images/favicon.png' type='img/png')
     link(rel='stylesheet' href='@styles/layout.scss')
-    script(src='@scripts/main.js' type='text/javascript' defer='defer')
+    script(src='@scripts/index.js' type='text/javascript' defer='defer')
     title= self.title
   body
+    include components/navbar
     block content

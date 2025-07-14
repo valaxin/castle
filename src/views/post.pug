@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  a(href='/') ← return
+  br
+  main
+    h1.title= context.frontmatter.title
+    article
+      != context.html
+
+    include components/footer

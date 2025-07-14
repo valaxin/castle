@@ -5,8 +5,10 @@
 import 'dotenv/config'
 import { resolve } from 'path'
 import HtmlBundlerPlugin from 'html-bundler-webpack-plugin'
+import { parseAllMarkdown } from './utils/parseMarkdown.js'
 
 const mode = process.env.NODE_ENV === 'production' ? true : false
+const markdownPosts = parseAllMarkdown(resolve('src/blog'), 'src/views/post.pug')
 
 /* --- */
 
@@ -20,18 +22,46 @@ const devServer = {
 
 /* --- */
 
-export default {
+const bundlerOptions = {
+  preprocessor: 'pug',
+  entry: {
+    index: 'src/views/index.pug'
+  },
+  js: {
+    filename: 'js/[name].[contenthash:8].js',
+  },
+  css: {
+    filename: 'css/[name].[contenthash:8].css',
+  },
+  beforePreprocessor: (content, { data, resourcePath, _module }) => {},
+  data: {
+    self: {
+      posts: markdownPosts,
+      title: 'castle',
+      theme: {
+        color: '#FFFFFF',
+      },
+    },
+  },
+}
+
+for (let i = 0; i < markdownPosts.length; i++) {
+  bundlerOptions.entry[markdownPosts[i].slug] = {
+    import: markdownPosts[i].templatePath,
+    data: { context: markdownPosts[i] }
+  }
+}
+
+/* --- */
+
+const config = {
   devtool: mode ? false : 'eval',
   devServer: mode ? false : devServer,
   mode: mode ? 'production' : 'development',
-  entry: {
-    index: {
-      import: './src/index.js',
-    },
-  },
+  entry: {},
   output: {
     path: resolve('dist'),
-    filename: `bundle.[name].[hash:8].js`,
+    filename: `bundle.[name].[chunkhash:8].js`,
   },
   module: {
     rules: [
@@ -44,14 +74,14 @@ export default {
         test: /\.(ico|png|jp?g|webp|svg)$/,
         type: 'asset/resource',
         generator: {
-          filename: 'img/[name].[hash:8][ext][query]',
+          filename: 'img/[name].[chunkhash:8][ext][query]',
         },
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'fnt/[name].[hash:8][ext][query]',
+          filename: 'fnt/[name].[chunkhash:8][ext][query]',
         },
       },
       {
@@ -60,30 +90,10 @@ export default {
       },
     ],
   },
-  plugins: [
-    new HtmlBundlerPlugin({
-      preprocessor: 'pug',
-      entry: {
-        index: 'src/views/index.pug',
-      },
-      js: {
-        filename: 'js/[name].[contenthash:8].js',
-      },
-      css: {
-        filename: 'css/[name].[contenthash:8].css',
-      },
-      data: {
-        self: {
-          title: 'castle',
-          theme: {
-            color: '#FFFFFF',
-          },
-        },
-      },
-    }),
-  ],
+  plugins: [new HtmlBundlerPlugin(bundlerOptions)],
   resolve: {
     alias: {
+      '@npm': resolve('node_modules'),
       '@images': resolve('src/images'),
       '@styles': resolve('src/styles'),
       '@scripts': resolve('src/scripts'),
@@ -91,3 +101,5 @@ export default {
     extensions: ['.mjs', '.cjs', '.js', '.scss', '.css'],
   },
 }
+
+export default config
