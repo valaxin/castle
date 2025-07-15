@@ -17,7 +17,7 @@ window.htmx = htmx.default
 window._log('index.js', {htmx: htmx.default, animate, })
 
 // ...
-
+/*
 animate(['.navbar-brand', '.navbar-item'], {
   y: [
     { to: '-2.75rem', ease: 'outExpo', duration: 600 },
@@ -26,3 +26,4 @@ animate(['.navbar-brand', '.navbar-item'], {
   loop: false,
   delay: 250
 });
+*/

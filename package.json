@@ -8,8 +8,8 @@
   "main": "/src/index.js",
   "type": "module",
   "scripts": {
-    "build": "NODE_ENV=production node ./node_modules/.bin/webpack build",
-    "dev": "NODE_ENV=development node ./node_modules/.bin/webpack serve --hot --port=3000"
+    "build": "NODE_ENV=production node --no-experimental-require-module --experimental-print-required-tla ./node_modules/.bin/webpack build",
+    "dev": "NODE_ENV=development node --no-experimental-require-module --experimental-print-required-tla ./node_modules/.bin/webpack serve --hot --port=3000"
   },
   "dependencies": {
     "@babel/core": "^7.27.4",

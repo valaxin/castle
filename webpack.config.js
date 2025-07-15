@@ -10,6 +10,8 @@ import { parseAllMarkdown } from './utils/parseMarkdown.js'
 const mode = process.env.NODE_ENV === 'production' ? true : false
 const markdownPosts = parseAllMarkdown(resolve('src/blog'), 'src/views/post.pug')
 
+import { gumroad, github } from './utils/remoteCollections.js'
+
 /* --- */
 
 const devServer = {
@@ -23,6 +25,9 @@ const devServer = {
 /* --- */
 
 const bundlerOptions = {
+  experiments: {
+    topLevelAwait: true,
+  },
   preprocessor: 'pug',
   entry: {
     index: 'src/views/index.pug'
@@ -37,6 +42,8 @@ const bundlerOptions = {
   data: {
     self: {
       posts: markdownPosts,
+      products: gumroad,
+      repos: github,
       title: 'castle',
       theme: {
         color: '#FFFFFF',
@@ -44,6 +51,8 @@ const bundlerOptions = {
     },
   },
 }
+
+console.log(bundlerOptions.data)
 
 for (let i = 0; i < markdownPosts.length; i++) {
   bundlerOptions.entry[markdownPosts[i].slug] = {

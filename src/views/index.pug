@@ -1,6 +1,8 @@
 extends layout
 
 block content
+
+  h2 Blog Posts
   if (self.posts)
     ul
     each post of self.posts
@@ -8,4 +10,20 @@ block content
         a(href= post.slug + '.html')
           span= post.frontmatter.title
 
-        
+  hr
+
+  h2 Projects
+  if (self.repos)
+    ul
+    each project of self.repos
+      li
+        a(href= project.html_url)= project.name
+
+  hr
+  
+  h2 Web Shop
+  if (self.products)
+    ul
+    each item of self.products 
+      li
+        a= item.name
