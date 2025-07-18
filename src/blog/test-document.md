@@ -1,7 +1,7 @@
 ---
 title: Test Post Document 
 author: '@valaxin'
-authorUrl: '/'
+authorUrl: '/#none'
 published: 15/02/2022
 summary: This contains most elements for a given post and allows for easy testings of features provided by the markdown filters.
 thumbnail: '@images/resources/kitesurfing.jpg'

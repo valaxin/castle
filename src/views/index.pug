@@ -10,8 +10,11 @@ block content
           li
             a.post(href= post.slug + '.html')
               img(src= post.frontmatter.thumbnail alt= post.frontmatter.thumbnailAlt)
-              span.post__title= post.frontmatter.title
-              span.post__author= post.frontmatter.author
+              .post__self
+                span.post__self-title= post.frontmatter.title
+                a.post__self-author(href= post.frontmatter.authorUrl)
+                  span.post__self-author-name= post.frontmatter.author
+                span.post__self-summary= post.frontmatter.summary
               .post__info.tags
                 span.tag.post__info-size= post.fsize
                 span.tag.post__info-readtime= post.readTime + ' Minute(s) Read'
