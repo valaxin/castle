@@ -1,0 +1,33 @@
+
+
+.post {
+
+  &__title {
+    font-size: 2rem;
+    color: black;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+
+    span {
+      font-size: .75rem;
+    }
+  }
+
+}
+
+.repo {
+
+  &__author {
+
+    &-avatar {
+      border-radius: 100%;
+      height: 50px;
+      width: 50px;
+    }
+
+  }
+
+}

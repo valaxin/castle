@@ -4,6 +4,8 @@ block content
   a(href='/') ← return
   br
   main
+    section.section
+    img(src= context.frontmatter.thumbnail alt= context.frontmatter.thumbnailAlt)
     h1.title= context.frontmatter.title
     article
       != context.html

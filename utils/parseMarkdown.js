@@ -1,34 +1,94 @@
+import { readFileSync, readdirSync, statSync } from 'fs'
 import { basename, join } from 'path'
+import { Marked } from 'marked'
+
+import { markedHighlight } from 'marked-highlight'
+import { markedEmoji } from 'marked-emoji'
+import markedAlert from 'marked-alert'
+
+import moment from 'moment'
 import matter from 'gray-matter'
-import { marked } from 'marked'
-import { readFileSync, readdirSync } from 'fs'
+import hljs from 'highlight.js'
+
+const marked = new Marked(
+  markedAlert(),
+  markedHighlight({
+    emptyLangClass: 'hljs',
+    langPrefix: 'hljs language-',
+    highlight(code, lang, info) {
+      const language = hljs.getLanguage(lang) ? lang : 'plaintext'
+      return hljs.highlight(code, { language }).value
+    },
+  }),
+  markedEmoji({
+    emojis: {
+      heart: '❤️',
+      tada: '🎉',
+    },
+    renderer: (token) => token.emoji,
+  })
+)
 
 /* --- */
 
 export function parseMarkdown(filePath) {
   const file = readFileSync(filePath, 'utf-8')
+  const { birthtime, size } = statSync(filePath)
   const { content, data } = matter(file)
-  const htmlContent = marked(content)
+  const readTime = readtime(128, content)
+  const htmlContent = marked.parse(content) // this will be where markdown it is called
+
   return {
     html: htmlContent,
     frontmatter: data,
+    birthtime: moment(birthtime).fromNow(),
+    fsize: formatsize(size),
+    size,
     filePath,
+    readTime,
   }
 }
 
 /* --- */
 
 export function parseAllMarkdown(dirPath, templatePath) {
-  const files = readdirSync(dirPath).filter(file => file.endsWith('.md'))
-  return files.map(file => {
+  const files = readdirSync(dirPath).filter((file) => file.endsWith('.md'))
+  return files.map((file) => {
     const fullPath = join(dirPath, file)
-    const { html, frontmatter } = parseMarkdown(fullPath)
+    const { html, frontmatter, birthtime, size, fsize, readTime } = parseMarkdown(fullPath)
     const slug = basename(file, '.md')
     return {
       html,
       frontmatter,
       templatePath,
       slug,
+      birthtime,
+      size,
+      fsize,
+      readTime
     }
   })
 }
+
+/* --  */
+
+function readtime(wpm, markdown) {
+  try {
+    return markdown.split(' ').length > 0 ? Math.ceil(markdown.split(' ').length / wpm) : 0
+  } catch (err) {
+    console.error(err)
+    return err
+  }
+}
+
+/* --- */
+
+function formatsize(bytes) {
+  try {
+    return Math.floor(bytes / 1024) > 0 ? `${Math.floor(bytes / 1024)} Kilobytes` : `${bytes} Bytes`
+  } catch (err) {
+    console.error(err)
+    return err
+  }
+}
+

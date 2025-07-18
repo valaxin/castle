@@ -6,6 +6,7 @@ import 'dotenv/config'
 import { resolve } from 'path'
 import HtmlBundlerPlugin from 'html-bundler-webpack-plugin'
 import { parseAllMarkdown } from './utils/parseMarkdown.js'
+import JSONWebpackPlugin from './utils/JSONWebpackPlugin.js'
 
 const mode = process.env.NODE_ENV === 'production' ? true : false
 const markdownPosts = parseAllMarkdown(resolve('src/blog'), 'src/views/post.pug')
@@ -19,7 +20,6 @@ const devServer = {
   devMiddleware: { publicPath: '/' },
   hot: true,
   compress: false,
-  proxy: [],
 }
 
 /* --- */
@@ -52,8 +52,7 @@ const bundlerOptions = {
   },
 }
 
-console.log(bundlerOptions.data)
-
+// add dynamically generated posts to bundle
 for (let i = 0; i < markdownPosts.length; i++) {
   bundlerOptions.entry[markdownPosts[i].slug] = {
     import: markdownPosts[i].templatePath,
@@ -71,6 +70,15 @@ const config = {
   output: {
     path: resolve('dist'),
     filename: `bundle.[name].[chunkhash:8].js`,
+  },
+  resolve: {
+    alias: {
+      '@npm': resolve('node_modules'),
+      '@images': resolve('src/images'),
+      '@styles': resolve('src/styles'),
+      '@scripts': resolve('src/scripts'),
+    },
+    extensions: ['.mjs', '.cjs', '.js', '.scss', '.css'],
   },
   module: {
     rules: [
@@ -99,16 +107,10 @@ const config = {
       },
     ],
   },
-  plugins: [new HtmlBundlerPlugin(bundlerOptions)],
-  resolve: {
-    alias: {
-      '@npm': resolve('node_modules'),
-      '@images': resolve('src/images'),
-      '@styles': resolve('src/styles'),
-      '@scripts': resolve('src/scripts'),
-    },
-    extensions: ['.mjs', '.cjs', '.js', '.scss', '.css'],
-  },
+  plugins: [
+    new HtmlBundlerPlugin(bundlerOptions),
+    new JSONWebpackPlugin({ data: bundlerOptions.data })
+  ]
 }
 
 export default config

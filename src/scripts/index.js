@@ -1,5 +1,8 @@
 'use strict'
 
+import hljs from '@npm/highlight.js';
+import '@npm/highlight.js/styles/github-dark.css'; // You can choose any style you prefer
+import '@npm/highlight.js/styles/github.css'; // You can choose any style you prefer
 import * as htmx from '@npm/htmx.org'
 import { animate } from '@npm/animejs'
 
@@ -26,4 +29,14 @@ animate(['.navbar-brand', '.navbar-item'], {
   loop: false,
   delay: 250
 });
+*/
+/*
+animate('article', {
+  y: [
+    { to: '-1rem', duration: 600, opacity: 0 },
+    { to: 0,  duration: 800, delay: 100, opacity: 1 }
+  ],
+  loop: false,
+  delay: 250
+})
 */
