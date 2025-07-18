@@ -1,58 +1,7 @@
 extends layout
 
 block content
-
-  section.section#posts
-    h2.title Blog Posts
-    if (self.posts)
-      ul.block
-        each post of self.posts
-          li
-            a.post(href= post.slug + '.html')
-              img(src= post.frontmatter.thumbnail alt= post.frontmatter.thumbnailAlt)
-              .post__self
-                span.post__self-title= post.frontmatter.title
-                a.post__self-author(href= post.frontmatter.authorUrl)
-                  span.post__self-author-name= post.frontmatter.author
-                span.post__self-summary= post.frontmatter.summary
-              .post__info.tags
-                span.tag.post__info-size= post.fsize
-                span.tag.post__info-readtime= post.readTime + ' Minute(s) Read'
-                span.tag.post__info-birthtime= post.birthtime
-            hr 
-
-  section.section#projects
-    h2.title Projects
-    if (self.repos)
-    ul.block
-      each project of self.repos
-        li
-          a.repo(href= project.html_url target="_blank")
-            if (project.name === 'scrambled')
-              img(src='@images/resources/abstract.jpg', alt='Vibrant Abstract Digital Art with Fluid Dynamics [Steve Johnson]')
-            if (project.name === 'castle')
-              img(src='@images/resources/castle.jpg' alt='Hohenschwangau Castle in Germany [Jusuf Rujanac]')
-            span.repo__title= project.name
-            .repo__author
-              img.repo__author-avatar(src= project.owner.avatar_url alt= project.owner.login)
-              span.repo__author-name= project.owner.login
-            span.repo__created= project.created_at
-            .repo__info.tags
-              span.tag.repo__info-description= project.description
-              span.tag.repo__info-size= project.size + ' Kilobytes'
-              span.tag.repo__info-visibility= project.visibility
-              span.tag.repo__info-language= project.language || 'None'
-              span.tag.repo__info-stars= project.stargazers_count + ' Stars'
-              span.tag.repo__info-issues= project.open_issues_count + ' Issues'
-        hr
-
-  section.section#products
-    h2.title Web Shop
-    if (self.products)
-      ul
-        each item of self.products 
-          li
-            a(href= item.short_url target='_blank')
-              img(src= item.preview_url alt= item.name)
-              span= item.name
-              span= item.formatted_price
+  include components/listings/posts
+  include components/listings/projects
+  include components/listings/products
+  include components/footer

@@ -16,7 +16,7 @@ export default class JSONWebpackPlugin {
     }
     
     if (!opt.filename) {
-      opt.filename = 'template-data.[hash:8].json'
+      opt.filename = `data.json`
     }
 
     compiler.hooks.thisCompilation.tap('JSONWebpackPlugin', (compilation) => {
