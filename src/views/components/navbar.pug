@@ -1,6 +1,14 @@
 nav.navbar(role='navigation' aria-label='main navigation')
+  // navibar goes right to left
+  .navbar-end
+    if (returnbtn)
+      a.navbar-item(href='/') ←
+    a.navbar-item theme: system
+
+  .navbar-start
+    a.navbar-item(href='/#posts') posts
+    a.navbar-item(href='/#projects') projects
+    a.navbar-item(href='/#products') products
   .navbar-brand
     .navbar-item
       a.title(href='/')= self.title
-  .navbar-start
-  .navbar-end

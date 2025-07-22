@@ -1,5 +1,6 @@
 @use '@npm/bulma';
 @use 'listings';
+@use 'article';
 
 $app-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 $app-font-code: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;
@@ -20,9 +21,38 @@ body {
   margin: 0 $app-global-horz-margin;
 }
 
+nav.navbar {
+  position: fixed;
+  background-color: transparent;
+  background: transparent;
+
+  top: 2vh;
+  right: 6.5vw;
+  font-size: 1rem;
+  mix-blend-mode: difference;
+
+  .navbar-item {
+    border-radius: 16px;
+    margin-right: 10px;
+    font-weight: 800;
+    transition: all ease-in-out 200ms;
+    &:hover {
+      background: transparent;
+      text-decoration: underline;
+      mix-blend-mode: normal;
+      scale: 1.25;
+    }
+  }
+
+  &:hover ~ .navbar-item:not(:hover) {
+    filter: blur(5px);
+  }
+}
+
 footer {
   height: 20vh;
   width: 100vw;
+  padding: 4vh 4vw;
 }
 
 main {

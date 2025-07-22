@@ -1,13 +1,16 @@
 extends layout
 
+
 block content
-  a(href='/') ← return
+  - var returnbtn = true
+  include components/navbar
   br
   main
     section.section
-    img(src= context.frontmatter.thumbnail alt= context.frontmatter.thumbnailAlt)
-    h1.title= context.frontmatter.title
-    article
-      != context.html
+      article
+        img.hero(src= context.frontmatter.thumbnail alt= context.frontmatter.thumbnailAlt)
+        h1.title= context.frontmatter.title
+        .content
+          != context.html
 
     include components/footer
