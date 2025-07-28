@@ -2,15 +2,8 @@ extends layout
 
 block content
   include components/navbar
-  section.section
-    h2.title.section-title About
-    .block
-      .content
-        p Hello I'm valaxin
-        p I'm just a human who likes working with computers
-        p this here is a webspace built by me for myself, I welcome you to it.
-        p enjoy your stay.
-  include components/listings/posts
-  include components/listings/projects
-  include components/listings/products
+  main
+    include components/listings/posts
+    include components/listings/projects
+    include components/listings/products
   include components/footer

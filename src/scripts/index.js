@@ -1,10 +1,13 @@
 'use strict'
 
 import hljs from '@npm/highlight.js';
-import '@npm/highlight.js/styles/github-dark.css'; // You can choose any style you prefer
-import '@npm/highlight.js/styles/github.css'; // You can choose any style you prefer
+import '@npm/highlight.js/styles/github-dark.css' // You can choose any style you prefer
+import '@npm/highlight.js/styles/github.css' // You can choose any style you prefer
 import * as htmx from '@npm/htmx.org'
+
 import { animate } from '@npm/animejs'
+
+import './modules/color-scheme.js'
 
 if (window) {
   window._log = (initalizer, message) => {

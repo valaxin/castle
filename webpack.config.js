@@ -74,7 +74,7 @@ const config = {
   resolve: {
     alias: {
       '@npm': resolve('node_modules'),
-      '@images': resolve('src/images'),
+      '@images': resolve('src/public/images'),
       '@styles': resolve('src/styles'),
       '@scripts': resolve('src/scripts'),
     },

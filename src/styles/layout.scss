@@ -1,10 +1,15 @@
+
+// remote
 @use '@npm/bulma';
+@use '@npm/material-icons/iconfont/material-icons.css';
+
+// locals
 @use 'listings';
 @use 'article';
+@use 'components/navbar';
 
 $app-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 $app-font-code: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;
-
 $app-global-width: 94vw;
 $app-global-horz-margin: 3vw;
 
@@ -21,33 +26,7 @@ body {
   margin: 0 $app-global-horz-margin;
 }
 
-nav.navbar {
-  position: fixed;
-  background-color: transparent;
-  background: transparent;
 
-  top: 2vh;
-  right: 6.5vw;
-  font-size: 1rem;
-  mix-blend-mode: difference;
-
-  .navbar-item {
-    border-radius: 16px;
-    margin-right: 10px;
-    font-weight: 800;
-    transition: all ease-in-out 200ms;
-    &:hover {
-      background: transparent;
-      text-decoration: underline;
-      mix-blend-mode: normal;
-      scale: 1.25;
-    }
-  }
-
-  &:hover ~ .navbar-item:not(:hover) {
-    filter: blur(5px);
-  }
-}
 
 footer {
   height: 20vh;
@@ -61,35 +40,12 @@ main {
 
 /* mobile and tablet styles */
 @media only screen and (max-width: 600px) {}
-@media only screen and (max-width: 960px) {}
-
-/* color schemes */
+@media only screen and (max-width: 960px) {
+  main {
+    max-width: 90vw;
+  }
+}
 
 @media (prefers-color-scheme: dark) {}
 @media (prefers-color-scheme: light) {}
 
-/* -- markdown alert colors -- */
-
-.markdown-alert {
-  margin: 5px 0px;
-  border-left: 5px solid;
-  padding: 10px;
-  padding-left: 15px;
-
-  &-note,
-  &-tip {
-    background-color:#0969da;
-  }
-
-  &-important {
-    background-color: #8250df;
-  }
-
-  &-warning {
-    background-color: #9a6700;
-  }
-
-  &-caution {
-    background-color: #cf222e;
-  }
-}

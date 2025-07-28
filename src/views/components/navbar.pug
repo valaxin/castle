@@ -1,14 +1,30 @@
 nav.navbar(role='navigation' aria-label='main navigation')
-  // navibar goes right to left
-  .navbar-end
-    if (returnbtn)
-      a.navbar-item(href='/') ←
-    a.navbar-item theme: system
-
   .navbar-start
-    a.navbar-item(href='/#posts') posts
-    a.navbar-item(href='/#projects') projects
-    a.navbar-item(href='/#products') products
+    
+    if (back_button)
+      .navbar-item
+        a(href='/').material-icons.round
+          span subdirectory_arrow_left
+    
+    if (context)
+      .navbar-item
+        a= context.frontmatter.title
+    
+    .navbar-item
+      button.color-scheme-toggle
+        span.material-icons.round.scheme-button display_settings
+    .navbar-item
+      a(href='/#about')
+        span.material-icons.round account_circle
+    .navbar-item
+      a(href='/#posts')
+        span.material-icons.round attach_file
+    .navbar-item
+      a(href='/#projects')
+        span.material-icons.round folder_special
+    .navbar-item
+      a(href='/#products')
+        span.material-icons.round shopping_bag
   .navbar-brand
     .navbar-item
       a.title(href='/')= self.title

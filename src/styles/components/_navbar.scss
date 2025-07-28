@@ -1,0 +1,27 @@
+nav.navbar {
+  position: fixed;
+  background-color: transparent;
+  background: transparent;
+
+  top: 2vh;
+  right: 6.5vw;
+  font-size: 1rem;
+  mix-blend-mode: difference;
+
+  .navbar-item {
+    border-radius: 16px;
+    margin-right: 10px;
+    font-weight: 800;
+    transition: all ease-in-out 200ms;
+    &:hover {
+      background: transparent;
+      text-decoration: underline;
+      mix-blend-mode: normal;
+      scale: 1.25;
+    }
+  }
+
+  &:hover ~ .navbar-item:not(:hover) {
+    filter: blur(5px);
+  }
+}
