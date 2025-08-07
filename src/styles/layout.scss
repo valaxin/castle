@@ -7,6 +7,8 @@
 @use 'listings';
 @use 'article';
 @use 'components/navbar';
+@use 'components/footer';
+@use 'components/legal';
 
 $app-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 $app-font-code: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;
@@ -24,18 +26,11 @@ body {
   font-family: $app-font;
   width: $app-global-width;
   margin: 0 $app-global-horz-margin;
-}
-
-
-
-footer {
-  height: 20vh;
-  width: 100vw;
-  padding: 4vh 4vw;
+  margin-bottom: 100px;
 }
 
 main {
-  max-width: 960px;
+  max-width: 1024px;
 }
 
 /* mobile and tablet styles */
@@ -43,6 +38,9 @@ main {
 @media only screen and (max-width: 960px) {
   main {
     max-width: 90vw;
+  }
+  .article {
+    margin-left: default;
   }
 }
 

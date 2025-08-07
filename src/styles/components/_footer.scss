@@ -1,0 +1,16 @@
+footer {
+  height: 20vh;
+  width: 100vw;
+  padding-top: 50px;
+
+  .footer {
+    &__links {
+      margin-top: 15px;
+      
+      &-title {
+        font-size: 1.5rem;
+        font-weight: 900;
+      }
+    }
+  }
+}

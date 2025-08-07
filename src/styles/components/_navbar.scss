@@ -1,27 +1,85 @@
-nav.navbar {
-  position: fixed;
-  background-color: transparent;
-  background: transparent;
+nav {
+  .navpill {
+    position: fixed;
+    background-color: transparent;
+    backdrop-filter: blur(5px);
+    padding: 10px 20px;
+    top: 6.5vh;
+    right: 5vw;
+    border-radius: 25px;
 
-  top: 2vh;
-  right: 6.5vw;
-  font-size: 1rem;
-  mix-blend-mode: difference;
+    .navpill-start {
+      display: flex;
+      flex-direction: row;
 
-  .navbar-item {
-    border-radius: 16px;
-    margin-right: 10px;
-    font-weight: 800;
-    transition: all ease-in-out 200ms;
-    &:hover {
-      background: transparent;
-      text-decoration: underline;
-      mix-blend-mode: normal;
-      scale: 1.25;
+      .navpill-item {
+        display: flex;
+        flex-direction: column;
+        margin: 0px 10px;
+
+        &:first-child {
+          margin-left: 0;
+        }
+        &:last-child {
+          margin-right: 0;
+        }
+
+        a,
+        button {
+          color: var(--bulma-color);
+          mix-blend-mode: difference;
+          margin-top: 10px;
+          font-weight: 800;
+          transition: all ease-in-out 150ms;
+
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+
+        .material-icons {
+          font-size: 1.75rem;
+          mix-blend-mode: difference;
+        }
+      }
+
+      .current-post-title {
+        font-size: 1rem;
+      }
     }
   }
+}
 
-  &:hover ~ .navbar-item:not(:hover) {
-    filter: blur(5px);
+// Responsive Layout
+@media (max-width: 768px) {
+  nav.navpill {
+    top: 0;
+    left: 0;
+    border-radius: none;
+
+    .navpill-start {
+      .navpill-item {
+        .current-post-title {
+          display: none !important;
+        }
+      }
+    }
   }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  nav.navpill {
+    top: 0;
+    left: 0;
+    border-radius: none;
+
+    .navpill-start {
+      .navpill-item {
+        .current-post-title {
+          display: none;
+        }
+      }
+    }
+  }
+}
+@media (min-width: 1025px) {
 }

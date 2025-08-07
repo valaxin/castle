@@ -1,0 +1,21 @@
+.legal {
+  margin-top: 25vh;
+  font-size: 1.5rem;
+
+  &__title {
+    margin-top: -15vh;
+    font-size: 10rem;
+    font-weight: 900;
+  }
+
+  .title {
+    margin-top: 25px;
+  }
+
+  .subtitle {
+    margin-top: 25px;
+    font-size: 1.4rem;
+    font-weight: 900;
+    font-style: italic;
+  }
+}

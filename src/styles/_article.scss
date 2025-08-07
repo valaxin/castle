@@ -1,6 +1,8 @@
 .article {
+
   
   &__hero {
+    margin-top: 50px;
     width: 100%;
     border-radius: 24px;
   }
@@ -11,7 +13,34 @@
   }
 
   &__content {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+
+    ol,
+    ul {
+      margin-left: 2vw;
+    }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin: 5px 0;
+    }
+
+    img {
+      border-radius: 24px;
+    }
+    
+    
+    pre,
+    code {
+      border-radius: 25px;
+      margin: 2vh 0;
+    }
   }
 
 }

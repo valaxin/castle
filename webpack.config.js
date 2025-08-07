@@ -30,7 +30,8 @@ const bundlerOptions = {
   },
   preprocessor: 'pug',
   entry: {
-    index: 'src/views/index.pug'
+    index: 'src/views/index.pug',
+    legal: 'src/views/legal.pug'
   },
   js: {
     filename: 'js/[name].[contenthash:8].js',

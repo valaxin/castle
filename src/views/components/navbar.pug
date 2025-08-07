@@ -1,30 +1,35 @@
-nav.navbar(role='navigation' aria-label='main navigation')
-  .navbar-start
-    
+nav.navpill(role='navigation' aria-label='main navigation')
+  .navpill-start
+
     if (back_button)
-      .navbar-item
-        a(href='/').material-icons.round
-          span subdirectory_arrow_left
+      .navpill-item
+        a(href='/')
+          span.material-icons.round subdirectory_arrow_left
     
     if (context)
-      .navbar-item
+      .navpill-item.current-post-title
         a= context.frontmatter.title
     
-    .navbar-item
+    .navpill-item.only-mobile
+      button.mobile-menu-toggle
+        span.material-icons.round egg
+
+
+    .navpill-item
       button.color-scheme-toggle
         span.material-icons.round.scheme-button display_settings
-    .navbar-item
+    .navpill-item
       a(href='/#about')
         span.material-icons.round account_circle
-    .navbar-item
+    .navpill-item
       a(href='/#posts')
         span.material-icons.round attach_file
-    .navbar-item
+    .navpill-item
       a(href='/#projects')
         span.material-icons.round folder_special
-    .navbar-item
+    .navpill-item
       a(href='/#products')
         span.material-icons.round shopping_bag
-  .navbar-brand
-    .navbar-item
-      a.title(href='/')= self.title
+    .navpill-item
+      a.title(href='/')
+        span.material-icons.round castle
