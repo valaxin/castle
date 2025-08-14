@@ -1,11 +1,8 @@
 extends layout
 
-
 block content
-  - var back_button = true
-  // include components/navbar
   main
-    article.article
+    article.article.mb-5
       figure.image
         img.article__hero(src=context.frontmatter.thumbnail, alt=context.frontmatter.thumbnailAlt)
       h1.title.article__title= context.frontmatter.title

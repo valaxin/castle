@@ -8,6 +8,7 @@ import * as htmx from '@npm/htmx.org'
 import { animate } from '@npm/animejs'
 
 import './modules/color-scheme.js'
+import './modules/lightbox-gallery.js'
 import './modules/table-of-contents.js'
 
 if (window) {

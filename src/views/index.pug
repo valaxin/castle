@@ -1,11 +1,11 @@
 extends layout
 
 block content
-  // include components/navbar
   main
-    include components/blocks/posts
-    include components/blocks/projects
-    include components/blocks/services
-    include components/blocks/products
-    include components/blocks/newsletter
+    section.section.hero.is-bold
+      span.subtitle.is-6= '[' + epoch + ']'
+      h1.title.is-1= self.title
+    include components/posts
+    include components/projects
+    include components/products
   include components/footer

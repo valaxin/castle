@@ -1,0 +1,14 @@
+section.section.posts
+  h1.title.posts__title Posts
+  h2.subtitle.posts__subtitle.is-6 Thoughts, Comments, Streams of Consciousness
+  
+  each post in self.posts
+    a.posts__item(href= post.slug + '.html')= post.frontmatter.title
+      ul
+        li
+          span.posts__item-summary= post.frontmatter.summary
+        li
+          span.posts__item-published= post.frontmatter.published
+        li
+          span.posts__item-author= post.frontmatter.author
+        

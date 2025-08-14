@@ -32,27 +32,21 @@ $app-global-horz-margin: 15vw;
   font-size: .8rem;
 }
 
-.service-icon {
-  width: 64px;
-  height: 64px;
-  object-fit: contain;
-}
-.hero-body {
-  padding: 3rem 1.5rem;
-}
-.card + .card {
-  margin-top: 1rem;
-}
-
 .article__title {
-  font-size: 10rem;
-  width: 100vw;
-  text-align: center;
+  font-size: 20rem;
+  position: absolute;
+  top: 0;
+  left: 10vw;
+  mix-blend-mode: difference;
 }
 
 .article__content {
   max-width: 80vw;
-  margin-left: 10vw;
+  margin: 5vh 10vw;
+
+  img {
+    border-radius: 24px;
+  }
 }
 
 body {

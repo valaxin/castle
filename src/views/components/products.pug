@@ -1,0 +1,17 @@
+section.section.products
+  h1.title.products__title.is-2 Products
+  h2.subtitle.products__subtitle.is-5 Repairs, Parts, Accessories & Clothing
+
+  ul
+    each product in self.products
+      li
+        if (product.published == false)
+          ul
+            li
+              a.is-primary(href= product.short_url).title.is-3= product.name
+              span.material-icons.round arrow_outward
+            li.mt-2
+              span.subtitle.is-5= product.formatted_price
+            li.mt-4
+              != product.description
+      hr
