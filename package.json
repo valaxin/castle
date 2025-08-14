@@ -23,6 +23,7 @@
     "highlight.js": "^11.11.1",
     "html-bundler-webpack-plugin": "^4.21.1",
     "htmx.org": "^2.0.6",
+    "jsdom": "^26.1.0",
     "marked": "^16.1.1",
     "marked-alert": "^2.1.2",
     "marked-emoji": "^2.0.1",

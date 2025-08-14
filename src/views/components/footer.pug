@@ -1,25 +1,48 @@
-footer
-  .footer__links
-    span.footer__links-title= self.title
-    span.footer__links-copyright &nbsp;&copy; 2025
-    a.footer__links-legal(href='/legal.html') &nbsp;Terms & Policies
-    .footer__links-socials
-      a.footer__links-socials-github
-        | github
-        span.material-icons-round.md-18 arrow_outward
-      a.footer__links-socials-gumroad
-        | gumroad
-        span.material-icons-round.md-18 arrow_outward
-      a.footer__links-socials-discord
-        | discord
-        span.material-icons-round.md-18 arrow_outward
-      a.footer__links-socials-bluesky
-        | bluesky
-        span.material-icons-round.md-18 arrow_outward
-      a.footer__links-socials-instagram
-        | instagram
-        span.material-icons-round.md-18 arrow_outward
-      a.footer__links-socials-codepen
-        | codepen
-        span.material-icons-round.md-18 arrow_outward
-  .footer__aside
+footer.footer
+  .container
+    .columns.is-vcentered
+      //- Footer main text/branding
+      .column.is-6
+        p.title.is-6.has-text-weight-semibold= self.title
+        p.is-size-7.has-text-grey
+          | © 2025 &nbsp;•&nbsp;
+          a.has-text-grey-dark(href='/legal.html') Terms & Policies
+
+      //- Footer socials
+      .column.is-6
+        .level.is-mobile.is-justify-content-flex-end
+          //- GitHub
+          a.level-item.has-text-grey-dark(href="https://github.com/" target="_blank")
+            span.icon
+              span.material-icons-round.md-18 arrow_outward
+            span.is-size-7.ml-1 GitHub
+
+          //- Gumroad
+          a.level-item.has-text-grey-dark(href="https://gumroad.com/" target="_blank")
+            span.icon
+              span.material-icons-round.md-18 arrow_outward
+            span.is-size-7.ml-1 Gumroad
+
+          //- Discord
+          a.level-item.has-text-grey-dark(href="https://discord.com/" target="_blank")
+            span.icon
+              span.material-icons-round.md-18 arrow_outward
+            span.is-size-7.ml-1 Discord
+
+          //- Bluesky
+          a.level-item.has-text-grey-dark(href="https://bsky.app/" target="_blank")
+            span.icon
+              span.material-icons-round.md-18 arrow_outward
+            span.is-size-7.ml-1 Bluesky
+
+          //- Instagram
+          a.level-item.has-text-grey-dark(href="https://instagram.com/" target="_blank")
+            span.icon
+              span.material-icons-round.md-18 arrow_outward
+            span.is-size-7.ml-1 Instagram
+
+          //- CodePen
+          a.level-item.has-text-grey-dark(href="https://codepen.io/" target="_blank")
+            span.icon
+              span.material-icons-round.md-18 arrow_outward
+            span.is-size-7.ml-1 CodePen

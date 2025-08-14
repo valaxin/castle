@@ -1,35 +1,48 @@
 nav.navpill(role='navigation' aria-label='main navigation')
-  .navpill-start
+  
+  .navpill__block
 
     if (back_button)
-      .navpill-item
+      .navpill__block-item
         a(href='/')
           span.material-icons.round subdirectory_arrow_left
+          span.tool-tip return
     
     if (context)
-      .navpill-item.current-post-title
-        a= context.frontmatter.title
+      .navpill__block-item
+        a.navpill__block-item-context-title= context.frontmatter.title
     
-    .navpill-item.only-mobile
-      button.mobile-menu-toggle
-        span.material-icons.round egg
+    .navpill__block-item
+      a.navpill__block-item-theme-toggle
+        span.material-icons.round auto_fix_high
+        span.tool-tip theme
 
-
-    .navpill-item
-      button.color-scheme-toggle
-        span.material-icons.round.scheme-button display_settings
-    .navpill-item
+    .navpill__block-item
       a(href='/#about')
-        span.material-icons.round account_circle
-    .navpill-item
+        span.material-icons.round fingerprint
+        span.tool-tip hello
+    
+    .navpill__block-item
       a(href='/#posts')
-        span.material-icons.round attach_file
-    .navpill-item
+        span.material-icons.round campaign
+        span.tool-tip posts
+    
+    .navpill__block-item
       a(href='/#projects')
-        span.material-icons.round folder_special
-    .navpill-item
+        span.material-icons.round psychology
+        span.tool-tip projects
+    
+    .navpill__block-item
+      a(href='/#connect')
+        span.material-icons.round qr_code_2
+        span.tool-tip connect
+
+    .navpill__block-item
       a(href='/#products')
         span.material-icons.round shopping_bag
-    .navpill-item
-      a.title(href='/')
+        span.tool-tip products
+    
+    .navpill__block-item
+      a.navpill__block-item-index-title(href='/')
         span.material-icons.round castle
+        span.tool-tip index

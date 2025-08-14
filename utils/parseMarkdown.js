@@ -10,6 +10,8 @@ import moment from 'moment'
 import matter from 'gray-matter'
 import hljs from 'highlight.js'
 
+import { JSDOM } from 'jsdom'
+
 const marked = new Marked(
   markedAlert(),
   markedHighlight({
@@ -39,7 +41,7 @@ export function parseMarkdown(filePath) {
   const htmlContent = marked.parse(content) // this will be where markdown it is called
 
   return {
-    html: htmlContent,
+    html: addBulmaClasses(htmlContent),
     frontmatter: data,
     birthtime: moment(birthtime).fromNow(),
     fsize: formatsize(size),
@@ -92,3 +94,49 @@ function formatsize(bytes) {
   }
 }
 
+/* --- */
+
+function addBulmaClasses(html) {
+  const dom = new JSDOM(html)
+  const document = dom.window.document
+  const container = document.createElement('div');
+  container.innerHTML = html;
+
+  const tagClassMap = {
+    H1: 'title',
+    H2: 'title is-2',
+    H3: 'title is-3',
+    H4: 'title is-4',
+    H5: 'title is-5',
+    H6: 'title is-6',
+    P: 'content',
+    UL: 'menu-list',
+    OL: 'menu-list',
+    A: 'button is-link',
+    TABLE: 'table is-striped is-hoverable is-fullwidth',
+    IMG: 'image',
+    INPUT: 'input',
+    SELECT: 'select',
+    TEXTAREA: 'textarea',
+    BUTTON: 'button',
+    FORM: 'box',
+    SECTION: 'section',
+    ARTICLE: 'box',
+    NAV: 'navbar',
+  };
+
+  for (const [tag, classes] of Object.entries(tagClassMap)) {
+    const elements = container.querySelectorAll(tag.toLowerCase());
+    elements.forEach(el => {
+      if (el.classList.length === 0) {
+        el.className = classes;
+      } else {
+        // Append classes only if not already present
+        const toAdd = classes.split(' ').filter(c => !el.classList.contains(c));
+        if (toAdd.length) el.classList.add(...toAdd);
+      }
+    });
+  }
+
+  return container.innerHTML;
+}

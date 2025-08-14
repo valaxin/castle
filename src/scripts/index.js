@@ -8,6 +8,7 @@ import * as htmx from '@npm/htmx.org'
 import { animate } from '@npm/animejs'
 
 import './modules/color-scheme.js'
+import './modules/table-of-contents.js'
 
 if (window) {
   window._log = (initalizer, message) => {
@@ -17,29 +18,5 @@ if (window) {
   console.error('no window object, this code is intended for the browser')
 }
 
-// ...
-
 window.htmx = htmx.default
-window._log('index.js', {htmx: htmx.default, animate, })
-
-// ...
-/*
-animate(['.navbar-brand', '.navbar-item'], {
-  y: [
-    { to: '-2.75rem', ease: 'outExpo', duration: 600 },
-    { to: 0, ease: 'outBounce', duration: 800, delay: 100 }
-  ],
-  loop: false,
-  delay: 250
-});
-*/
-/*
-animate('article', {
-  y: [
-    { to: '-1rem', duration: 600, opacity: 0 },
-    { to: 0,  duration: 800, delay: 100, opacity: 1 }
-  ],
-  loop: false,
-  delay: 250
-})
-*/
+window._log('index.js >> available', { htmx: htmx.default, animate, hljs })

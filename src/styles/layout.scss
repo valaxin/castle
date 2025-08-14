@@ -1,19 +1,19 @@
-
 // remote
-@use '@npm/bulma';
-@use '@npm/material-icons/iconfont/material-icons.css';
+@use "@npm/bulma";
+@use "@npm/material-icons/iconfont/material-icons.css";
 
-// locals
-@use 'listings';
-@use 'article';
-@use 'components/navbar';
-@use 'components/footer';
-@use 'components/legal';
-
-$app-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-$app-font-code: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;
-$app-global-width: 94vw;
-$app-global-horz-margin: 3vw;
+$app-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue",
+  sans-serif;
+$app-font-code:
+  Consolas,
+  Monaco,
+  Lucida Console,
+  Liberation Mono,
+  DejaVu Sans Mono,
+  Bitstream Vera Sans Mono,
+  Courier New;
+$app-global-width: 70vw;
+$app-global-horz-margin: 15vw;
 
 :root {
   font-synthesis: none;
@@ -22,28 +22,39 @@ $app-global-horz-margin: 3vw;
   -moz-osx-font-smoothing: grayscale;
 }
 
+.legal-title {
+  text-decoration: underline;
+  text-align: center;
+}
+
+.legal-footnotes {
+  opacity: 0.75;
+  font-size: .8rem;
+}
+
+.service-icon {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+.hero-body {
+  padding: 3rem 1.5rem;
+}
+.card + .card {
+  margin-top: 1rem;
+}
+
+.article__title {
+  font-size: 10rem;
+  width: 100vw;
+  text-align: center;
+}
+
+.article__content {
+  max-width: 80vw;
+  margin-left: 10vw;
+}
+
 body {
   font-family: $app-font;
-  width: $app-global-width;
-  margin: 0 $app-global-horz-margin;
-  margin-bottom: 100px;
 }
-
-main {
-  max-width: 1024px;
-}
-
-/* mobile and tablet styles */
-@media only screen and (max-width: 600px) {}
-@media only screen and (max-width: 960px) {
-  main {
-    max-width: 90vw;
-  }
-  .article {
-    margin-left: default;
-  }
-}
-
-@media (prefers-color-scheme: dark) {}
-@media (prefers-color-scheme: light) {}
-

@@ -1,0 +1,18 @@
+section.section
+  .container
+    form.block(method="POST" data-netlify="true" name="email-capture")
+      // Hidden input required by Netlify
+      input(type="hidden" name="form-name" value="email-capture")
+
+      h2.title.is-4 Subscribe for Updates
+      p.subtitle.is-6 Stay informed with occasional updates. No spam, ever.
+
+      .field
+        label.label(for="email") Email Address
+        .control.has-icons-left
+          input.input(type="email" name="email" id="email" placeholder="you@example.com" required)
+          span.icon.is-small.is-left.material-icons.round campaign
+
+      .field
+        .control
+          button.button.is-primary(type="submit") Subscribe

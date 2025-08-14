@@ -1,11 +1,11 @@
 extends layout
 
 block content
-  include components/navbar
+  // include components/navbar
   main
-    section.seciont#about
-    include components/listings/posts
-    include components/listings/projects
-    include components/listings/products
-    section.section#newsletter
+    include components/blocks/posts
+    include components/blocks/projects
+    include components/blocks/services
+    include components/blocks/products
+    include components/blocks/newsletter
   include components/footer

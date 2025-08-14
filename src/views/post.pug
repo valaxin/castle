@@ -3,12 +3,14 @@ extends layout
 
 block content
   - var back_button = true
-  include components/navbar
+  // include components/navbar
   main
     article.article
-      img.article__hero(src= context.frontmatter.thumbnail alt= context.frontmatter.thumbnailAlt)
-      h1.article__title= context.frontmatter.title
-      div.article__content
+      figure.image
+        img.article__hero(src=context.frontmatter.thumbnail, alt=context.frontmatter.thumbnailAlt)
+      h1.title.article__title= context.frontmatter.title
+      div.content.article__content
         != context.html
+
 
   include components/footer
