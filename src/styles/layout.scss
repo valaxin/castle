@@ -49,6 +49,24 @@ $app-global-horz-margin: 15vw;
   }
 }
 
+.flex-row {
+  display: flex;
+  flex-direction: row;
+
+  img {
+    border-radius: 24px;
+    max-width: 128px;
+    max-height: 128px;
+    object-fit: cover;
+    object-view-box: unset;
+    margin-right: 25px;
+  }
+}
+
+li.product-description {
+  max-width: 840px;
+}
+
 body {
   font-family: $app-font;
 }

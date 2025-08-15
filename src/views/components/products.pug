@@ -1,17 +1,25 @@
 section.section.products
   h1.title.products__title.is-2 Products
-  h2.subtitle.products__subtitle.is-5 Repairs, Parts, Accessories & Clothing
+  h2.subtitle.products__subtitle.is-6 Repairs, Parts, Accessories & Clothing
 
   ul
     each product in self.products
-      li
-        if (product.published == false)
+      if (product.published == false)
+        li.flex-row
+          if (product.preview_url)
+            img(src= product.preview_url)
           ul
             li
               a.is-primary(href= product.short_url).title.is-3= product.name
-              span.material-icons.round arrow_outward
+              span.material-icons-round arrow_outward
+              if (product.custom_summary)
+                p.mt-2= product.custom_summary
             li.mt-2
-              span.subtitle.is-5= product.formatted_price
-            li.mt-4
+              span.button.is-primary.is-outlined.is-5.mt-2.mr-2= product.formatted_price
+              if (product.max_purchase_count)
+                span.button.is-warning.is-outlined.is-5.mt-2
+                  span.material-icons-round warning
+                  | &nbsp;Only #{product.max_purchase_count} Available
+            li.product-description.mt-4
               != product.description
       hr
