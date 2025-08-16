@@ -1,10 +1,12 @@
 import { readFileSync, readdirSync, statSync } from 'fs'
 import { basename, join } from 'path'
-import { Marked } from 'marked'
 
-import { markedHighlight } from 'marked-highlight'
+import { Marked } from 'marked'
 import { markedEmoji } from 'marked-emoji'
+import { emojis } from './emojiObject.js'
+import { markedHighlight } from 'marked-highlight'
 import markedAlert from 'marked-alert'
+import markedFootnote from 'marked-footnote'
 
 import moment from 'moment'
 import matter from 'gray-matter'
@@ -12,8 +14,10 @@ import hljs from 'highlight.js'
 
 import { JSDOM } from 'jsdom'
 
+
 const marked = new Marked(
   markedAlert(),
+  markedFootnote(),
   markedHighlight({
     emptyLangClass: 'hljs',
     langPrefix: 'hljs language-',
@@ -23,12 +27,9 @@ const marked = new Marked(
     },
   }),
   markedEmoji({
-    emojis: {
-      heart: '❤️',
-      tada: '🎉',
-    },
+    emojis,
     renderer: (token) => token.emoji,
-  })
+  }),
 )
 
 /* --- */
@@ -110,9 +111,9 @@ function addBulmaClasses(html) {
     H5: 'title is-5',
     H6: 'title is-6',
     P: 'content',
-    UL: 'menu-list',
-    OL: 'menu-list',
-    A: 'button is-link',
+    UL: 'unorganized-list',
+    OL: 'organized menu-list',
+    A: 'is-link',
     TABLE: 'table is-striped is-hoverable is-fullwidth',
     IMG: 'image',
     INPUT: 'input',

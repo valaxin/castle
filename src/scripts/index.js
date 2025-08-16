@@ -1,8 +1,8 @@
 'use strict'
 
 import hljs from '@npm/highlight.js';
-import '@npm/highlight.js/styles/github-dark.css' // You can choose any style you prefer
-import '@npm/highlight.js/styles/github.css' // You can choose any style you prefer
+// import '@npm/highlight.js/styles/github-dark.css' 
+import '@npm/highlight.js/styles/github.css'
 import * as htmx from '@npm/htmx.org'
 
 import { animate } from '@npm/animejs'
@@ -10,6 +10,16 @@ import { animate } from '@npm/animejs'
 import './modules/color-scheme.js'
 import './modules/lightbox-gallery.js'
 import './modules/table-of-contents.js'
+
+const theme = window.matchMedia(`(prefers-color-scheme: dark)`)
+const themePref = document.documentElement.dataset.theme
+
+
+if (theme.matches && themePref != 'dark') {
+  themePref = theme
+}
+
+console.log({ theme, themePref })
 
 if (window) {
   window._log = (initalizer, message) => {

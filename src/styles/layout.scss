@@ -2,6 +2,8 @@
 @use "@npm/bulma";
 @use "@npm/material-icons/iconfont/material-icons.css";
 
+@use "gfmAlerts";
+
 $app-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue",
   sans-serif;
 $app-font-code:
@@ -27,6 +29,35 @@ $app-global-horz-margin: 15vw;
   text-align: center;
 }
 
+kbd {
+  padding: 4px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--bulma-border);
+  font-weight: 600;
+  box-shadow: 0 2px 0 0 var(--bulma-border);
+  color: var(--bulma-strong-color);
+  background-color: var(--bulma-background);
+}
+
+
+iframe {
+  width: 100%;
+}
+
+pre, code {
+  border-radius: 16px;
+}
+
+pre > code {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+blockquote {
+  border-top-right-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
 .legal-footnotes {
   opacity: 0.75;
   font-size: .8rem;
@@ -38,14 +69,25 @@ $app-global-horz-margin: 15vw;
   top: 5vh;
   left: 10vw;
   mix-blend-mode: difference;
+  color: var(--bulma-background);
 }
 
 .article__content {
-  max-width: 80vw;
-  margin: 5vh 10vw;
+  max-width: 95vw;
+  margin: 5vh 2.5vw;
 
   img {
     border-radius: 24px;
+  }
+
+  p, code, li, td, th {
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 2rem;
+  }
+  
+  th {
+    font-weight: 800;
   }
 }
 
@@ -62,6 +104,30 @@ $app-global-horz-margin: 15vw;
     margin-right: 25px;
   }
 }
+
+.unorganized-list {
+  li {
+    margin-left: -25px;
+    list-style: none;
+
+    &:hover {}
+
+    input[type=checkbox] {
+      margin-right: 5px;
+      background: transparent;
+      border: none;
+      width: auto;
+      
+      &::before {
+        content: '✔️';
+        font-size: 1.25rem;
+        font-weight: 900;
+        filter: grayscale(1);
+      }
+    }
+  }
+}
+
 
 li.product-description {
   max-width: 840px;

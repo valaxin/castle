@@ -22,7 +22,6 @@ Let's make it *italic now*.
 You guessed it, _one underscore is also enough_.  
 Can we combine **_both of that_?** Absolutely.
 What if I want to ~~strikethrough~~?
-Also ==highlighted text== is supported
 
 ```javascript
 console.log('hello world');
@@ -68,9 +67,9 @@ I :heart: marked! :tada:
 
 ![alt text goes here](https://placehold.co/1920x1080)
 
-[[x]] + [[shift]]
+## Keyboard Keys as `<kbd>` Tags
 
-[[ space ]]
+<kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Space</kbd>
 
 ## Something Else
 
@@ -127,11 +126,7 @@ func main() {
 
 ## embeded video
 
-`@[youtube](dQw4w9WgXcQ)`
-
-looks like 
-
-@[youtube](dQw4w9WgXcQ)
+<iframe width="873" height="491" src="https://www.youtube.com/embed/dQw4w9WgXcQ?list=RDdQw4w9WgXcQ" title="Rick Astley - Never Gonna Give You Up (Official Video) (4K Remaster)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 
