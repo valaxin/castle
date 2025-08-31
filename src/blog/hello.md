@@ -1,14 +1,46 @@
 ---
-title: Hello World
-published: 07/2025
-tags: one two three
-summary: This contains most elements for a given post and allows for easy testings of features provided by the markdown filters.
-thumbnail: '@images/resources/feathers.jpg'
+title: Hello Everyone!
+published: 08/2025
+tags: hello-world testing tag
+summary: The first entry on this website, most content is for testing purposes.
+thumbnail: '@images/resources/castle.jpg'
 author: '@valaxin'
+visible: true
+---
+
+# Hello! :wave:
+
+Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+
+Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+
+Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+
+Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+
+Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.
+
+[//]: # ({ "title": "user comments test", "creation": "15/02/2022", "summary": "This contains most elements for a given post and allows for easy testings of features provided by the markdown filters." })
+
+# One *Example* Post To Rule Them All
 
 ---
 
-# First Post
+# h1 Heading
+
+## h2 Heading
+
+### h3 Heading
+
+#### h4 Heading
+
+##### h5 Heading
+
+###### h6 Heading
+
+## Horizontal Rules
+
+[//]: # ({"title": "Example Article","creation": "01/01/1999", "author": "valaxin", "summary": "Covering most if not all of the available features when writing a markdown post in this enviroment.", "tags": ["test", "technology", "blog"]})
 
 > This document is to outline some concepts employed within the project. Starting with the front and moving into the back covering the phalosphy in the design choices I've made.
 
@@ -22,6 +54,7 @@ Let's make it *italic now*.
 You guessed it, _one underscore is also enough_.  
 Can we combine **_both of that_?** Absolutely.
 What if I want to ~~strikethrough~~?
+Also ==highlighted text== is supported
 
 ```javascript
 console.log('hello world');
@@ -39,39 +72,28 @@ cat dictonary.txt | awk value > ./output.txt
 
 ---
 
-## Emoji Section
-I :heart: marked! :tada:
+::: warning
+*here be dragons*
+:::
 
-I :heart: marked! :tada:
+::: information
+*here be information*
+:::
 
-I :heart: marked! :tada:
-
-## GFM Alerts
-
-> [!NOTE]
-> Useful information that users should know, even when skimming content.
-
-> [!TIP]
-> Helpful advice for doing things better or more easily.
-
-> [!IMPORTANT]
-> Key information users need to know to achieve their goal.
-
-> [!WARNING]
-> Urgent info that needs immediate user attention to avoid problems.
-
-> [!CAUTION]
-> Advises about risks or negative outcomes of certain actions.
+::: spoiler
+*here be secrets*
+:::
 
 ![alt text goes here](https://placehold.co/512x512)
 
 ![alt text goes here](https://placehold.co/1920x1080)
 
-## Keyboard Keys as `<kbd>` Tags
+[[x]] + [[shift]]
 
-<kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Space</kbd>
+[[ space ]]
 
 ## Something Else
+
 
 Tempor orci eu lobortis elementum nibh tellus molestie nunc non. Sit amet consectetur adipiscing elit pellentesque. Risus at ultrices mi tempus imperdiet nulla malesuada. Quam adipiscing vitae proin sagittis nisl rhoncus mattis. Nunc aliquet bibendum enim facilisis gravida neque convallis a cras.
 
@@ -85,7 +107,7 @@ Project is about music & movies.
 ##### Hope you will like it. [^see]
 [^see]: Loading... ⌛️
 
-> Ac turpis egestas maecenas pharetra convallis. Ut diam quam nulla porttitor.
+>  Ac turpis egestas maecenas pharetra convallis. Ut diam quam nulla porttitor.
 
 Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempor orci eu lobortis elementum nibh tellus molestie nunc non, sit amet consectetur.
 
@@ -126,9 +148,15 @@ func main() {
 
 ## embeded video
 
-<iframe width="873" height="491" src="https://www.youtube.com/embed/dQw4w9WgXcQ?list=RDdQw4w9WgXcQ" title="Rick Astley - Never Gonna Give You Up (Official Video) (4K Remaster)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+`@[youtube](dQw4w9WgXcQ)`
 
----
+looks like 
+
+@[youtube](dQw4w9WgXcQ)
+
+## emojis
+
+:smile: :wave: :dog: :cat: :laughing:
 
 ## a table
 

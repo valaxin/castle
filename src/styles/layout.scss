@@ -2,10 +2,12 @@
 @use "@npm/bulma";
 @use "@npm/material-icons/iconfont/material-icons.css";
 
-@use "gfmAlerts";
+@use "articles";
+@use "alerts";
+@use "lightbox";
 
-$app-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue",
-  sans-serif;
+$app-font:
+  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 $app-font-code:
   Consolas,
   Monaco,
@@ -14,8 +16,6 @@ $app-font-code:
   DejaVu Sans Mono,
   Bitstream Vera Sans Mono,
   Courier New;
-$app-global-width: 70vw;
-$app-global-horz-margin: 15vw;
 
 :root {
   font-synthesis: none;
@@ -24,71 +24,8 @@ $app-global-horz-margin: 15vw;
   -moz-osx-font-smoothing: grayscale;
 }
 
-.legal-title {
-  text-decoration: underline;
-  text-align: center;
-}
-
-kbd {
-  padding: 4px 6px;
-  border-radius: 4px;
-  border: 1px solid var(--bulma-border);
-  font-weight: 600;
-  box-shadow: 0 2px 0 0 var(--bulma-border);
-  color: var(--bulma-strong-color);
-  background-color: var(--bulma-background);
-}
-
-
-iframe {
-  width: 100%;
-}
-
-pre, code {
-  border-radius: 16px;
-}
-
-pre > code {
-  background: transparent !important;
-  background-color: transparent !important;
-}
-
-blockquote {
-  border-top-right-radius: 16px;
-  border-bottom-right-radius: 16px;
-}
-
-.legal-footnotes {
-  opacity: 0.75;
-  font-size: .8rem;
-}
-
-.article__title {
-  font-size: 20vw;
-  position: absolute;
-  top: 5vh;
-  left: 10vw;
-  mix-blend-mode: difference;
-  color: var(--bulma-background);
-}
-
-.article__content {
-  max-width: 95vw;
-  margin: 5vh 2.5vw;
-
-  img {
-    border-radius: 24px;
-  }
-
-  p, code, li, td, th {
-    font-size: 1.25rem;
-    font-weight: 500;
-    line-height: 2rem;
-  }
-  
-  th {
-    font-weight: 800;
-  }
+body {
+  font-family: $app-font;
 }
 
 .flex-row {
@@ -96,6 +33,13 @@ blockquote {
   flex-direction: row;
 
   img {
+    object-fit: contain;
+    margin-top: 10px;
+    margin-right: 10px;
+    user-select: none;
+  }
+
+  img.product-image {
     border-radius: 24px;
     max-width: 128px;
     max-height: 128px;
@@ -105,34 +49,45 @@ blockquote {
   }
 }
 
-.unorganized-list {
-  li {
-    margin-left: -25px;
-    list-style: none;
+li.product-description {
+  max-width: 840px;
+}
 
-    &:hover {}
+footer.footer {
+  .links {
+    font-family: $app-font-code;
+    font-size: 1rem;
+  }
 
-    input[type=checkbox] {
+  .controls {
+    button.button {
       margin-right: 5px;
-      background: transparent;
-      border: none;
-      width: auto;
-      
-      &::before {
-        content: '✔️';
-        font-size: 1.25rem;
-        font-weight: 900;
-        filter: grayscale(1);
-      }
+      font-size: .75rem;
     }
   }
 }
 
 
-li.product-description {
-  max-width: 840px;
+@media screen and (min-width: 720px) {
+  body {
+    main {
+      max-width: 60vw;
+      margin-left: 20vw;
+    }
+    footer {
+      max-width: 60vw;
+      margin-left: 20vw;
+      background-color: transparent !important;
+      background: transparent !important;
+    }
+  }
+  
+  figure.image {
+    padding-top: 25px;
+    img.article__hero {
+      border-radius: 24px;
+    }
+  }
+  
 }
 
-body {
-  font-family: $app-font;
-}

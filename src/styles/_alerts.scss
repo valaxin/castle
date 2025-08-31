@@ -20,9 +20,8 @@
   }
 }
 
-@media (prefers-color-scheme: light) {
-  
-  /* -- LIGHTMODE -- */
+html[data-theme=light],
+html[data-theme=auto] {
   .markdown-alert-note {
     background-color: var(--bulma-info-light);
     svg {
@@ -74,13 +73,12 @@
     }
   }
 }
+html[data-theme=dark] {  
 
-@media (prefers-color-scheme: dark) {
+  h1.article__title { color: white !important; }
 
-  /* -- DARKMODE -- */
-  
   .markdown-alert-note {
-    border: 1px solid var(--bulma-info-light);
+    background-color: var(--bulma-info-dark);
     svg {
       fill: var(--bulma-info-light);
     }
@@ -89,9 +87,7 @@
       color: var(--bulma-info-light);
     }
   }
-
   .markdown-alert-tip {
-    border: 1px solid var(--bulma-primary-light);
     background-color: var(--bulma-primary-dark);
     svg {
       fill: var(--bulma-primary-light);
@@ -101,9 +97,7 @@
       color: var(--bulma-primary-light);
     }
   }
-
   .markdown-alert-important {
-    border: 1px solid var(--bulma-link-light);
     background-color: var(--bulma-link-dark);
     svg {
       fill: var(--bulma-link-light);
@@ -114,7 +108,6 @@
     }
   }
   .markdown-alert-warning {
-    border: 1px solid var(--bulma-warning-light);
     background-color: var(--bulma-warning-dark);
     svg {
       fill: var(--bulma-warning-light);
@@ -125,7 +118,6 @@
     }
   }
   .markdown-alert-caution {
-    border: 1px solid var(--bulma-danger-light);
     background-color: var(--bulma-danger-dark);
     svg {
       fill: var(--bulma-danger-light);

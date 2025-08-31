@@ -2,7 +2,7 @@
 
 import hljs from '@npm/highlight.js';
 // import '@npm/highlight.js/styles/github-dark.css' 
-import '@npm/highlight.js/styles/github.css'
+// import '@npm/highlight.js/styles/github.css'
 import * as htmx from '@npm/htmx.org'
 
 import { animate } from '@npm/animejs'
@@ -20,6 +20,8 @@ if (theme.matches && themePref != 'dark') {
 }
 
 console.log({ theme, themePref })
+
+
 
 if (window) {
   window._log = (initalizer, message) => {

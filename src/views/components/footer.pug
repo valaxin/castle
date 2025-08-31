@@ -1,11 +1,22 @@
 footer.section.footer
   a(href='/').title.footer__title= self.title
-  h2.subtitle.footer__subtitle.is-6 A slice of my web
+  h2.subtitle.footer__subtitle.is-6 My slice of the web
   .links
     a(href='/legal.html') Legal
+      | &nbsp;&nbsp;
+    a(href='/feed.xml') XML
+      | |
+    a(href='/feed.json') JSON
       | &nbsp;&nbsp;
     a(href='https://github.com/valaxin') Github
       span.material-icons.round arrow_outward
       | &nbsp;&nbsp;
     a(href='https://codepen.com/valaxin') Codepen
       span.material-icons.round arrow_outward
+      | &nbsp;&nbsp;
+    a(href='https://codepen.com/valaxin') Bluesky
+      span.material-icons.round arrow_outward
+    
+  .controls.mt-5
+    button.button.is-link.is-outlined.page-top TOP
+    button.button.is-link.is-outlined.theme-toggle AUTO
