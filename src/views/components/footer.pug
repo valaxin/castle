@@ -18,5 +18,8 @@ footer.section.footer
       span.material-icons.round arrow_outward
     
   .controls.mt-5
-    button.button.is-link.is-outlined.page-top TOP
+    if (context) 
+      button.button.button.is-link.is-outlined.return-home
+        a(href='/') INDEX
+    button.button.is-link.is-outlined.page-top(onclick='window.scrollTop()') TOP
     button.button.is-link.is-outlined.theme-toggle AUTO

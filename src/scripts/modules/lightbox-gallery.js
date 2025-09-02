@@ -10,7 +10,7 @@ export default (async () => {
     image.addEventListener('click', e => {
       const lightboxInner = `
         <span class="lightbox__close material-icons round close is-white">close</span>
-        <img class="lightbox__image" src=${e.target.src}>
+        <img style="cursor: zoom-out;" class="lightbox__image" src=${e.target.src}>
         <span class="lightbox__image-alt-text">${e.target.alt}</span>
       `.trim()
       

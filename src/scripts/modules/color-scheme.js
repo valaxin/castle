@@ -53,17 +53,7 @@ export default (async () => {
         save(storeKey, 'auto')
         return document.documentElement.setAttribute('data-theme', 'auto')
     }
-    console.log(document.documentElement.dataset.theme)
   }
 
-  // change hljs
-  async function changeHLJS () {
-    console.log('changing hljs theme to match')
-  }
-
-  // click event
-  toggleButton.addEventListener('click', async () => {
-    await change()
-    await changeHLJS()
-  })
+  toggleButton.addEventListener('click', async () => { await change() })
 })()

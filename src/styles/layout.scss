@@ -2,6 +2,9 @@
 @use "@npm/bulma";
 @use "@npm/material-icons/iconfont/material-icons.css";
 
+// @use "@npm/highlight.js/styles/github.css";
+// @use "@npm/highlight.js/styles/github-dark.css";
+
 @use "articles";
 @use "alerts";
 @use "lightbox";
@@ -47,6 +50,10 @@ body {
     object-view-box: unset;
     margin-right: 25px;
   }
+}
+
+img {
+  cursor: zoom-in;
 }
 
 li.product-description {
