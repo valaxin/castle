@@ -2,126 +2,115 @@
 
 'use strict'
 
-import { join, resolve } from 'node:path'
-import CopyPlugin from 'copy-webpack-plugin'
-import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import options from './library/options-generator.js'
+import 'dotenv/config'
+import { resolve } from 'path'
+import HtmlBundlerPlugin from 'html-bundler-webpack-plugin'
+import { parseAllMarkdown } from './utils/parseMarkdown.js'
+import JSONWebpackPlugin from './utils/JSONWebpackPlugin.js'
 
-const productionFlag = options.mode === 'development' ? false : true
+const mode = process.env.NODE_ENV === 'production' ? true : false
+const markdownPosts = parseAllMarkdown(resolve('src/blog'), 'src/views/post.pug')
+
+import { gumroad, github } from './utils/remoteCollections.js'
+
+/* --- */
 
 const devServer = {
-  static: {
-    directory: options.sys.folders.public,
-  },
-  devMiddleware: {
-    publicPath: '/',
-  },
-  hot: !productionFlag,
+  static: { directory: 'src/public' },
+  devMiddleware: { publicPath: '/' },
+  hot: true,
   compress: false,
-  host: options.server.host,
-  port: options.server.port,
-  proxy: [
-    {
-      context: ['/.netlify/functions'],
-      target: 'http://localhost:9000',
-      secure: false,
-      pathRewrite: { '^/.netlify/functions': '' },
-    },
-  ],
 }
 
-export default {
-  mode: productionFlag ? 'production' : 'development',
-  devServer,
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-    },
+/* --- */
+
+const bundlerOptions = {
+  experiments: {
+    topLevelAwait: true,
   },
-  performance: {
-    hints: productionFlag === true ? 'warning' : false,
-    maxEntrypointSize: 1024000, // 1MB
-    maxAssetSize: 1024000, // 1MB
-  },
+  preprocessor: 'pug',
   entry: {
-    index: {
-      import: resolve(options.entry.directory, options.entry.filename),
+    index: 'src/views/index.pug'
+  },
+  js: {
+    filename: 'js/[name].[contenthash:8].js',
+  },
+  css: {
+    filename: 'css/[name].[contenthash:8].css',
+  },
+  beforePreprocessor: (content, { data, resourcePath, _module }) => {},
+  data: {
+    self: {
+      posts: markdownPosts,
+      products: gumroad,
+      repos: github,
+      title: 'castle',
+      theme: {
+        color: '#FFFFFF',
+      },
     },
   },
+}
+
+// add dynamically generated posts to bundle
+for (let i = 0; i < markdownPosts.length; i++) {
+  bundlerOptions.entry[markdownPosts[i].slug] = {
+    import: markdownPosts[i].templatePath,
+    data: { context: markdownPosts[i] }
+  }
+}
+
+/* --- */
+
+const config = {
+  devtool: mode ? false : 'eval',
+  devServer: mode ? false : devServer,
+  mode: mode ? 'production' : 'development',
+  entry: {},
   output: {
-    path: resolve(options.output.directory),
-    filename: `[name].${options.output.filename}`,
+    path: resolve('dist'),
+    filename: `bundle.[name].[chunkhash:8].js`,
+  },
+  resolve: {
+    alias: {
+      '@npm': resolve('node_modules'),
+      '@images': resolve('src/public/images'),
+      '@styles': resolve('src/styles'),
+      '@scripts': resolve('src/scripts'),
+    },
+    extensions: ['.mjs', '.cjs', '.js', '.scss', '.css'],
   },
   module: {
     rules: [
       {
-        test: /\.(js|mjs|ts|tsx)$/,
-        include: resolve(process.cwd(), 'src'),
+        test: /\.(js|mjs|cjs)$/,
+        include: resolve('src/scripts'),
         loader: 'babel-loader',
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.(ico|png|jp?g|webp|svg)$/,
         type: 'asset/resource',
+        generator: {
+          filename: 'img/[name].[hash:8][ext][query]',
+        },
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
+        generator: {
+          filename: 'fnt/[name].[chunkhash:8][ext][query]',
+        },
       },
       {
-        test: /\.(s(a|c)ss|css)$/,
-        use: [
-          productionFlag === true ? 'style-loader' : MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true,
-            },
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true,
-            },
-          },
-        ],
-      },
-      {
-        test: /\.pug$/,
-        use: [
-          {
-            loader: 'raw-loader',
-          },
-          {
-            loader: './library/pug-html-loader.js',
-            options: {
-              data: options.app,
-            },
-          },
-        ],
+        test: /\.s?css$/,
+        use: ['css-loader', 'sass-loader'],
       },
     ],
   },
   plugins: [
-    new MiniCssExtractPlugin({ filename: '[name].css' }),
-    new CopyPlugin({
-      patterns: [
-        {
-          from: options.sys.folders.public,
-          to: './',
-        },
-      ],
-    }),
-    ...options.app.pages,
-    ...options.app.posts,
-  ],
-  resolve: {
-    modules: [join(options.entry.base, 'node_modules'), 'node_modules'],
-    alias: {
-      '@global': join(options.entry.base, 'node_modules'),
-      '@local': join(options.entry.base, 'app/modules'),
-      '@library': join(options.entry.base, 'library'),
-      '@styles': options.sys.folders.styles,
-    },
-    extensions: ['.mjs', '.js', '.scss', '.sass', '.css', '.pug', '.html', '.png', '.webp', '.gif', '.svg'],
-  },
+    new HtmlBundlerPlugin(bundlerOptions),
+    new JSONWebpackPlugin({ data: bundlerOptions.data })
+  ]
 }
+
+export default config

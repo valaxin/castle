@@ -1,0 +1,17 @@
+section.section.projects
+  h1.title.projects__title Projects
+  h2.subtitle.projects__subtitle.is-6 Giv'em A Little Razzle-Dazzle
+  
+  ul
+    each project in self.repos
+      li.mt-5
+        a.title.is-2(href= project.owner.html_url + '/' + project.name + '.git')= project.name
+          span.material-icons.round arrow_outward
+        ul
+          li
+            span= project.description
+          li
+            .button.is-outlined.is-info.is-small.mt-2.mr-2 created #{project.created_at}
+            .button.is-outlined.is-primary.is-small.mt-2.mr-2 updated #{project.updated_at}
+            if (project.language)
+              .button.is-outlined.is-warning.is-small.mt-2= project.language

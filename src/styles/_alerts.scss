@@ -1,0 +1,130 @@
+.markdown-alert {
+  box-sizing: border-box;
+  padding: 25px;
+  border-radius: 24px;
+  margin-bottom: 25px;
+
+  .content {
+    font-weight: 700;
+    font-size: 1.25rem;
+    
+    svg {
+      font-size: 2rem;
+    }
+  }
+
+  &-title {
+    font-size: 1.5vw;
+    font-weight: 800;
+    text-decoration: underline;
+  }
+}
+
+html[data-theme=light],
+html[data-theme=auto] {
+  .markdown-alert-note {
+    background-color: var(--bulma-info-light);
+    svg {
+      fill: var(--bulma-info-bold);
+    }
+    .markdown-alert-title,
+    .content {
+      color: var(--bulma-info-bold);
+    }
+  }
+  .markdown-alert-tip {
+    background-color: var(--bulma-primary-light);
+    svg {
+      fill: var(--bulma-primary-bold);
+    }
+    .markdown-alert-title,
+    .content {
+      color: var(--bulma-primary-bold);
+    }
+  }
+  .markdown-alert-important {
+    background-color: var(--bulma-link-light);
+    svg {
+      fill: var(--bulma-link-bold);
+    }
+    .markdown-alert-title,
+    .content {
+      color: var(--bulma-link-bold);
+    }
+  }
+  .markdown-alert-warning {
+    background-color: var(--bulma-warning-light);
+    svg {
+      fill: var(--bulma-warning-bold);
+    }
+    .markdown-alert-title,
+    .content {
+      color: var(--bulma-warning-bold);
+    }
+  }
+  .markdown-alert-caution {
+    background-color: var(--bulma-danger-light);
+    svg {
+      fill: var(--bulma-danger-bold);
+    }
+    .markdown-alert-title,
+    .content {
+      color: var(--bulma-danger-bold);
+    }
+  }
+}
+html[data-theme=dark] {  
+
+  h1.article__title { color: white !important; }
+
+  .markdown-alert-note {
+    background-color: var(--bulma-info-dark);
+    svg {
+      fill: var(--bulma-info-light);
+    }
+    .markdown-alert-title,
+    .content {
+      color: var(--bulma-info-light);
+    }
+  }
+  .markdown-alert-tip {
+    background-color: var(--bulma-primary-dark);
+    svg {
+      fill: var(--bulma-primary-light);
+    }
+    .markdown-alert-title,
+    .content {
+      color: var(--bulma-primary-light);
+    }
+  }
+  .markdown-alert-important {
+    background-color: var(--bulma-link-dark);
+    svg {
+      fill: var(--bulma-link-light);
+    }
+    .markdown-alert-title,
+    .content {
+      color: var(--bulma-link-light);
+    }
+  }
+  .markdown-alert-warning {
+    background-color: var(--bulma-warning-dark);
+    svg {
+      fill: var(--bulma-warning-light);
+    }
+    .markdown-alert-title,
+    .content {
+      color: var(--bulma-warning-light);
+    }
+  }
+  .markdown-alert-caution {
+    background-color: var(--bulma-danger-dark);
+    svg {
+      fill: var(--bulma-danger-light);
+    }
+    .markdown-alert-title,
+    .content {
+      color: var(--bulma-danger-light);
+    }
+  }
+}

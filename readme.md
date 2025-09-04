@@ -1,10 +1,7 @@
+# castle
 
-# kame
+:wave:
 
-> an exersise in rolling my own web-space
+This is my personal public webspace's repository. Here you'll see all the code used to construct what I'm calling `castle`.
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/85457483-b07e-448c-8029-aea95c958577/deploy-status)](https://app.netlify.com/sites/scintillating-crumble-ab5fd7/deploys)
-
-## What is this?
-
-This aims to be a self contained webspace that is my portfolio, webshop, blog, ecteria. I've *slapped* it together using javascript and hosted it on [`Netlify`](https://netlify.com/).
+If anything is askew/wrong/ please advise, I'm self taught.

@@ -1,0 +1,25 @@
+footer.section.footer
+  a(href='/').title.footer__title= self.title
+  h2.subtitle.footer__subtitle.is-6 My slice of the web
+  .links
+    a(href='/legal.html') Legal
+      | &nbsp;&nbsp;
+    a(href='/feed.xml') XML
+      | |
+    a(href='/feed.json') JSON
+      | &nbsp;&nbsp;
+    a(href='https://github.com/valaxin') Github
+      span.material-icons.round arrow_outward
+      | &nbsp;&nbsp;
+    a(href='https://codepen.com/valaxin') Codepen
+      span.material-icons.round arrow_outward
+      | &nbsp;&nbsp;
+    a(href='https://codepen.com/valaxin') Bluesky
+      span.material-icons.round arrow_outward
+    
+  .controls.mt-5
+    if (context) 
+      button.button.button.is-link.is-outlined.return-home
+        a(href='/') INDEX
+    button.button.is-link.is-outlined.page-top(onclick='window.scrollTop()') TOP
+    button.button.is-link.is-outlined.theme-toggle AUTO
