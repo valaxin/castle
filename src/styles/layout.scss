@@ -52,12 +52,31 @@ body {
   }
 }
 
+@media screen and (prefers-color-scheme: dark) {
+  html[data-theme=auto] {
+    img.banner-image {
+      filter: invert(1);
+    }
+  }
+}
+
+html[data-theme=dark] {
+  img.banner-image {
+    filter: invert(1);
+  }
+}
+
+img.banner-image {
+  max-width: 96px;
+  margin-right: 25px;
+}
+
 img.product-image {
   border-radius: 24px;
   margin-bottom: 25px;
 }
 
-img {
+img.lightbox-enabled {
   cursor: zoom-in;
 }
 
