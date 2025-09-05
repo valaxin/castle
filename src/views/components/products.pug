@@ -5,7 +5,7 @@ section.section.products
   ul
     each product in self.products
       if (product.published == false)
-        li.flex-row.mt-5.mb-5
+        li.flex-column.mt-5.mb-5
           if (product.preview_url)
             img.product-image(src= product.preview_url)
           ul
