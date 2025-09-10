@@ -1,7 +1,6 @@
 'use strict'
 
-// mostly just a dev tool.
-
+/** -- Mostly a development tool, creates a JSON file asset `/data.json` into the build */
 export default class JSONWebpackPlugin {
   constructor(options) {
     this.options = options || {}
@@ -21,10 +20,10 @@ export default class JSONWebpackPlugin {
 
     compiler.hooks.thisCompilation.tap('JSONWebpackPlugin', (compilation) => {
 
-      // set timestamp
+      // timestamp
       opt.data.epoch = Date.now()
 
-      // emit asset into build
+      // emit
       compilation.hooks.additionalAssets.tapAsync('JSONWebpackPlugin', (callback) => {
         compilation.emitAsset(opt.filename, new compiler.webpack.sources.RawSource(JSON.stringify(opt.data)))
         callback()

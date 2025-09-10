@@ -17,6 +17,15 @@ article.article {
     color: var(--bulma-background);
   }
 
+  p {
+    font-size: 2.5rem;
+    font-weight: 600;
+
+    a {
+      text-decoration: underline;
+    }
+  }
+
   div.content.article__content {
     max-width: 95vw;
     z-index: 11;

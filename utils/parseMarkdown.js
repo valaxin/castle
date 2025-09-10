@@ -14,7 +14,6 @@ import hljs from 'highlight.js'
 
 import { JSDOM } from 'jsdom'
 
-
 const marked = new Marked(
   markedAlert(),
   markedFootnote(),

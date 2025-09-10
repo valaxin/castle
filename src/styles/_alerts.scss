@@ -6,7 +6,7 @@
 
   .content {
     font-weight: 700;
-    font-size: 1.25rem;
+    font-size: 5rem;
     
     svg {
       font-size: 2rem;
@@ -14,9 +14,11 @@
   }
 
   &-title {
-    font-size: 1.5vw;
+    content {
+      font-size: 3vw;
+    }
     font-weight: 800;
-    text-decoration: underline;
+    // text-decoration: underline;
   }
 }
 

@@ -19,6 +19,7 @@
     "bulma": "^1.0.4",
     "css-loader": "^7.1.2",
     "dotenv": "^16.6.1",
+    "feed": "^5.1.0",
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.11.1",
     "html-bundler-webpack-plugin": "^4.21.1",
