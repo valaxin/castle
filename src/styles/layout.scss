@@ -36,6 +36,14 @@ body {
   font-size: 2rem;
 }
 
+span.bottom-banner-text {
+  margin-right: 12px;
+  margin-top: 12px;
+  font-size: .75rem;
+  font-weight: 300;
+  float: left;
+}
+
 .flex-row {
   display: flex;
   flex-direction: row;
@@ -87,6 +95,14 @@ img.lightbox-enabled {
 
 li.product-description {
   max-width: 840px;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  
+  p {
+    margin: 15px 0;
+  }
+  
 }
 
 footer.footer {
@@ -103,6 +119,11 @@ footer.footer {
   }
 }
 
+.subtitle-info {
+ font-size: 1rem;
+ font-style: italic;
+ font-weight: 300;
+}
 
 @media screen and (min-width: 720px) {
   body {

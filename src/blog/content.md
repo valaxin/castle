@@ -3,7 +3,7 @@ title: Sailing The Digital Seas
 published: 09/2025
 tags: post content resources internet
 summary: none
-thumbnail: '@images/resources/abstract.jpg'
+thumbnail: '@images/static/abstract.jpg'
 author: '@valaxin'
 visible: true
 ---
@@ -68,4 +68,4 @@ Easy street is samba, shared drives, place the following into `/etc/samba/smb.co
 
 Then on some other machine, you should be able to browse `$host.local/media` using the creds you assigned. Media here, Media there. sharing is caring. support the creators worthy of your time.
 
-Is this useless, unsure, who cares? -later!
+Is this useless? unsure, who cares? -later!

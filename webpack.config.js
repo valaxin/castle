@@ -13,7 +13,6 @@ const mode = process.env.NODE_ENV === 'production' ? true : false
 const markdownPosts = parseAllMarkdown(resolve('src/blog'), 'src/views/post.pug')
 
 import { gumroad, github } from './utils/remoteCollections.js'
-import { repair } from './utils/repairData.js'
 
 /* --- Define development server settings. */
 const devServer = {
@@ -41,7 +40,6 @@ const bundlerOptions = {
   beforePreprocessor: (content, { data, resourcePath, _module }) => {},
   data: {
     self: {
-      repair,
       posts: markdownPosts,
       products: gumroad,
       repos: github,

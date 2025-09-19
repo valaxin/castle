@@ -4,6 +4,7 @@ section.section.projects
   
   ul
     each project in self.repos
+      if project.name
       li.mt-5
         a.title.is-2(href= project.owner.html_url + '/' + project.name + '.git')= project.name
           span.material-icons.round arrow_outward

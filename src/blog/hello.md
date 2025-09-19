@@ -3,7 +3,7 @@ title: Hello Everyone!
 published: 08/2025
 tags: hello-world testing tag
 summary: The first entry on this website, most content is for testing purposes.
-thumbnail: '@images/resources/castle.jpg'
+thumbnail: '@images/static/castle.jpg'
 author: '@valaxin'
 visible: true
 ---

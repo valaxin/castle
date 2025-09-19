@@ -1,6 +1,6 @@
 ---
 title: Terms and Policies
-thumbnail: '@images/resources/castle.jpg'
+thumbnail: '@images/static/castle.jpg'
 visible: false
 published: 08/2025
 ---
