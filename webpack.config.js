@@ -10,7 +10,7 @@ import JSONWebpackPlugin from './utils/plugins/JSONWebpackPlugin.js'
 import SyndicationPlugin from './utils/plugins/SyndicationPlugin.js'
 
 const mode = process.env.NODE_ENV === 'production' ? true : false
-const markdownPosts = parseAllMarkdown(resolve('src/blog'), 'src/views/post.pug')
+const markdownPosts = parseAllMarkdown(resolve('src/markdown'), 'src/views/post.pug')
 
 import { gumroad, github } from './utils/remoteCollections.js'
 

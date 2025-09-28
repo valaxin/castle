@@ -5,7 +5,7 @@ tags: post content resources internet
 summary: none
 thumbnail: '@images/static/abstract.jpg'
 author: '@valaxin'
-visible: true
+visible: false
 ---
 
 I feel like being pretty short and sweet about this. Ideally you have a machine with a decent amount of storage, makes this more rewarding. It's not required to use a high end machine, generally my machine is considered to be old in twenty-twentyfive.
@@ -15,8 +15,6 @@ I feel like being pretty short and sweet about this. Ideally you have a machine 
 > - 16GB DDR3 Memory
 > - 5TB Storage
 > - Ubunutu Server 24.04
-
-
 
 Right, so... 'Operating Systems' pick what you want and are comfortable with, the stuff I'm talking about here is pretty cross-platform and it's likely more crutial to have familiaraity with the enviroment.
 
@@ -47,11 +45,11 @@ Our entry point is `/mnt/storage/media` from here create `movies/`, `series/`, `
 - `series` **>** `[(title)(release-year)(resolution)]` **>** `season?` **/**
 - `music` **>** `[artist]` **>** `[(album)(release-year)]` **/**
 
-More on naming conventions [here](https://jellyfin.org/docs/general/server/media/shows/) and [here](https://diymediaserver.com/post/how-proper-organization-helps-jellyfin-automatically-fetch-metadata-and-display-content-correctly/)
+More on naming conventions in [the Jellyfin documentation](https://jellyfin.org/docs/general/server/media/shows/) and [this blog post about Jellyfin metadata](https://diymediaserver.com/post/how-proper-organization-helps-jellyfin-automatically-fetch-metadata-and-display-content-correctly/)
 
 ## Outcome
 
-This machine (in my context) is basically a second machine existing as a 1280x800 rdp window on my main machines second monitor. when the desire hits, I visit an "smart" spy panel and request my content from `$host.local:8096` 
+This machine (in my context) is basically a second machine existing as a 1280x800 rdp window on my main machines second monitor. when the desire hits, I visit an "smart" spy panel and request my content from `$host.local:8096`
 
 Easy street is samba, shared drives, place the following into `/etc/samba/smb.conf`, I don't know [look](https://ubuntu.com/tutorials/install-and-configure-samba) yourself.
 

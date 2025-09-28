@@ -6,7 +6,7 @@
 // @use "@npm/highlight.js/styles/github-dark.css";
 
 @use "articles";
-@use "alerts";
+@use "themes";
 @use "lightbox";
 
 $app-font:
@@ -128,12 +128,13 @@ footer.footer {
 @media screen and (min-width: 720px) {
   body {
     main {
-      max-width: 60vw;
-      margin-left: 20vw;
+      max-width: 80vw;
+      // margin-left: 20vw;
+      margin-left: 25px;
     }
     footer {
       max-width: 60vw;
-      margin-left: 20vw;
+      // margin-left: 20vw;
       background-color: transparent !important;
       background: transparent !important;
     }
@@ -147,4 +148,3 @@ footer.footer {
   }
   
 }
-

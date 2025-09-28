@@ -38,7 +38,7 @@ function animateHeader() {
   })
 }
 
-animateHeader()
+// animateHeader()
 
 window.htmx = htmx.default
 

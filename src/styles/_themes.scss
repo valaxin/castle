@@ -22,9 +22,8 @@
   }
 }
 
-html[data-theme=light],
-html[data-theme=auto] {
-  .markdown-alert-note {
+@mixin mdAlertLightMode() {
+    .markdown-alert-note {
     background-color: var(--bulma-info-light);
     svg {
       fill: var(--bulma-info-bold);
@@ -76,9 +75,8 @@ html[data-theme=auto] {
   }
 }
 
-html[data-theme=dark] {  
-
-  h1.article__title { color: white !important; }
+@mixin mdAlertDarkMode() {
+    h1.article__title { color: white !important; }
 
   .markdown-alert-note {
     background-color: var(--bulma-info-dark);
@@ -129,5 +127,19 @@ html[data-theme=dark] {
     .content {
       color: var(--bulma-danger-light);
     }
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  html[data-theme=auto],
+  html[data-theme=light] {
+    @include mdAlertLightMode()
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-theme=auto],
+  html[data-theme=dark] {
+    @include mdAlertDarkMode()
   }
 }

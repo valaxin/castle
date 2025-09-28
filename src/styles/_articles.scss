@@ -1,11 +1,15 @@
 article.article {
+  max-width: 1024px;
   
   figure.image {
     img.article__hero {
       user-select: none;
+      max-height: 50vh;
+      object-fit: cover;
     }
   }
 
+  // article Title
   h1.title.article__title {
     font-size: 15vw;
     position: absolute;
@@ -26,6 +30,7 @@ article.article {
     }
   }
 
+  // content "exclusive" to the article
   div.content.article__content {
     max-width: 95vw;
     z-index: 11;
@@ -86,7 +91,7 @@ article.article {
   }
 }
 
-// Terms & Conditions One Offs
+// Terms & Conditions Page One Offs
 
 .legal-title {
   text-decoration: underline;

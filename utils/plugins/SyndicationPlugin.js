@@ -1,7 +1,7 @@
 import { Feed } from 'feed'
 import { readFileSync } from 'fs'
 
-// feed defs
+// feed defs (hardcoded til complete)
 const staticMetadata = {
   title: 'valaxin.dev',
   description: 'This is my personal feed!',
@@ -43,6 +43,8 @@ export default class SyndicationPlugin {
       const opt = this.options
       
       const xml = generate('xml', opt.data)
+
+      console.log(xml)
 
       compilation.hooks.additionalAssets.tapAsync('SyndicationPlugin', (callback) => {
         // compilation.emitAsset(opt.filename, new compiler.webpack.sources.RawSource(JSON.stringify(opt.data)))

@@ -19,26 +19,32 @@ Should this policy change to include personal data processing, appropriate discl
 ---
 
 ## Inherited
+
 This site may rely on third-party platforms for hosting, content delivery, media embedding, or domain management. These services may have their own privacy policies that apply independently of this site. By using this site, you acknowledge that any data shared with or collected by those services is governed by their respective terms.
 
 ## Content
+
 Unless otherwise stated, all original written and visual content on this site is licensed under the
 > [Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/).
 
-### You are free to:
+### You are free to
+
 - **Share —** copy and redistribute the material in any medium or format  
 - **Adapt —** remix, transform, and build upon the material
 
-### Under the following terms:
+### Under the following terms
+
 - **Attribution —** You must give appropriate credit, provide a link to the license, and indicate if changes were made. Credit must not suggest endorsement by the original author.  
 - **NonCommercial —** You may not use the material for commercial purposes.
 
-### No additional restrictions:
+### No additional restrictions
+
 You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
 
 Third-party content, if present, remains the property of its respective owners and is subject to their own licensing terms.
 
 ## Disclaimer
+
 All content on this site, including written material, artwork, or commentary, represents the personal perspective and creative expressions of the given author. It is not representative of any employer, organization, or affiliated entity. This content is offered as free expression and should not be construed as serious beyond it's own merit.
 
 Contact can be made via the various means listed within.
@@ -46,4 +52,3 @@ Contact can be made via the various means listed within.
 ---
 
 *Most statements above are revised by AI, however assembled by a human, not a lawyer.*  
-
