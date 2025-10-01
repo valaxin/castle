@@ -44,7 +44,7 @@ export default class SyndicationPlugin {
       
       const xml = generate('xml', opt.data)
 
-      console.log(xml)
+      console.log('SyndicationPlugin :: xml', xml)
 
       compilation.hooks.additionalAssets.tapAsync('SyndicationPlugin', (callback) => {
         // compilation.emitAsset(opt.filename, new compiler.webpack.sources.RawSource(JSON.stringify(opt.data)))

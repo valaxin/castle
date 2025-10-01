@@ -30,5 +30,16 @@ section.section.products
                 img.banner-image(src='@images/logos/gumroad-logo.png')
                 span.bottom-banner-text Printed By
                 img.banner-image(src='@images/logos/stickermule-logo.png')
-        hr
+            
+            if (product.variants[0])
+              if (product.variants[0].options)
+                ul.product-variants
+                  each variant of product.variants[0].options
+                    button.button= variant.name
+              else if (product.variants[0].title == 'Suggested Amounts')
+                span key: suggested amounts
+              else
+                span Variants Key, No Options.
+            else
+              button.button.is-outlined.is-warning.mt-3 No Variants
         br
