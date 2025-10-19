@@ -1,16 +1,15 @@
-// remote
 @use "@npm/bulma";
 @use "@npm/material-icons/iconfont/material-icons.css";
-
 // @use "@npm/highlight.js/styles/github.css";
 // @use "@npm/highlight.js/styles/github-dark.css";
-
 
 @use "components/hero";
 @use "components/articles";
 @use "components/alertbox";
+@use "components/products";
 @use "components/animations";
 @use "components/lightbox";
+@use "components/queries";
 
 $app-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 $app-font-code: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;
@@ -27,73 +26,14 @@ body {
   font-family: $app-font;
 }
 
-span.bottom-banner-text {
-  margin-right: 12px;
-  margin-top: 12px;
-  font-size: .75rem;
-  font-weight: 300;
-  float: left;
-}
-
-.flex-row {
-  display: flex;
-  flex-direction: row;
-
-  img {
-    object-fit: contain;
-    margin-top: 10px;
-    margin-right: 10px;
-    user-select: none;
-  }
-
-  img.product-image {
-    border-radius: 24px;
-    max-width: 128px;
-    max-height: 128px;
-    object-fit: cover;
-    object-view-box: unset;
-    margin-right: 25px;
-  }
-}
-
-@media screen and (prefers-color-scheme: dark) {
-  html[data-theme=auto] {
-    img.banner-image {
-      filter: invert(1);
-    }
-  }
-}
-
 html[data-theme=dark] {
   img.banner-image {
     filter: invert(1);
   }
 }
 
-img.banner-image {
-  max-width: 96px;
-  margin-right: 25px;
-}
-
-img.product-image {
-  border-radius: 24px;
-  margin-bottom: 25px;
-}
-
 img.lightbox-enabled {
   cursor: zoom-in;
-}
-
-li.product-description {
-  max-width: 840px;
-  font-weight: 600;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  
-  p {
-    margin: 15px 0;
-  }
-  
 }
 
 footer.footer {
@@ -108,34 +48,4 @@ footer.footer {
       font-size: .75rem;
     }
   }
-}
-
-.subtitle-info {
- font-size: 1rem;
- font-style: italic;
- font-weight: 300;
-}
-
-@media screen and (min-width: 720px) {
-  body {
-    main {
-      max-width: 80vw;
-      // margin-left: 20vw;
-      margin-left: 25px;
-    }
-    footer {
-      max-width: 60vw;
-      // margin-left: 20vw;
-      background-color: transparent !important;
-      background: transparent !important;
-    }
-  }
-  
-  figure.image {
-    padding-top: 25px;
-    img.article__hero {
-      border-radius: 24px;
-    }
-  }
-  
 }

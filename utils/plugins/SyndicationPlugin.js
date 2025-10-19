@@ -40,7 +40,7 @@ export default class SyndicationPlugin {
   // ... take in options from webpack build script
   constructor(options) {
     this.options = options || {}
-    console.log('SyndicationPlugin', this.options.data.self)
+    // console.log('SyndicationPlugin', this.options.data.self)
   }
 
   // define apply func passing webpack compiler

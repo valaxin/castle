@@ -1,7 +1,7 @@
 
 .hero {
   // padding: 0;
-  animation: combine 4s linear infinite;
+  // animation: combine 4s linear infinite;
   animation-timing-function: linear(0, 0 45%, 1 50%, 0 55% 90%, 1 95%, 0 100%); // hls-x
   display: grid;
 
@@ -25,7 +25,7 @@
     padding: 0;
     margin: 0;
     font-weight: 900;
-    animation: fade 4s linear infinite;
+    // animation: fade 4s linear infinite;
       
     // be opacity 1 until 45%, 45%-55% fade out and hold til 90%, come back in for last 10%
     animation-timing-function: linear(1 45%, 0 55% 90%, 1 100%);
