@@ -1,0 +1,31 @@
+@media screen and (min-width: 720px) {
+  body {
+    main {
+      max-width: 80vw;
+      // margin-left: 20vw;
+      margin-left: 25px;
+    }
+    footer {
+      max-width: 60vw;
+      // margin-left: 20vw;
+      background-color: transparent !important;
+      background: transparent !important;
+    }
+  }
+  
+  figure.image {
+    padding-top: 25px;
+    img.article__hero {
+      border-radius: 24px;
+    }
+  }
+  
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  html[data-theme=auto] {
+    img.banner-image {
+      filter: invert(1);
+    }
+  }
+}
