@@ -2,10 +2,13 @@ export default (async () => {
   'use strict'
 
   if (!window || !document) return
-  
+
+  // statics
   const storeKey = 'castle-theme'
   const toggleButton = document.body.querySelectorAll(`button.theme-toggle`)[0]
   const existing_theme = localStorage.getItem(storeKey)
+
+  // get user preference
   let system_theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
 
   // get system level preference
@@ -24,7 +27,6 @@ export default (async () => {
     } else {
       toggleButton.innerText = existing_theme.toUpperCase()
     }
-    
     document.documentElement.setAttribute('data-theme', existing_theme)
   }
 
@@ -55,5 +57,6 @@ export default (async () => {
     }
   }
 
+  // make btn
   toggleButton.addEventListener('click', async () => { await change() })
 })()

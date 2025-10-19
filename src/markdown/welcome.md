@@ -11,3 +11,18 @@ visible: true
 ## :wave:
 
 Hey look a website! Thanks for visiting! :smile:
+
+## I'm valaxin
+
+- **Favorite Animal?**
+- **Any Pets?**
+- **Favorite Music Genres?**
+- **Favorite Anime?**
+- **Favorite Games?**
+- **Username Meaning?**
+- **Play Any Instrument?**
+- **Setup?**
+- **Do Any Self-Hosting?**
+
+## Tech-Stack
+

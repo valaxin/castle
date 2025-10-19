@@ -5,35 +5,26 @@
 // @use "@npm/highlight.js/styles/github.css";
 // @use "@npm/highlight.js/styles/github-dark.css";
 
-@use "articles";
-@use "themes";
-@use "lightbox";
 
-$app-font:
-  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-$app-font-code:
-  Consolas,
-  Monaco,
-  Lucida Console,
-  Liberation Mono,
-  DejaVu Sans Mono,
-  Bitstream Vera Sans Mono,
-  Courier New;
+@use "components/hero";
+@use "components/articles";
+@use "components/alertbox";
+@use "components/animations";
+@use "components/lightbox";
+
+$app-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+$app-font-code: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;
 
 :root {
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  view-transition-name: none;
 }
 
 body {
   font-family: $app-font;
-}
-
-.device-title {
-  font-weight: 900;
-  font-size: 2rem;
 }
 
 span.bottom-banner-text {

@@ -2,13 +2,12 @@
 
 import hljs from '@npm/highlight.js'
 import * as htmx from '@npm/htmx.org'
-
 import { animate } from '@npm/animejs'
 
-import './modules/color-scheme.js'
-import './modules/lightbox-gallery.js'
-import './modules/table-of-contents.js'
-import './modules/hljs-switcher.js'
+import './components/color-scheme.js'
+import './components/lightbox-gallery.js'
+import './components/table-of-contents.js'
+import './components/hljs-switcher.js'
 
 let theme = window.matchMedia(`(prefers-color-scheme: dark)`)
 let themePref = document.documentElement.dataset.theme
@@ -25,21 +24,16 @@ if (window) {
   console.error('no window object, this code is intended for the browser')
 }
 
-function animateHeader() {
-  animate({
-    targets: ['figure.image','h1.title.article__title'],
-    translateY: '-100px', // Move the header up
-    opacity: 0, // Fade out
-    duration: 1000, // Animation duration in ms
-    easing: 'easeInOutQuad', // Smooth easing
-    complete: function () {
-      console.log('Animation complete!')
-    },
-  })
-}
-
-// animateHeader()
-
 window.htmx = htmx.default
-
 window._log('index.js >> available', { htmx: htmx.default, animate, hljs })
+
+// animations
+
+animate('.hero__animated-child', {
+  x: () => utils.random(0, 17) + 'rem',
+  y: () => utils.random(-1, 1) + 'rem',
+  rotate: () => utils.random(-360, 360, 1),
+  scale: () => utils.random(.1, 1.5, 2),
+  duration: 750,
+  loop: true,
+})

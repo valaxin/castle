@@ -1,0 +1,29 @@
+
+// @include respond(sm, md, lg) { selector: declaration }
+@mixin respond($breakpoint) {
+  @if $breakpoint == sm {
+    @media (max-width: 600px) { @content; }
+  } @else if $breakpoint == md {
+    @media (max-width: 900px) { @content; }
+  } @else if $breakpoint == lg {
+    @media (max-width: 1200px) { @content; }
+  }
+}
+
+// generic transition
+@mixin transition($props: all, $time: 0.3s, $ease: ease-in-out) {
+  transition: $props $time $ease;
+}
+
+// truncate
+@mixin truncate($width: 100%) {
+  width: $width;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// box-shadow
+@mixin box-shadow($x: 0, $y: 2px, $blur: 6px, $color: rgba(0,0,0,0.15)) {
+  box-shadow: $x $y $blur $color;
+}

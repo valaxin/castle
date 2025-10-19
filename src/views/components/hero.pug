@@ -1,0 +1,14 @@
+- var n = 0;
+
+section.section.hero
+  span.hero__suptitle.is-6= '[' + epoch + ']'
+  h1.hero__title.title.is-1= self.title
+  .block.hero__block
+    h1.hero__block-title.is-1 valaxin
+    h2.hero__block-subtitle.is-1 development 
+    h2.hero__block-subtitle.is-1 repair
+    h2.hero__block-subtitle.is-1 success
+    .hero__animated-parent
+      while n < 25
+        .hero__animated-child(data-count= n++)
+      
