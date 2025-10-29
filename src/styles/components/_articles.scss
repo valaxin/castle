@@ -11,14 +11,21 @@ article.article {
 
   // article Title
   h1.title.article__title {
-    font-size: 15vw;
+    font-size: 10vw;
+    line-break: none;
     position: absolute;
     top: 5vh;
-    left: 15vw;
+    left: 5vw;
     user-select: none;
     z-index: 10;
-    mix-blend-mode: difference;
     color: var(--bulma-background);
+    background: -webkit-linear-gradient(0deg,rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.25));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    // mix-blend-mode: difference;
+    // backdrop-filter: blur(10px);
+
   }
 
   p {

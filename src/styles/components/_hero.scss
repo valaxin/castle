@@ -1,58 +1,66 @@
-
 .hero {
-  // padding: 0;
-  // animation: combine 4s linear infinite;
-  animation-timing-function: linear(0, 0 45%, 1 50%, 0 55% 90%, 1 95%, 0 100%); // hls-x
-  display: grid;
-
-  > * {
-    grid-area: 1 / 1;
-  }
   
   &__suptitle {
-    font-size: 1vw;
-    opacity: .75;
-    user-select: none;
+    font-size: 12pt;
+    font-weight: 300;
+    line-height: 10px;
   }
-  
+
   &__title {
-    font-size: 5vw;
-  }
-  
-  &__block {
-    // display: absolute;
-    font-size: 15vw;
-    padding: 0;
-    margin: 0;
+    font-size: 42pt;
     font-weight: 900;
-    // animation: fade 4s linear infinite;
-      
-    // be opacity 1 until 45%, 45%-55% fade out and hold til 90%, come back in for last 10%
-    animation-timing-function: linear(1 45%, 0 55% 90%, 1 100%);
-    
-    &:nth-child(2) {
-      // be opacity 0 until 45%, 45%-55% fade in and hold til 90%, go back out
-      animation-timing-function: linear(0 45%, 1 55% 90%, 0 100%);
-    } 
+    font-style: italic;
+    opacity: 0.85;
+  }
+
+  &__content {
 
     &-title {
-      font-size: 15vw;
+      font-size: 10vw;
       font-weight: 900;
+      display: inline;
     }
-    
+
     &-subtitle {
-      font-size: 5vw;
-      font-weight: 700;
+      font-size: 3vw;
+      font-style: italic;
+      opacity: 0.85;
     }
-  
-    .hero__animated-parent {
-      display: grid;
-      .hero__animated-child {
-        height: 25px;
-        width: 25px;
-        border: 1px solid red;
-        grid-area: 5/5;
-      }
-    }
+
   }
-}      
+
+  &__container {
+
+    &-action {
+      // display: flex;
+      // flex-direction: row;
+      // background: red;
+      
+
+      &-image {
+        // background-color: pink;
+        // border-radius: 50%;
+
+        &::before {
+          content: '';
+          background: red;
+          height: 125px;
+          width: 125px;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+      }
+
+      &-caption {
+        width: 100%;
+        text-align: center;
+        font-weight: 700;
+        text-align: center;
+      }
+
+    }
+
+  }
+
+}

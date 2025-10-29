@@ -49,3 +49,19 @@ footer.footer {
     }
   }
 }
+
+section.section {
+  .grp {
+    // background-color: red;
+    border-bottom: 2px solid var(--bulma-title-color);
+    
+    .title {
+      font-size: 8vw;
+    }
+  }
+}
+
+.section-icon {
+  max-width: 96px;
+  display: inline-block;
+}

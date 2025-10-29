@@ -1,14 +1,20 @@
-- var n = 0;
-
 section.section.hero
+
   span.hero__suptitle.is-6= '[' + epoch + ']'
-  h1.hero__title.title.is-1= self.title
-  .block.hero__block
-    h1.hero__block-title.is-1 valaxin
-    h2.hero__block-subtitle.is-1 development 
-    h2.hero__block-subtitle.is-1 repair
-    h2.hero__block-subtitle.is-1 success
-    .hero__animated-parent
-      while n < 25
-        .hero__animated-child(data-count= n++)
+  h1.hero__title.is-1= self.title
+  
+  div.block.hero__content
+    h1.hero__content-title.is-sticker.is-1 valaxin
+    p.hero__content-subtitle.is-4 a <strong>Software Developer</strong> from <strong>Canada</strong>
+
+  div.block.hero__container.grid
+    .hero__container-action
+      img.hero__container-action-image(src='@images/thiings/keyboard.png')
+      span.hero__container-action-caption Website & Application Development
+    .hero__container-action
+      img.hero__container-action-image(src='@images/thiings/skateboarding-duck.png')
+      span.hero__container-action-caption Shortform S Multimedia Content
+    .hero__container-action
+      img.hero__container-action-image(src='@images/thiings/cursor.png')
+      span.hero__container-action-caption User Interaction & Experience Design     
       

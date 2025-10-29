@@ -2,7 +2,7 @@
 
 import hljs from '@npm/highlight.js'
 import * as htmx from '@npm/htmx.org'
-import { animate } from '@npm/animejs'
+import { animate, createTimeline, stagger, utils, text, onScroll } from '@npm/animejs'
 
 import './components/color-scheme.js'
 import './components/lightbox-gallery.js'
@@ -28,12 +28,45 @@ window.htmx = htmx.default
 window._log('index.js >> available', { htmx: htmx.default, animate, hljs })
 
 // animations
+const siteTitle = text.splitText(['.hero__title'], { words: { wrap: 'clip' } })
+const siteSuptitle = text.splitText(['.hero__suptitle'], { words: { wrap: 'clip', chars: true } })
+const siteSubtitle = text.splitText(['.hero__subtitle'], { words: { wrap: 'clip', chars: true } })
+const heroContentTitle = text.splitText(['.hero__content-title'], { words: { wrap: 'clip' }, chars: true })
+const heroContentSubtitle = text.splitText(['.hero__content-subtitle'], { words: { wrap: 'clip' } })
 
-animate('.hero__animated-child', {
-  x: () => utils.random(0, 17) + 'rem',
-  y: () => utils.random(-1, 1) + 'rem',
-  rotate: () => utils.random(-360, 360, 1),
-  scale: () => utils.random(.1, 1.5, 2),
-  duration: 750,
-  loop: true,
-})
+const articleTitle = text.splitText(['.article__title'], { words: { wrap: 'clip' }, chars: true })
+
+const [ $value ] = utils.$('.value');
+
+animate(
+  [
+    heroContentTitle.words,
+    heroContentTitle.chars,
+    heroContentSubtitle.words,
+    siteSuptitle.words,
+    siteSuptitle.chars,
+    siteSubtitle.words,
+    siteTitle.words,
+    '.hero__container-action',
+    articleTitle.words,
+    articleTitle.chars,
+  ],
+  {
+    y: ['75%', '0%'],
+    duration: 800,
+    ease: 'out(3)',
+    delay: stagger(50),
+    opacity: [0, 1],
+    loop: false,
+    alternate: true,
+    /*
+    autoplay: onScroll({
+      container: '.scroll-container',
+      enter: 'bottom+=50 top',
+      leave: 'top+=50 bottom',
+      sync: true,
+      debug: true,
+    }),
+    */
+  }
+)
