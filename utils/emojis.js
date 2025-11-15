@@ -50,4 +50,5 @@ export const emojis = {
   warning: '⚠️',
   question: '❓',
   info: 'ℹ️',
+  shrug: '🤷'
 };

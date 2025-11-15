@@ -9,6 +9,8 @@ import { parseAllMarkdown } from './utils/parseMarkdown.js'
 import JSONWebpackPlugin from './utils/plugins/JSONWebpackPlugin.js'
 import SyndicationPlugin from './utils/plugins/SyndicationPlugin.js'
 
+//import arbitraryIncludes from './utils/arbitraryIncludes.js'
+
 const mode = process.env.NODE_ENV === 'production' ? true : false
 const markdownPosts = parseAllMarkdown(resolve('src/markdown'), 'src/views/post.pug')
 

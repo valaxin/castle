@@ -33,12 +33,10 @@ const siteSuptitle = text.splitText(['.hero__suptitle'], { words: { wrap: 'clip'
 const siteSubtitle = text.splitText(['.hero__subtitle'], { words: { wrap: 'clip', chars: true } })
 const heroContentTitle = text.splitText(['.hero__content-title'], { words: { wrap: 'clip' }, chars: true })
 const heroContentSubtitle = text.splitText(['.hero__content-subtitle'], { words: { wrap: 'clip' } })
-
 const articleTitle = text.splitText(['.article__title'], { words: { wrap: 'clip' }, chars: true })
-
 const [ $value ] = utils.$('.value');
 
-animate(
+const heroAnimation = animate(
   [
     heroContentTitle.words,
     heroContentTitle.chars,
@@ -48,8 +46,8 @@ animate(
     siteSubtitle.words,
     siteTitle.words,
     '.hero__container-action',
-    articleTitle.words,
-    articleTitle.chars,
+    // articleTitle.words,
+    // articleTitle.chars,
   ],
   {
     y: ['75%', '0%'],
@@ -62,11 +60,13 @@ animate(
     /*
     autoplay: onScroll({
       container: '.scroll-container',
-      enter: 'bottom+=50 top',
-      leave: 'top+=50 bottom',
+      enter: 'bottom top-=100',
+      leave: 'top bottom+=150',
       sync: true,
       debug: true,
     }),
     */
   }
 )
+
+

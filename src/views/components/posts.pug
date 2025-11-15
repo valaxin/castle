@@ -9,6 +9,7 @@ section.section.posts
     if (post.frontmatter.visible === true)
       .post__item.mb-5
         a.posts__item.title(href= post.slug + '.html')= post.frontmatter.title
+        span.material-icons-round.flipped-icon arrow_outward
         ul
           li
             span.posts__item-summary= post.frontmatter.summary
