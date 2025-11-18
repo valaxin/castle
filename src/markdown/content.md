@@ -5,7 +5,7 @@ tags: post content resources internet
 summary: none
 thumbnail: '@images/static/abstract.jpg'
 author: '@valaxin'
-visible: false
+visible: true
 ---
 
 I feel like being pretty short and sweet about this. Ideally you have a machine with a decent amount of storage, makes this more rewarding. It's not required to use a high end machine, generally my machine is considered to be old in twenty-twentyfive.

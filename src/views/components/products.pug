@@ -1,7 +1,5 @@
 section.section.products
-  .grp.flex-row
-    img.section-icon(src='@images/thiings/shopping-cart.png' alt="a cup of coffee")
-    h1.title.products__title Products
+  h1.title.products__title Services
   h2.subtitle.products__subtitle.is-6 Repairs, Parts, Accessories & Clothing
 
   ul
@@ -35,13 +33,17 @@ section.section.products
             
             if (product.variants[0])
               if (product.variants[0].options)
-                ul.product-variants
+                span See also:
+                ul.product-variants.mt-3
+                
                   each variant of product.variants[0].options
-                    button.button= variant.name
+                    button.button.is-outlined.is-info.mr-3= variant.name
+
               else if (product.variants[0].title == 'Suggested Amounts')
                 span key: suggested amounts
               else
                 span Variants Key, No Options.
             else
-              button.button.is-outlined.is-warning.mt-3 No Variants
+              // button.button.is-outlined.is-warning.mt-3 No Variants
+        hr
         br

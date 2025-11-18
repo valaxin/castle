@@ -6,6 +6,9 @@ article.article {
       user-select: none;
       max-height: 50vh;
       object-fit: cover;
+      background-attachment: fixed;   /* key */
+      background-size: cover;
+      background-position: center;
     }
   }
 
@@ -13,19 +16,18 @@ article.article {
   h1.title.article__title {
     font-size: 10vw;
     line-break: none;
-    position: absolute;
-    top: 5vh;
-    left: 5vw;
+    width: 90vw;
+    position: relative;
+    top: -10vh;
+    left: 0;
     user-select: none;
     z-index: 10;
     color: var(--bulma-background);
+    text-rendering: optimizeLegibility;
     background: -webkit-linear-gradient(0deg,rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.25));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    // mix-blend-mode: difference;
-    // backdrop-filter: blur(10px);
-
   }
 
   p {

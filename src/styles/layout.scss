@@ -92,6 +92,7 @@ p.about__content-subtitle {
   border: 1px solid var(--bulma-border);
   border-radius: 15px;
   transition: all ease-in-out 200ms;
+  cursor: transparent;
 }
 
 img.about__grid-item-images {
@@ -123,4 +124,35 @@ p.about__grid-item-summary {
   font-size: 1rem;
   font-weight: 600;
   // border-bottom: 2px solid var(--bulma-border);
+  display: none;
+
+}
+
+
+// ...
+
+.hero__suptitle > span:nth-child(2) {
+  overflow: visible !important;
+  font-style: italic;
+  opacity: .75;
+}
+
+.floater {
+  min-height: 30px;
+  min-width: 128px;
+  border-radius: 10px;
+  color: white;
+  background-color: rgba(0,0,0,.3);
+  border: 1px solid black;
+  padding: 10px;
+  z-index: 999;
+  
+
+
+  position: fixed; /* Floating above */
+  transition: transform 0.25s; /* Sticking effect */
+  pointer-events: none; /* Allow clicking trough the div */
+
+    /* Add the blur effect */
+  backdrop-filter: blur(25px);
 }
