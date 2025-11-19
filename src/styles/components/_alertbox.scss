@@ -7,7 +7,7 @@
   .content {
     font-weight: 700;
     font-size: 5rem;
-    
+
     svg {
       font-size: 2rem;
     }
@@ -23,7 +23,7 @@
 }
 
 @mixin mdAlertLightMode() {
-    .markdown-alert-note {
+  .markdown-alert-note {
     background-color: var(--bulma-info-light);
     svg {
       fill: var(--bulma-info-bold);
@@ -76,7 +76,9 @@
 }
 
 @mixin mdAlertDarkMode() {
-    h1.article__title { color: white !important; }
+  h1.article__title {
+    color: white !important;
+  }
 
   .markdown-alert-note {
     background-color: var(--bulma-info-dark);
@@ -131,15 +133,15 @@
 }
 
 @media (prefers-color-scheme: light) {
-  html[data-theme=auto],
-  html[data-theme=light] {
-    @include mdAlertLightMode()
+  html[data-theme="auto"],
+  html[data-theme="light"] {
+    @include mdAlertLightMode();
   }
 }
 
 @media (prefers-color-scheme: dark) {
-  html[data-theme=auto],
-  html[data-theme=dark] {
-    @include mdAlertDarkMode()
+  html[data-theme="auto"],
+  html[data-theme="dark"] {
+    @include mdAlertDarkMode();
   }
 }

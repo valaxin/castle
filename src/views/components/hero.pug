@@ -1,7 +1,7 @@
-section.section.hero
+section.section.hero(data-scroll-section)
 
-  span.hero__suptitle.is-6= '[' + epoch + ']'
-  h1.hero__title.is-1= self.title
+  span.hero__suptitle.is-6(data-scroll data-scroll-speed="1")= '[' + epoch + ']'
+  h1.hero__title.is-1(data-scroll data-scroll-speed="2")= self.title
   
   div.block.hero__content
     h1.hero__content-title.is-sticker.is-1 valaxin

@@ -1,6 +1,9 @@
+
+// guts!
 article.article {
   max-width: 1024px;
   
+  // header hero image
   figure.image {
     img.article__hero {
       user-select: none;
@@ -30,6 +33,7 @@ article.article {
     -webkit-text-fill-color: transparent;
   }
 
+  // subtitle shit...
   p {
     font-size: 2.5rem;
     font-weight: 600;

@@ -4,7 +4,7 @@ published: 08/2025
 tags: post welcome first
 summary: owner information... a whoami among other tidbits.
 thumbnail: '@images/static/feathers.jpg'
-author: '@valaxin'
+author: '@self'
 visible: true
 ---
 

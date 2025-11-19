@@ -1,5 +1,4 @@
 .hero {
-  
   &__suptitle {
     font-size: 12pt;
     font-weight: 300;
@@ -14,7 +13,6 @@
   }
 
   &__content {
-
     &-title {
       font-size: 10vw;
       font-weight: 900;
@@ -26,23 +24,21 @@
       font-style: italic;
       opacity: 0.85;
     }
-
   }
 
   &__container {
-
     &-action {
       // display: flex;
       // flex-direction: row;
       // background: red;
-      
+      border-left: 2px solid var(--bulma-title-color);
 
       &-image {
         // background-color: pink;
         // border-radius: 50%;
 
         &::before {
-          content: '';
+          content: "";
           background: red;
           height: 125px;
           width: 125px;
@@ -58,9 +54,6 @@
         font-weight: 700;
         text-align: center;
       }
-
     }
-
   }
-
 }

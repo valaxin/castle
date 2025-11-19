@@ -1,10 +1,11 @@
 extends layout
 
 block content
-  main
+  main(data-scroll-container)
     include components/hero
     include components/about
-    include components/posts
-    include components/projects
+    .grid
+      include components/posts
+      include components/projects
     include components/products
   include components/footer

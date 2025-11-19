@@ -3,12 +3,12 @@ export default (async () => {
 
   if (!window || !document) return
 
-  // statics
+  // known values
   const storeKey = 'castle-theme'
   const toggleButton = document.body.querySelectorAll(`button.theme-toggle`)[0]
   const existing_theme = localStorage.getItem(storeKey)
 
-  // get user preference
+  // get browser level preference
   let system_theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
 
   // get system level preference

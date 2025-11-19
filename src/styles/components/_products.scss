@@ -1,5 +1,5 @@
 li.product-description {
-  max-width: 840px;
+  // max-width: 840px;
   font-weight: 600;
   font-size: 1rem;
   line-height: 1.5rem;
@@ -13,6 +13,12 @@ li.product-description {
 img.banner-image {
   max-width: 96px;
   margin-right: 25px;
+}
+
+html[data-theme=dark] {
+  img.banner-image {
+    filter: invert(1);
+  }
 }
 
 img.product-image {

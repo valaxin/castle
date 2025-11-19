@@ -4,6 +4,8 @@ import hljs from '@npm/highlight.js'
 import * as htmx from '@npm/htmx.org'
 import { animate, createTimeline, stagger, utils, text, onScroll } from '@npm/animejs'
 
+import LocomotiveScroll from 'locomotive-scroll';
+
 import './components/color-scheme.js'
 import './components/lightbox-gallery.js'
 import './components/table-of-contents.js'
@@ -108,4 +110,12 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   nodes.forEach(node => io.observe(node));
+});
+
+
+// ...
+
+const scroll = new LocomotiveScroll({
+  el: document.querySelector('[scroll]'),
+  smooth: true
 });
