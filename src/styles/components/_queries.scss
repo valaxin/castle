@@ -1,6 +1,10 @@
 
-// SCREEN MINIMUM IS 720 (DISABLED)
+// SCREEN MINIMUM IS 720 (DISABLED) (DESKTOP)
 @media screen and (min-width: 720px) {
+  body {
+    width: 70vw;
+    margin-left: 15vw;
+  }
   /*
   body {
     main {
@@ -26,11 +30,12 @@
   
 }
 
-// SCREEN MAXIMUM IS 720 (DISABLED)
+// SCREEN MAXIMUM IS 720 (MOBILE/TABLET)
 @media screen and (max-width: 720px) {
-  // img.about__grid-item-image {
-  //   filter: invert(0);
-  // }
+  body {
+    width: 96vw;
+    margin-left: 2vw;
+  }
 }
 
 // SCHEME DARK MODE SYSTEM LEVEL
@@ -41,6 +46,9 @@
     .about__grid-item-image {
       filter: invert(1);
     }
+    h1.title.article__title {
+      filter: invert(0);
+    }
   }
 
   html[data-theme=light] {
@@ -48,12 +56,19 @@
     .about__grid-item-image {
       filter: invert(0);
     }
+    h1.title.article__title {
+      filter: invert(1);
+    }
   }
 
   html[data-theme=dark] {
     img.banner-image,
+    h1.title.article__title,
     .about__grid-item-image {
       filter: invert(1);
+    }
+    h1.title.article__title {
+      filter: invert(0);
     }
   }
 }

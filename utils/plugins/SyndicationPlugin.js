@@ -53,10 +53,12 @@ export default class SyndicationPlugin {
       const feed = generate(self.posts)
       const feedXML = feed.rss2()
 
+      console.log(feedXML)
+
       // the comp hook provide tap access to asset emission during build
       compilation.hooks.additionalAssets.tapAsync('SyndicationPlugin', (callback) => {
         compilation.emitAsset('feed.json', new compiler.webpack.sources.RawSource(JSON.stringify(feed)))
-        compilation.emitAsset('feed.xml', new compiler.webpack.sources.RawSource(JSON.stringify(feedXML)))
+        compilation.emitAsset('feed.xml', new compiler.webpack.sources.RawSource(feedXML))
         callback()
       })
     })

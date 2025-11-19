@@ -29,6 +29,7 @@ $subtitle-size: 1.5vw;
 
 body {
   font-family: $app-font;
+  max-width: 1028px;
 }
 
 img.lightbox-enabled {
@@ -36,6 +37,8 @@ img.lightbox-enabled {
 }
 
 footer.footer {
+  background: transparent;
+
   .links {
     font-family: $app-font-code;
     font-size: 1rem;

@@ -3,6 +3,8 @@ extends layout
 block content
   main
     article.article.mb-5
+      a(href='/').article__backbutton
+        span.material-icons arrow_back
       figure.image
         img.article__hero(src=context.frontmatter.thumbnail, alt=context.frontmatter.thumbnailAlt)
       h1.title.article__title= context.frontmatter.title
