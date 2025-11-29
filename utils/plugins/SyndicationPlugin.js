@@ -53,7 +53,7 @@ export default class SyndicationPlugin {
       const feed = generate(self.posts)
       const feedXML = feed.rss2()
 
-      console.log(feedXML)
+      // console.log(feedXML)
 
       // the comp hook provide tap access to asset emission during build
       compilation.hooks.additionalAssets.tapAsync('SyndicationPlugin', (callback) => {

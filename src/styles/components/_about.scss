@@ -50,6 +50,7 @@ p.about__grid-item-summary {
 .tooltip {
   min-height: 30px;
   min-width: 128px;
+  max-width: 256px;
   border-radius: 10px;
   color: white;
   background-color: rgba(0,0,0,.3);
@@ -69,5 +70,6 @@ p.about__grid-item-summary {
   // background: turquoise;
   color: black;
   // padding: 4px 6px;
-  border-radius: 10px;
+  // border-radius: 10px;
+  margin-bottom: 5px;
 }

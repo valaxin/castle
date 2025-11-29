@@ -4,8 +4,6 @@ import hljs from '@npm/highlight.js'
 import * as htmx from '@npm/htmx.org'
 import { animate, createTimeline, stagger, utils, text, onScroll } from '@npm/animejs'
 
-import LocomotiveScroll from 'locomotive-scroll';
-
 import './components/color-scheme.js'
 import './components/lightbox-gallery.js'
 import './components/table-of-contents.js'
@@ -37,7 +35,7 @@ const siteSubtitle = text.splitText(['.hero__subtitle'], { words: { wrap: 'clip'
 const heroContentTitle = text.splitText(['.hero__content-title'], { words: { wrap: 'clip' }, chars: true })
 const heroContentSubtitle = text.splitText(['.hero__content-subtitle'], { words: { wrap: 'clip' } })
 
-const [ $value ] = utils.$('.value');
+const [$value] = utils.$('.value')
 
 const heroAnimation = animate(
   [
@@ -73,49 +71,50 @@ const heroAnimation = animate(
 )
 
 const articleTitle = text.splitText(['.article__title'], { words: { wrap: 'clip' }, chars: true })
-const articleContent= text.splitText(['.article__content'], { words: { wrap: 'clip' }, chars: true })
+const articleContent = text.splitText(['.article__content'], { words: { wrap: 'clip' }, chars: true })
 const genericScrollReveal = animate({})
 
 document.addEventListener('DOMContentLoaded', () => {
-  const nodes = [...document.body.querySelectorAll('body > *')];
+  const nodes = [...document.body.querySelectorAll('body > *')]
 
-  const io = new IntersectionObserver((entries) => {
-    const visible = entries
-      .filter(e => e.isIntersecting && e.target.dataset.revealed !== 'true')
-      .map(e => e.target);
+  const io = new IntersectionObserver(
+    (entries) => {
+      const visible = entries
+        .filter((e) => e.isIntersecting && e.target.dataset.revealed !== 'true')
+        .map((e) => e.target)
 
-    if (visible.length === 0) return;
+      if (visible.length === 0) return
 
-    visible.forEach((node, index) => {
-      node.animate(
-        [
-          { opacity: 0, transform: 'translateY(24px) scale(0.995)' },
-          { opacity: 1, transform: 'translateY(0) scale(1)' }
-        ],
-        {
-          duration: 700,
-          easing: 'cubic-bezier(.2,.8,.2,1)',
-          delay: index * 20,
-          fill: 'forwards'
-        }
-      );
+      visible.forEach((node, index) => {
+        node.animate(
+          [
+            { opacity: 0, transform: 'translateY(24px) scale(0.995)' },
+            { opacity: 1, transform: 'translateY(0) scale(1)' },
+          ],
+          {
+            duration: 700,
+            easing: 'cubic-bezier(.2,.8,.2,1)',
+            delay: index * 20,
+            fill: 'forwards',
+          }
+        )
 
-      node.dataset.revealed = 'true';
-      io.unobserve(node);
-    });
-  }, {
-    root: null,
-    rootMargin: '0px 0px -10% 0px',
-    threshold: 0.15
-  });
+        node.dataset.revealed = 'true'
+        io.unobserve(node)
+      })
+    },
+    {
+      root: null,
+      rootMargin: '0px 0px -10% 0px',
+      threshold: 0.15,
+    }
+  )
 
-  nodes.forEach(node => io.observe(node));
-});
-
+  nodes.forEach((node) => io.observe(node))
+})
 
 // ...
 
-const scroll = new LocomotiveScroll({
-  el: document.querySelector('[scroll]'),
-  smooth: true
-});
+const article_header_image = document.querySelectorAll('figure.image > img.article__hero')
+
+console.log(article_header_image)

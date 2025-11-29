@@ -6,6 +6,7 @@ export default (async () => {
   const tiles = document.querySelectorAll('.about .block .grid .cell')
   const summary_selector = '.about__grid-item-summary'
 
+  // strictly for the tiles on the index page
   for (const tile of tiles) {
 
     // when user enters a tile element
@@ -27,7 +28,7 @@ export default (async () => {
       for (const img of inner_imgs) {
         img.addEventListener('mouseenter', img_enter_event => {
           if (img.alt.length > 0) {
-            tooltip.innerHTML = `<span class="tooltip__toolname tag is-medium is-outline is-success">${img.alt}</span> ${tooltip.innerHTML}`
+            tooltip.innerHTML = `<span class="tooltip__toolname tag is-small is-outlined is-info">${img.alt}</span></br> ${tooltip.innerHTML}`
           }
         })
         img.addEventListener('mouseleave', img_leave_event => {
@@ -49,6 +50,20 @@ export default (async () => {
     })
   }
 
+  // for article headers...
+  const article_header = ''
+  const article_back_button = ''
 
+  article_header.addEventListener('mouseenter', (enter_event) => {
+    event_enter.target.addEventListener('mousemove', (move_event) => {})
+    event_enter.target.addEventListener('mouseleave', (leave_event) => {})
+  })
+
+  article_back_button.addEventListener('mouseenter', (enter_event) => {
+    event_enter.target.addEventListener('mousemove', (move_event) => {})
+    event_enter.target.addEventListener('mouseleave', (leave_event) => {})
+  })
+
+  // turn off if mobile?
 
 })()

@@ -25,7 +25,6 @@
     "html-bundler-webpack-plugin": "^4.21.1",
     "htmx.org": "^2.0.8",
     "jsdom": "^26.1.0",
-    "locomotive-scroll": "^4.1.4",
     "marked": "^16.4.1",
     "marked-alert": "^2.1.2",
     "marked-emoji": "^2.0.1",
