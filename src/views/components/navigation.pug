@@ -1,0 +1,16 @@
+nav.navbar(role='navigation' aria-label='main navigation')
+  .navbar-brand
+    a(href='/').navbar-item
+      span.material-icons-round= self.title
+      span.navnav-item.title= self.title
+  .navbar-menu
+    .navbar-start
+      a.navbar-item(href='/#about') about
+      a.navbar-item(href='/#project') project
+      a.navbar-item(href='/#articles') articles
+      a.navbar-item(href='/#contact') contact
+  a.navbar-burger.is-active(aria-expanded='false' aria-label='menu' role='button')
+    span(aria-hidden='true')
+    span(aria-hidden='true')
+    span(aria-hidden='true')
+    span(aria-hidden='true')

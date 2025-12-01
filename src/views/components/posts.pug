@@ -1,18 +1,18 @@
-section.section.posts
-  h1.title.posts__title Logs
-  h2.subtitle.posts__subtitle.is-6 Thoughts, Comments, Streams of Consciousness
+section.block
+  h2.title.is-1 Notes
+  h3.subtitle.is-6 -
   
   each post in self.posts
     if (post.frontmatter.visible === true)
-      .post__item.mb-5
-        a.posts__item.title(href= post.slug + '.html')= post.frontmatter.title
-        span.material-icons-round.flipped-icon arrow_outward
+      .block.mb-5
+        a.item.title(href= post.slug + '.html')= post.frontmatter.title
+        span.material-icons-round.is-flipped arrow_outward
         ul
           li
-            span.posts__item-summary= post.frontmatter.summary
+            span.summary= post.frontmatter.summary
           li
             if (post.frontmatter.published)
-              span.posts__item-published.button.mt-2.mr-2.is-outlined.is-info.is-small= post.frontmatter.published
-              span.posts__item-filesize.button.mt-2.mr-2.is-outlined.is-primary.is-small= post.fsize
+              span.button.mt-2.mr-2.is-outlined.is-primary.is-small= post.frontmatter.published
+              span.button.mt-2.mr-2.is-outlined.is-primary.is-small= post.fsize
             if (post.frontmatter.author)
-              span.posts__item-author.button.mt-2.is-outlined.is-link.is-small= post.frontmatter.author
+              span.button.mt-2.is-outlined.is-primary.is-small= post.frontmatter.author

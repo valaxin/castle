@@ -1,11 +1,11 @@
 extends layout
 
 block content
-  main(data-scroll-container)
-    include components/hero
-    include components/about
-    .grid
-      include components/posts
-      include components/projects
-    include components/products
-  include components/footer
+  main(data-state='uninitalized')
+    include ./components/hero
+    include ./components/navigation
+    .grid.mt-5
+      .cell
+        include ./components/posts
+      .cell
+        include ./components/projects
