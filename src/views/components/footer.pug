@@ -1,20 +1,18 @@
 footer.section.footer
-  a(href='/').title.footer__title= self.title
-  h2.subtitle.footer__subtitle.is-6 My slice of the web
-  .links
+
+  a(href='/').title= self.title
+  h2.subtitle.is-6 My slice of the web
+  .links.grid
+    a(href='/#').build-time= '[' + epoch + ']'
     a(href='/legal.html') Legal
-      | &nbsp;&nbsp;
     a(href='/feed.xml') XML
-      | |
     a(href='/feed.json') JSON
-      | &nbsp;&nbsp;
     a(href='https://github.com/valaxin') Github
-      span.material-icons.round arrow_outward
-      | &nbsp;&nbsp;
+      span.material-icons.round.is-small arrow_outward
     a(href='https://codepen.com/valaxin') CodePen
-      span.material-icons.round arrow_outward
+      span.material-icons.round.is-small arrow_outward
     
-  .controls.mt-5
+  .controls.grid.mt-5
     if (context) 
       button.button.button.is-link.is-outlined.return-home
         a(href='/') INDEX

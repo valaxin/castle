@@ -2,10 +2,9 @@ extends layout
 
 block content
   main(data-state='uninitalized')
-    include ./components/hero
     include ./components/navigation
-    .grid.mt-5
-      .cell
-        include ./components/posts
-      .cell
-        include ./components/projects
+    include ./components/hero
+    .grid.is-col-min-12
+      include ./components/projects
+      include ./components/posts
+  include ./components/footer
