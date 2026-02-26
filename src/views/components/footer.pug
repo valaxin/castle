@@ -1,20 +1,26 @@
-footer.section.footer
+footer.footer
 
   a(href='/').title= self.title
-  h2.subtitle.is-6 My slice of the web
+  h2.subtitle.is-6= self.description
   .links.grid
-    a(href='/#').build-time= '[' + epoch + ']'
     a(href='/legal.html') Legal
     a(href='/feed.xml') XML
     a(href='/feed.json') JSON
-    a(href='https://github.com/valaxin') Github
-      span.material-icons.round.is-small arrow_outward
-    a(href='https://codepen.com/valaxin') CodePen
+    
+    a(href='https://github.com/valaxin')
+      // img(src='@images/logos/svg/github.svg' style='width: 32px; filter: invert(1);')
+      | Github
       span.material-icons.round.is-small arrow_outward
     
-  .controls.grid.mt-5
+    a(href='https://codepen.com/valaxin')
+      // img(src='@images/logos/svg/codepen.svg' style='width: 32px; filter: invert(1);')
+      | Codepen
+      span.material-icons.round.is-small arrow_outward
+    
+  .controls.grid
     if (context) 
       button.button.button.is-link.is-outlined.return-home
         a(href='/') INDEX
     button.button.is-link.is-outlined.page-top(onclick='window.scrollTo(0, 0)') TOP
-    button.button.is-link.is-outlined.theme-toggle AUTO
+    button.button.is-link.is-outlined.theme-toggle
+      span.material-icons.round auto_awesome

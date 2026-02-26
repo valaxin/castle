@@ -3,6 +3,8 @@
 // @use "@npm/highlight.js/styles/github.css";
 // @use "@npm/highlight.js/styles/github-dark.css";
 
+@use "post";
+
 $app-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 $app-font-code: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;
 
@@ -25,6 +27,19 @@ nav.navbar {
   padding-left: 3vw;
 }
 
+footer.footer {
+  background-color: transparent;
+  padding-left: 3vw;
+  max-width: 960px;
+}
+
 .is-flipped {
   transform: rotate(180deg);
+}
+
+@media query and (max-width: 700px) {
+  body {
+    padding-left: 3vw;
+    padding-right: 3vw;
+  }
 }

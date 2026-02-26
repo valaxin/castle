@@ -1,0 +1,32 @@
+main.post {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  padding-top: 50px;
+  
+  .article {
+    max-width: 960px;
+
+
+    &__backbutton {
+      // background: pink;
+      position: fixed;
+      top: 100px;
+      margin-left: -50px;
+      &:hover {
+        transform: scale(1.25);
+      }
+    }
+
+    &__hero {
+      //display: none;
+      border-radius: 24px;
+      margin-bottom: 25px;
+
+    }
+
+    &__title {
+      font-size: 10vw;
+    }
+  }
+}

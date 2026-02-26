@@ -9,7 +9,6 @@ import './components/color-scheme.js'
 import './components/lightbox-gallery.js'
 import './components/highlight-switcher.js'
 import './components/cursor-tooltip.js'
-/*
 
 let theme = window.matchMedia(`(prefers-color-scheme: dark)`)
 let themePref = document.documentElement.dataset.theme
@@ -27,5 +26,7 @@ if (window) {
 }
 
 window.htmx = htmx.default
-window._log('index.js >> available', { htmx: htmx.default, animate, hljs })
-*/
+window._log('index.js >> available', {
+  htmx: htmx.default,
+  hljs
+})

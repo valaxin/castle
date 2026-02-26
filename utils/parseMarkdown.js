@@ -55,11 +55,19 @@ export function parseMarkdown(filePath) {
 
 export function parseAllMarkdown(dirPath, templatePath) {
   const files = readdirSync(dirPath).filter((file) => file.endsWith('.md'))
+  const directories = readdirSync(dirPath).map((d) => {
+    // let p = statSync(d).isDirectory()
+    // console.log(d, p)
+    readdirSync(dirPath).map((dn) => {
+      console.log(dn)
+    })
+  })
+
   return files.map((file) => {
     const fullPath = join(dirPath, file)
     const { html, frontmatter, birthtime, size, fsize, readTime } = parseMarkdown(fullPath)
     const slug = basename(file, '.md')
-    return {
+    let output = {
       html,
       frontmatter,
       templatePath,
@@ -69,6 +77,8 @@ export function parseAllMarkdown(dirPath, templatePath) {
       fsize,
       readTime
     }
+    console.log(output)
+    return output
   })
 }
 

@@ -50,6 +50,5 @@ entry point is `./webpack.config.js` these are the bundler options and if you're
 high level it reads, parses and copys content from one directory (`/src`) to another (`/dist`)
 this transformation gives us a browser ready web application.
 
-during devolopment we have hot reload for most changes
-
+during devolopment we have hot reload for most changes.
 

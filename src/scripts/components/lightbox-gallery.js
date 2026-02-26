@@ -2,8 +2,8 @@ export default (async () => {
   
   'use strict'
   
-  console.log(`[todo] /modules/lightbox-gallery.js`)
-
+  // console.log(`[todo] /modules/lightbox-gallery.js`)
+  
   const imgs = document.body.querySelectorAll('img.lightbox-enabled')
 
   for (const image of imgs) {
