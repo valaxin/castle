@@ -1,13 +1,13 @@
 section.section.products
-  h1.title.products__title Products
+  h1.title.products__title Services
   h2.subtitle.products__subtitle.is-6 Repairs, Parts, Accessories & Clothing
 
   ul
     each product in self.products
       if (product.published == false)
-        li.flex-row.mt-5.mb-5
+        li.flex-column.mt-5.mb-5
           if (product.preview_url)
-            img.product-image(src= product.preview_url)
+            img.product-image.lightbox-enabled(src= product.preview_url)
           ul
             li
               a.is-primary(href= product.short_url).title.is-3= product.name
@@ -15,10 +15,35 @@ section.section.products
               if (product.custom_summary)
                 p.mt-2= product.custom_summary
             li.mt-2
-              span.button.is-primary.is-outlined.is-5.mt-2.mr-2= product.formatted_price
+              a(href= product.short_url)
+                span.button.is-primary.is-outlined.is-5.mt-2.mr-2= product.formatted_price
               if (product.max_purchase_count)
-                span.button.is-warning.is-outlined.is-5.mt-2
-                  span.material-icons-round warning
-                  | &nbsp;Only #{product.max_purchase_count} Available
+                a(href= product.short_url)
+                  span.button.is-warning.is-outlined.is-5.mt-2
+                    span.material-icons-round warning
+                    | &nbsp;Only #{product.max_purchase_count} Available
             li.product-description.mt-4
               != product.description
+            if (product.name === 'Energy Ball Stickers')
+              li.bottom-banner.mt-4.flex-row
+                span.bottom-banner-text Sold On
+                img.banner-image(src='@images/logos/gumroad-logo.png')
+                span.bottom-banner-text Printed By
+                img.banner-image(src='@images/logos/stickermule-logo.png')
+            
+            if (product.variants[0])
+              if (product.variants[0].options)
+                span See also:
+                ul.product-variants.mt-3
+                
+                  each variant of product.variants[0].options
+                    button.button.is-outlined.is-info.mr-3= variant.name
+
+              else if (product.variants[0].title == 'Suggested Amounts')
+                span key: suggested amounts
+              else
+                span Variants Key, No Options.
+            else
+              // button.button.is-outlined.is-warning.mt-3 No Variants
+        hr
+        br

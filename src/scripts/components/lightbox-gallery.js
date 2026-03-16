@@ -4,7 +4,7 @@ export default (async () => {
   
   console.log(`[todo] /modules/lightbox-gallery.js`)
 
-  const imgs = document.body.querySelectorAll('img')
+  const imgs = document.body.querySelectorAll('img.lightbox-enabled')
 
   for (const image of imgs) {
     image.addEventListener('click', e => {

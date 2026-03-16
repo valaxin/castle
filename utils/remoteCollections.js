@@ -31,7 +31,7 @@ async function repositories(username, token) {
       open_issues_count: repo. open_issues_count
     }))
 
-    console.log({parsed})
+    // console.log({parsed})
 
     return parsed
   } catch (error) {

@@ -6,22 +6,23 @@
 
   .content {
     font-weight: 700;
-    font-size: 1.25rem;
-    
+    font-size: 5rem;
+
     svg {
       font-size: 2rem;
     }
   }
 
   &-title {
-    font-size: 1.5vw;
+    content {
+      font-size: 3vw;
+    }
     font-weight: 800;
-    text-decoration: underline;
+    // text-decoration: underline;
   }
 }
 
-html[data-theme=light],
-html[data-theme=auto] {
+@mixin mdAlertLightMode() {
   .markdown-alert-note {
     background-color: var(--bulma-info-light);
     svg {
@@ -73,9 +74,11 @@ html[data-theme=auto] {
     }
   }
 }
-html[data-theme=dark] {  
 
-  h1.article__title { color: white !important; }
+@mixin mdAlertDarkMode() {
+  h1.article__title {
+    color: white !important;
+  }
 
   .markdown-alert-note {
     background-color: var(--bulma-info-dark);
@@ -126,5 +129,19 @@ html[data-theme=dark] {
     .content {
       color: var(--bulma-danger-light);
     }
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  html[data-theme="auto"],
+  html[data-theme="light"] {
+    @include mdAlertLightMode();
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-theme="auto"],
+  html[data-theme="dark"] {
+    @include mdAlertDarkMode();
   }
 }

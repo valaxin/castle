@@ -11,15 +11,12 @@ footer.section.footer
     a(href='https://github.com/valaxin') Github
       span.material-icons.round arrow_outward
       | &nbsp;&nbsp;
-    a(href='https://codepen.com/valaxin') Codepen
-      span.material-icons.round arrow_outward
-      | &nbsp;&nbsp;
-    a(href='https://codepen.com/valaxin') Bluesky
+    a(href='https://codepen.com/valaxin') CodePen
       span.material-icons.round arrow_outward
     
   .controls.mt-5
     if (context) 
       button.button.button.is-link.is-outlined.return-home
         a(href='/') INDEX
-    button.button.is-link.is-outlined.page-top(onclick='window.scrollTop()') TOP
+    button.button.is-link.is-outlined.page-top(onclick='window.scrollTo(0, 0)') TOP
     button.button.is-link.is-outlined.theme-toggle AUTO

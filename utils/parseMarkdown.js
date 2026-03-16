@@ -3,7 +3,7 @@ import { basename, join } from 'path'
 
 import { Marked } from 'marked'
 import { markedEmoji } from 'marked-emoji'
-import { emojis } from './emojiObject.js'
+import { emojis } from './emojis.js'
 import { markedHighlight } from 'marked-highlight'
 import markedAlert from 'marked-alert'
 import markedFootnote from 'marked-footnote'
@@ -13,7 +13,6 @@ import matter from 'gray-matter'
 import hljs from 'highlight.js'
 
 import { JSDOM } from 'jsdom'
-
 
 const marked = new Marked(
   markedAlert(),

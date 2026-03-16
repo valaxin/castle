@@ -1,11 +1,11 @@
 extends layout
 
 block content
-  main
-    section.section.hero.is-bold
-      span.subtitle.is-6= '[' + epoch + ']'
-      h1.title.is-1= self.title
-    include components/posts
-    include components/projects
+  main(data-scroll-container)
+    include components/hero
+    include components/about
+    .grid.is-col-min-12
+      include components/posts
+      include components/projects
     include components/products
   include components/footer

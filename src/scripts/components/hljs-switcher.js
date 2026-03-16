@@ -13,21 +13,17 @@ export default (async () => {
     if (dark) {
       if (userTheme === 'light') {
         themeLink.href = gh_light
-      }
-      if (userTheme === 'dark') {
+      } else if (userTheme === 'dark') {
         themeLink.href = gh_dark
-      }
-      if (userTheme === 'auto') {
+      } else if (userTheme === 'auto') {
         themeLink.href = gh_dark
       }
     } else {
       if (userTheme === 'light') {
         themeLink.href = gh_light
-      }
-      if (userTheme === 'dark') {
+      } else if (userTheme === 'dark') {
         themeLink.href = gh_dark
-      }
-      if (userTheme === 'auto') {
+      } else if (userTheme === 'auto') {
         themeLink.href = gh_light
       }
     }

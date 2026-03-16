@@ -1,0 +1,74 @@
+
+// SCREEN MINIMUM IS 720 (DISABLED) (DESKTOP)
+@media screen and (min-width: 720px) {
+  body {
+    width: 70vw;
+    margin-left: 15vw;
+  }
+  /*
+  body {
+    main {
+      max-width: 80vw;
+      // margin-left: 20vw;
+      margin-left: 25px;
+    }
+    footer {
+      max-width: 60vw;
+      // margin-left: 20vw;
+      background-color: transparent !important;
+      background: transparent !important;
+    }
+  }
+  
+  figure.image {
+    padding-top: 25px;
+    img.article__hero {
+      border-radius: 24px;
+    }
+  }
+*/
+  
+}
+
+// SCREEN MAXIMUM IS 720 (MOBILE/TABLET)
+@media screen and (max-width: 720px) {
+  body {
+    width: 96vw;
+    margin-left: 2vw;
+  }
+}
+
+// SCHEME DARK MODE SYSTEM LEVEL
+@media screen and (prefers-color-scheme: dark) {
+
+  html[data-theme=auto] {
+    img.banner-image,
+    .about__grid-item-image {
+      filter: invert(1);
+    }
+    h1.title.article__title {
+      filter: invert(0);
+    }
+  }
+
+  html[data-theme=light] {
+    img.banner-image,
+    .about__grid-item-image {
+      filter: invert(0);
+    }
+    h1.title.article__title {
+      filter: invert(1);
+    }
+  }
+
+  html[data-theme=dark] {
+    img.banner-image,
+    h1.title.article__title,
+    .about__grid-item-image {
+      filter: invert(1);
+    }
+    h1.title.article__title {
+      filter: invert(0);
+    }
+  }
+}
