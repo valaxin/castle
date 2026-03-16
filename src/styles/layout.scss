@@ -25,6 +25,9 @@ body {
 
 nav.navbar {
   padding-left: 3vw;
+  position: fixed;
+  top: 0;
+  left: 2;
 }
 
 footer.footer {
@@ -35,6 +38,17 @@ footer.footer {
 
 .is-flipped {
   transform: rotate(180deg);
+}
+
+.hero h3.caption {
+  font-size: 3rem;
+}
+
+img.thumbnail {
+  max-height: 128px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 24px;
 }
 
 @media query and (max-width: 700px) {
