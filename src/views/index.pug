@@ -1,10 +1,11 @@
 extends layout
 
 block content
-  main(data-state='uninitalized')
-    include ./components/navigation
-    include ./components/hero
+  main(data-scroll-container)
+    include components/hero
+    include components/about
     .grid.is-col-min-12
-      include ./components/projects
-      include ./components/posts
-  include ./components/footer
+      include components/posts
+      include components/projects
+    include components/products
+  include components/footer
