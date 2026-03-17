@@ -1,19 +1,19 @@
 section.section.cell
   h2.title.is-1 Notes
-  h3.subtitle.is-6 -
+  h3.subtitle.is-6 
   
   each post in self.posts
     if (post.frontmatter.visible === true)
       .block.mb-5
-        a
-          .item.title(href= post.slug + '.html')= post.frontmatter.title
-          span.material-icons-round.is-flipped arrow_outward
+        a.item(href= post.slug + '.html')
+          span.title= post.frontmatter.title
+          span.title.material-icons-round.is-flipped arrow_outward
           ul
             li
               img.thumbnail(src= post.frontmatter.thumbnail)
             li
-              span.summary= post.frontmatter.summary
-            li
+              span.subtitle.summary= post.frontmatter.summary
+            li.mt-2
               if (post.frontmatter.published)
                 span.button.mt-2.mr-2.is-outlined.is-primary.is-small= post.frontmatter.published
                 span.button.mt-2.mr-2.is-outlined.is-primary.is-small= post.fsize

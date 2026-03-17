@@ -2,25 +2,32 @@ footer.footer
 
   a(href='/').title= self.title
   h2.subtitle.is-6= self.description
-  .links.grid
-    a(href='/legal.html') Legal
-    a(href='/feed.xml') XML
-    a(href='/feed.json') JSON
+  ul.links
+    li
+      a(href='/legal.html') Legal
+    li
+      a(href='/feed.xml') XML
+    li
+      a(href='/feed.json') JSON
+  
+  ul.social.mt-4
+    ul
+      a(href='https://github.com/valaxin')
+        // img(src='@images/logos/svg/github.svg' style='width: 32px; filter: invert(1);')
+        | Github
+        span.material-icons.round.is-small arrow_outward
+    li
+      a(href='https://codepen.com/valaxin')
+        // img(src='@images/logos/svg/codepen.svg' style='width: 32px; filter: invert(1);')
+        | Codepen
+        span.material-icons.round.is-small arrow_outward
     
-    a(href='https://github.com/valaxin')
-      // img(src='@images/logos/svg/github.svg' style='width: 32px; filter: invert(1);')
-      | Github
-      span.material-icons.round.is-small arrow_outward
-    
-    a(href='https://codepen.com/valaxin')
-      // img(src='@images/logos/svg/codepen.svg' style='width: 32px; filter: invert(1);')
-      | Codepen
-      span.material-icons.round.is-small arrow_outward
-    
-  .controls.grid
+  .controls.is-flex.is-justify-content-flex-start.mt-5
     if (context) 
-      button.button.button.is-link.is-outlined.return-home
-        a(href='/') INDEX
-    button.button.is-link.is-outlined.page-top(onclick='window.scrollTo(0, 0)') TOP
-    button.button.is-link.is-outlined.theme-toggle
+      button.is-link.is-outlined.return-home.mr-3
+        a(href='/')
+          span.material-icons.round home
+    button.is-link.is-outlined.page-top.mr-3(onclick='window.scrollTo(0, 0)')
+      span.material-icons.round keyboard_double_arrow_up
+    button.is-link.is-outlined.theme-toggle.mr-3
       span.material-icons.round auto_awesome

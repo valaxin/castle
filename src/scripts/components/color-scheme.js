@@ -1,8 +1,13 @@
 
+/**
+ * PURPOSE - HANDLE DARK AND LIGHT MODE
+ */
+
 export default (async () => {
   
   'use strict'
 
+  // if no window no go go
   if (!window || !document) { return }
 
   // [helper method] save to local stoage or return an error

@@ -2,11 +2,10 @@ extends layout
 
 block content
   header
-    include ./components/navigation
+    include components/navigation
   main(data-state='uninitalized')
-    include ./components/hero
-    .grid.is-col-min-12
-      include components/posts
-      include components/projects
-    // include components/products
+    include components/hero
+    include components/about
+    include components/posts
+    include components/projects
   include components/footer

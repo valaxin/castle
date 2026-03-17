@@ -58,8 +58,5 @@ async function products(token) {
   }
 }
 
-
-
-
 export const gumroad = await products(process.env.GUMROAD)
 export const github = await repositories(process.env.USERNAME, process.env.GITHUB)

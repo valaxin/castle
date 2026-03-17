@@ -7,6 +7,11 @@ main.post {
   .article {
     max-width: 960px;
 
+    pre {
+      background-color: transparent;
+      border-radius: 24px;
+    }
+
     &__backbutton {
       // background: pink;
       position: fixed;
@@ -26,6 +31,11 @@ main.post {
 
     &__title {
       font-size: 10vw;
+    }
+
+    &__content {
+      font-size: 1.25rem;
+      font-weight: 500;
     }
   }
 }
