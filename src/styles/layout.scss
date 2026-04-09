@@ -5,11 +5,15 @@
 
 @use "post";
 
-$app-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-$app-font-code: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;
+@mixin white-gradient {
+  background: linear-gradient(to right, var(--bulma-body-background-color) 0%, rgba(0,0,0,0) 100%);
+}
 
-$title-size: 3vw;
-$subtitle-size: 1.5vw;
+// Animation
+@keyframes scroll {
+	0% { transform: translateX(0); }
+	100% { transform: translateX(calc(-250px * 7))}
+}
 
 :root {
   font-synthesis: none;
@@ -17,57 +21,107 @@ $subtitle-size: 1.5vw;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   view-transition-name: none;
+
+  --app-font:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  --app-font-code:
+    Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;
+
+  --text-text-size: 4vw;
+  --subtitle-text-size: 1.25vw;
+  --body-text-size: 1vw;
+  --desktop-width: 80vw;
+  --mobile-width: 90vw;
+  --animation-speed: 45s;
 }
 
 body {
-  font-family: $app-font;
-  margin-left: calc((100vw - 960px) / 2);
-  max-width: 960px;
+  font-family: var(--app-font);
+  width: var(--desktop-width);
+  margin-left: calc(var(--desktop-width) / 9);
+
+  .section {
+    padding: 3vh 0;
+  }
+
+  pre,
+  code {
+    font-family: var(--app-font-code);
+  }
+
+  nav.navbar {
+    // ...
+  }
+
+  footer.footer {
+    background-color: transparent;
+    padding: 3vh 0;
+  }
+
+  .is-flipped {
+    transform: rotate(180deg);
+  }
+
+  .hero h3.caption {
+    font-size: 3rem;
+  }
+
+  img.thumbnail {
+    max-height: 128px;
+    width: 100%;
+    height: 128px;
+    object-fit: cover;
+    border-radius: 24px;
+  }
+
+  .carousel {
+    height: 100px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    width: var(--desktop-width);
+
+    &::before,
+    &::after {
+      @include white-gradient;
+      content: "";
+      height: 100px;
+      position: absolute;
+      width: 200px;
+      z-index: 2;
+    }
+
+    &::after {
+      right: 0;
+      top: 0;
+      transform: rotateZ(180deg);
+    }
+
+    &::before {
+      left: 0;
+      top: 0;
+    }
+
+    .carousel-track {
+      animation: scroll var(--animation-speed) linear infinite;
+      display: flex;
+      width: calc(250px * 14);
+    }
+
+    img {
+      height: 100px;
+      width: 250px;
+      filter: invert(1);
+      opacity: 0.75;
+    }
+  }
 }
 
-main {
-  margin-top: 50px;
-}
-
-
-nav.navbar {
-  padding-left: 3vw;
-  position: fixed;
-  top: 0;
-  left: 2;
-}
-
-footer.footer {
-  background-color: transparent;
-  padding-left: 3vw;
-  max-width: 960px;
-}
-
-.is-flipped {
-  transform: rotate(180deg);
-}
-
-.hero h3.caption {
-  font-size: 3rem;
-}
-
-img.thumbnail {
-  max-height: 128px;
-  width: 100%;
-  object-fit: cover;
-  border-radius: 24px;
-}
-
-.about .cell img {
-  max-width: 96px;
-  margin: 16px;
-  
-}
-
-
-@media query and (max-width: 700px) {
+// when mobile width
+@media screen and (max-width: 480px) {
   body {
     padding-left: 3vw;
     padding-right: 3vw;
+    width: 100%;
   }
 }

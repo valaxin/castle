@@ -1,7 +1,9 @@
 ---
-title: Raspberry Music for Penguins
+id: '002'
+title: Raspberry Penguin Music
+subtitle: 'Simple guide to locally hosting jellyfin on a raspberry pi 3 B+'
 published: 3/2026
-tags: ubunutu raspberry-pi 
+tags: tutorial linux raspberry-pi self-hosted ubuntu
 summary: A simple setup guide to local music streaming
 thumbnail: '@images/static/raspberries.jpg'
 thumbnailAlt: William Mason Brown (1828-1898) “Raspberries in a Wooded Landscape”. Oil on canvas.
@@ -9,119 +11,227 @@ author: valaxin
 visible: true
 ---
 
-## Base System Setup
+## Purpose
 
-1. On another computer, using `Raspberry Pi Imager` to install `Ubuntu Server 24.04.4 LTS (64-Bit)` [1.2GB] on a microSD card at least `32GB` in size.
+Streaming platforms centralize access, impose recurring cost, and depend on external infrastructure. A local media server removes those constraints. This build uses Jellyfin on a low-power Raspberry Pi 3 Model B+ to host and stream a personal music library over the local network. The system exposes:
 
-2. During the `Customization` step set these
-   - hostname: potato.local
-   - user: jimbo
-   - password: *******
-   - shh-access: true
+- SSH access for administration
+- SMB share for file ingestion
+- Jellyfin web UI and API for playback
 
-3. When complete the media may eject itself, however ensure this has happened then insert into the Raspberry Pi and power it on.
+The result is a self-contained, no-subscription music system.
 
-4. On another device presumed to be on the same network as our potato.local
 
-   ```bash
-   ping http://potato.local
-   ```
+## Prerequisites
 
-5. take the `IPV4 Address` listed and issue, we use this identifer rather than domain resolution as it can work to create vectors for bad actors.
+Raspberry Pi 3 Model B+ (or newer; older models are too constrained)
+MicroSD card (≥ 64GB recommended)
+Ubuntu Server 24.04 image installed
+Network access (Ethernet preferred for stability)
 
-   ```bash
-   ssh jimbo@<IPV4_Address>
-   ```
+Flash using Raspberry Pi Imager with:
+SSH enabled
+Username/password configured
+Hostname set (e.g., raspberry)
 
-6. once you've provided the user password and accepted the fingerprint you should be at a shell prompt and first things first.
+## First Boot
 
-   ```bash
-   sudo -s           # create a sudo shell
-   apt update        # update repsitories
-   apt upgrade -y    # upgrade software
-   ```
+Connect:
 
-## Network Drive Access Setup
+```bash
+ssh username@hostname.local
+```
 
-1. Install `samba` and create and edit it's config
+Update system:
+```bash
+sudo apt update
+sudo apt upgrade -y
+```
 
-   ```bash
-   sudo apt install samba
-   sudo nano /etc/samba/smb.conf
-   ```
+## SSH Hardening
 
-2. We need too add the following to the end of the config file then create the required user, directories before restarting the samba service.
+Ubuntu Server uses `sshd_config`, for basic port changes.
 
-   ```yaml
-   # ... 
-   
-   [music]
-   path = /srv/media/music
+Edit:
+
+```bash
+sudo nano /etc/ssh/sshd_config
+```
+
+Change or add:
+
+```text
+Port 42069
+PermitRootLogin no
+PasswordAuthentication yes
+```
+
+Restart SSH:
+```bash
+sudo systemctl restart ssh
+```
+
+Reconnect:
+
+```bash
+ssh username@hostname.local -p 42069
+```
+
+## Firewall (UFW)
+
+```bash
+sudo apt install ufw -y
+
+sudo ufw allow 42069/tcp
+sudo ufw allow OpenSSH
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+
+sudo ufw enable
+sudo ufw status
+```
+
+## SMB File Share (Samba)
+
+Install:
+
+```bash
+sudo apt install samba -y
+```
+
+Set SMB password:
+
+```bash
+sudo smbpasswd -a username
+```
+
+Create storage:
+
+```bash
+sudo mkdir -p /srv/music
+sudo chown username:username /srv/music
+sudo chmod 750 /srv/music
+```
+
+Edit config:
+
+```bash
+sudo nano /etc/samba/smb.conf
+```
+
+Append:
+
+```toml
+[music]
+   path = /srv/music
    browseable = yes
    read only = no
    guest ok = no
-   create mask = 0755
+   valid users = username
+   create mask = 0644
    directory mask = 0755
-   ```
+```
 
-   ```bash
-   sudo mkdir -p /srv/media/music         # create directory
-   sudo chown -R $USER:$USER /srv/media   # give curretly signed in user access over parent 
-   sudo smbpasswd -a $USER                # create a samba user
-   sudo systemctl restart smbd            # restart the samba service
-   ```
+Validate + restart:
 
-3. the network store should exist to the local network and be accessable at `\\potato.local\music`
+```bash
+testparm
+sudo systemctl restart smbd
+sudo systemctl enable smbd
+```
 
-## Jellyfin
+Access from another machine:
 
-1. install some deps for `jellyfin` then the software itself.
+`\\hostname.local\music`
 
-   ```bash
-   # prerequisiets
-   sudo apt install apt-transport-https ca-certificates curl -y
+Allow through firewall:
 
-   # set
-   curl https://repo.jellyfin.org/install-debuntu.sh | sudo bash
-   
-   # to confirm install
-   jellyvin --version
-   ```
+```bash
+sudo ufw allow samba
+```
 
-2. visit `http://potato.local:8096` to configure the application.
+## Jellyfin Installation
 
-## Nginx Apps
+Install dependencies and repository:
 
-1. let's get some tools for building and running web applications
+```bash
+sudo apt install curl gnupg apt-transport-https ca-certificates -y
+curl https://repo.jellyfin.org/install-debuntu.sh | sudo bash
+```
 
-   ```bash
-   sudo apt update
-   sudo apt install nginx nodejs npm
-   ```
+Install Jellyfin:
 
-   Then a small sanitiy check
+```bash
+sudo apt install jellyfin -y
+```
 
-   ```bash
-   node -v
-   npm -v
-   nginx -v
-   ```
+Enable and start:
 
-2. create new or clone existing express application
+```bash
+sudo systemctl enable jellyfin
+sudo systemctl start jellyfin
+```
 
-   ```bash
-   git clone https://github.com/valaxin/alata
-   ```
+Allow through firewall:
 
-3. let's setup express app to keep running with `pm2`
+```bash
+sudo ufw allow 8096/tcp
+Initial Setup
+```
 
-   ```bash
-   sudo npm install -g pm2
+Open in browser:
 
-   # test
-   cd alata
-   npm install
-   pm2 npm run start --name alata
-   ```
+`http://hostname.local:8096`
 
-   
+Steps:
+
+Create admin account
+Add media library:
+Type: Music
+Path: /srv/music
+Complete setup
+
+Jellyfin scans metadata and builds the library index.
+
+Directory Structure (Recommended)
+
+Inside /srv/music:
+
+```text
+Artist/
+  Album/
+    01 - Track.mp3
+    02 - Track.mp3
+```
+
+Consistent naming improves metadata detection.
+
+Performance Constraints
+
+The Raspberry Pi 3 Model B+ has:
+
+Limited CPU -> no real-time transcoding
+1GB RAM -> small concurrent usage
+USB 2.0 bus -> I/O bottleneck
+
+Mitigation:
+
+Use direct play formats (MP3, AAC)
+Avoid FLAC transcoding over network
+Prefer wired Ethernet
+Result
+
+System exposes:
+
+- SSH: `hostname.local:42069`
+- SMB: `\\hostname.local\music`
+- Jellyfin: `http://hostname.local:8096`
+
+No external dependency. No subscription. Local control over media ingestion, indexing, and playback.
+
+## References 
+
+- Jellyfin Documentation: https://jellyfin.org/docs/
+- Ubuntu Server Documentation: https://ubuntu.com/server/docs
+- Samba Documentation: https://www.samba.org/samba/docs/
+- Raspberry Pi Documentation: https://www.raspberrypi.com/documentation/
