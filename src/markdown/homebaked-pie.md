@@ -21,28 +21,29 @@ Streaming platforms centralize access, impose recurring cost, and depend on exte
 
 The result is a self-contained, no-subscription music system.
 
-
 ## Prerequisites
 
-Raspberry Pi 3 Model B+ (or newer; older models are too constrained)
-MicroSD card (≥ 64GB recommended)
-Ubuntu Server 24.04 image installed
-Network access (Ethernet preferred for stability)
+- Raspberry Pi 3 Model B+ (or newer)
+- MicroSD card (≥ 64GB recommended)
+- Ubuntu Server 24.04 image installed
+- Network access (Ethernet preferred for stability)
 
 Flash using Raspberry Pi Imager with:
-SSH enabled
-Username/password configured
-Hostname set (e.g., raspberry)
+
+- SSH enabled
+- Username/password configured (e.g, tux)
+- Hostname set (e.g, raspberry)
 
 ## First Boot
 
 Connect:
 
 ```bash
-ssh username@hostname.local
+ssh tux@raspberry.local
 ```
 
 Update system:
+
 ```bash
 sudo apt update
 sudo apt upgrade -y
@@ -58,7 +59,7 @@ Edit:
 sudo nano /etc/ssh/sshd_config
 ```
 
-Change or add:
+Change or add these lines, and save the file:
 
 ```text
 Port 42069
@@ -67,25 +68,36 @@ PasswordAuthentication yes
 ```
 
 Restart SSH:
+
 ```bash
+sudo systemctl enable ssh
 sudo systemctl restart ssh
 ```
 
 Reconnect:
 
 ```bash
-ssh username@hostname.local -p 42069
+ssh tux@raspberry.local -p 42069
 ```
 
 ## Firewall (UFW)
 
-```bash
-sudo apt install ufw -y
+Install:
 
+`ufw` is likely already installed.
+
+```bash
+sudo ufw status
+
+# if not
+sudo apt install ufw -y
+```
+
+Some basic rules
+
+```bash
 sudo ufw allow 42069/tcp
 sudo ufw allow OpenSSH
-sudo ufw allow 80/tcp
-sudo ufw allow 443/tcp
 
 sudo ufw enable
 sudo ufw status
@@ -156,6 +168,7 @@ Install dependencies and repository:
 
 ```bash
 sudo apt install curl gnupg apt-transport-https ca-certificates -y
+# remember, it's on you to read before run.
 curl https://repo.jellyfin.org/install-debuntu.sh | sudo bash
 ```
 
@@ -176,20 +189,21 @@ Allow through firewall:
 
 ```bash
 sudo ufw allow 8096/tcp
-Initial Setup
 ```
+
+## Initial Setup (Web)
 
 Open in browser:
 
-`http://hostname.local:8096`
+`http://raspberry.local:8096` or `http://<DEVICE_IPv4>:8096`
 
-Steps:
+Then:
 
-Create admin account
-Add media library:
-Type: Music
-Path: /srv/music
-Complete setup
+- Create admin account
+- Add media library:
+- Type: Music
+- Path: /srv/music
+- Complete setup
 
 Jellyfin scans metadata and builds the library index.
 
@@ -208,13 +222,13 @@ Consistent naming improves metadata detection.
 
 Performance Constraints
 
-The Raspberry Pi 3 Model B+ has:
+### The Raspberry Pi 3 Model B+ has
 
-Limited CPU -> no real-time transcoding
-1GB RAM -> small concurrent usage
-USB 2.0 bus -> I/O bottleneck
+Limited CPU; so no real-time transcoding
+1GB RAM; small concurrent usage (1-2 users)
+USB 2.0 bus; I/O bottleneck
 
-Mitigation:
+### Mitigation
 
 Use direct play formats (MP3, AAC)
 Avoid FLAC transcoding over network
@@ -229,9 +243,13 @@ System exposes:
 
 No external dependency. No subscription. Local control over media ingestion, indexing, and playback.
 
-## References 
+## References
 
 - Jellyfin Documentation: https://jellyfin.org/docs/
 - Ubuntu Server Documentation: https://ubuntu.com/server/docs
 - Samba Documentation: https://www.samba.org/samba/docs/
 - Raspberry Pi Documentation: https://www.raspberrypi.com/documentation/
+
+At this point you should hopfully be in the throws of copying you're collection into the device via the available network drive. Expansion would see `nginx` with a reverse proxy for `:8096` pointing to `:80` allowing us to drop the port from the URL, additionally we could use Let's Encrypt to enabled SSL on the connection.
+
+Hope you found this useful.
