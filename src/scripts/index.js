@@ -8,7 +8,7 @@ import * as htmx from '@npm/htmx.org'
 import './components/color-scheme.js'
 import './components/lightbox-gallery.js'
 import './components/highlight-switcher.js'
-import './components/cursor-tooltip.js'
+// import './components/cursor-tooltip.js'
 
 let theme = window.matchMedia(`(prefers-color-scheme: dark)`)
 let themePref = document.documentElement.dataset.theme

@@ -59,7 +59,7 @@ export function parseAllMarkdown(dirPath, templatePath) {
     // let p = statSync(d).isDirectory()
     // console.log(d, p)
     readdirSync(dirPath).map((dn) => {
-      console.log(dn)
+      // console.log(dn)
     })
   })
 
@@ -77,7 +77,7 @@ export function parseAllMarkdown(dirPath, templatePath) {
       fsize,
       readTime
     }
-    console.log(output)
+    // console.log(output)
     return output
   })
 }

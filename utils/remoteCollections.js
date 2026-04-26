@@ -58,5 +58,16 @@ async function products(token) {
   }
 }
 
+async function weather({ token, lat, lon }) {
+  try {
+    console.log(token, lat, lon)
+  } catch (error) {
+    return error
+  }
+}
+
+
+
 export const gumroad = await products(process.env.GUMROAD)
 export const github = await repositories(process.env.USERNAME, process.env.GITHUB)
+export const conditions = await weather ({ token: process.env.WEATHER, lat: process.env.LAT, lon: process.env.LON})
