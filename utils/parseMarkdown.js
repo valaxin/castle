@@ -40,6 +40,8 @@ export function parseMarkdown(filePath) {
   const readTime = readtime(128, content)
   const htmlContent = marked.parse(content) // this will be where markdown it is called
 
+  if (data.tags) { data.tags = data.tags.split(', ') }
+
   return {
     html: addBulmaClasses(htmlContent),
     frontmatter: data,

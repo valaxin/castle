@@ -1,7 +1,7 @@
 ---
 title: Introductions, First Post.
 published: 04/26/2026
-tags: none
+tags: none, another-none, content
 summary: none
 thumbnail: '@images/static/castle.jpg'
 author: valaxin

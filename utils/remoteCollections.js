@@ -16,22 +16,24 @@ async function repositories(username, token) {
     }
 
     const repos = await response.json()
-    
-    // modify any data before giving to client (e.g. dates)
-    const parsed = repos.map(repo => ({
-      name: repo.name,
-      description: repo.description,
-      owner: repo.owner,
-      created_at: moment(repo.created_at).fromNow(),
-      updated_at: moment(repo.updated_at).fromNow(),
-      visibility: repo.visibility,
-      size: repo.size,
-      language: repo.language,
-      stargazers_count: repo.stargazers_count,
-      open_issues_count: repo. open_issues_count
-    }))
 
-    // console.log({parsed})
+    // modify any data before giving to client (e.g. dates)
+    const parsed = repos.map((repo) => {
+      if (repo.name == 'scrambled' || repo.name == 'castle') {
+        return {
+          name: repo.name,
+          description: repo.description,
+          owner: repo.owner,
+          created_at: moment(repo.created_at).fromNow(),
+          updated_at: moment(repo.updated_at).fromNow(),
+          visibility: repo.visibility,
+          size: repo.size,
+          language: repo.language,
+          stargazers_count: repo.stargazers_count,
+          open_issues_count: repo.open_issues_count,
+        }
+      }
+    }).filter(n => n)
 
     return parsed
   } catch (error) {
@@ -66,8 +68,6 @@ async function weather({ token, lat, lon }) {
   }
 }
 
-
-
 export const gumroad = await products(process.env.GUMROAD)
 export const github = await repositories(process.env.USERNAME, process.env.GITHUB)
-export const conditions = await weather ({ token: process.env.WEATHER, lat: process.env.LAT, lon: process.env.LON})
+export const conditions = await weather({ token: process.env.WEATHER, lat: process.env.LAT, lon: process.env.LON })
