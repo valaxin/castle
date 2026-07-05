@@ -5,16 +5,17 @@ import * as htmx from '@npm/htmx.org'
 // import { animate, createTimeline, stagger, utils, text, onScroll } from '@npm/animejs'
 
 
-import './components/color-scheme.js'
-import './components/lightbox-gallery.js'
-import './components/highlight-switcher.js'
-// import './components/cursor-tooltip.js'
+import './modules/color-scheme.js'
+import './modules/lightbox-gallery.js'
+import './modules/highlight-switcher.js'
+import './modules/fading-header.js'
 
 let theme = window.matchMedia(`(prefers-color-scheme: dark)`)
 let themePref = document.documentElement.dataset.theme
 
 if (theme.matches && themePref != 'dark') {
   themePref = theme
+  console.log({theme, themePref})
 }
 
 if (window) {

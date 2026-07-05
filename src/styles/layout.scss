@@ -4,6 +4,18 @@
 @use "@npm/highlight.js/styles/github-dark.css";
 
 @use "post";
+@use "overrides";
+
+
+@media screen and (max-width: 480px) {
+  body {
+    padding-left: 3vw;
+    padding-right: 3vw;
+    width: 100vw;
+  }
+
+}
+
 
 @mixin white-gradient {
   background: linear-gradient(to right, var(--bulma-body-background-color) 0%, rgba(0,0,0,0) 100%);
@@ -22,15 +34,12 @@
   -moz-osx-font-smoothing: grayscale;
   view-transition-name: none;
 
-  --app-font:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  --app-font-code:
-    Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;
-
+  --app-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  --app-font-code: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;
   --text-text-size: 4vw;
   --subtitle-text-size: 1.25vw;
   --body-text-size: 1vw;
-  --desktop-width: 80vw;
+  --desktop-width: 70vw;
   --mobile-width: 90vw;
   --animation-speed: 45s;
 }
@@ -40,17 +49,9 @@ body {
   width: var(--desktop-width);
   margin-left: calc(var(--desktop-width) / 9);
 
-  .section {
-    padding: 3vh 0;
-  }
-
   pre,
   code {
     font-family: var(--app-font-code);
-  }
-
-  nav.navbar {
-    // ...
   }
 
   footer.footer {
@@ -66,68 +67,66 @@ body {
     transform: rotate(180deg);
   }
 
-  .hero h3.caption {
-    font-size: 3rem;
-  }
-
   img.thumbnail {
-    max-height: 128px;
-    width: 100%;
     height: 128px;
+    width: 128px;
     object-fit: cover;
     border-radius: 24px;
   }
 
-  .carousel {
-    height: 100px;
-    margin: auto;
-    overflow: hidden;
-    position: relative;
-    width: var(--desktop-width);
-
-    &::before,
-    &::after {
-      @include white-gradient;
-      content: "";
-      height: 100px;
-      position: absolute;
-      width: 200px;
-      z-index: 2;
-    }
-
-    &::after {
-      right: 0;
-      top: 0;
-      transform: rotateZ(180deg);
-    }
-
-    &::before {
-      left: 0;
-      top: 0;
-    }
-
-    .carousel-track {
-      animation: scroll var(--animation-speed) linear infinite;
-      display: flex;
-      width: calc(250px * 14);
-    }
-
-    img {
-      height: 100px;
-      width: 250px;
-      filter: invert(1);
-      opacity: 0.75;
-    }
+  img {
+    border-radius:  24px;
+    object-fit: cover;
   }
+
+  .image.lightbox-enabled {
+    cursor: zoom-in;
+  }
+
 }
 
-// when mobile width
-@media screen and (max-width: 480px) {
-  body {
-    padding-left: 3vw;
-    padding-right: 3vw;
-    width: 100%;
+/* -- lightbox -- */
+
+.lightbox {
+  z-index: 9999;
+  background: black;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+
+  &__close {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    cursor: pointer;
+    scale: 1.5;
+    color: white;
+    &:hover {
+
+      background-color: rgba(233,233,233,.05);
+    }
+    padding: 4px;
+    border-radius: 25px;
   }
+
+  &__image {
+    max-height: 90vh;
+  }
+
+  &__image-alt-text {
+    margin-top: 5px;
+  }
+
 }
+
+
+
 
 

@@ -1,3 +1,7 @@
+/**
+ * just export some emojis
+ */
+
 export const emojis = {
   heart: '❤️',
   smile: '😊',

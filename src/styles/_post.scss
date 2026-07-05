@@ -28,10 +28,8 @@ main.post {
     }
 
     &__hero {
-      //display: none;
       border-radius: 24px;
       margin-bottom: 25px;
-
     }
 
     &__title {
@@ -42,5 +40,11 @@ main.post {
       font-size: 1.25rem;
       font-weight: 500;
     }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .article {
+    width: 90vw;
   }
 }

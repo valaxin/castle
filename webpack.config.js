@@ -9,10 +9,11 @@ import { parseAllMarkdown } from './utils/parseMarkdown.js'
 import JSONWebpackPlugin from './utils/plugins/JSONWebpackPlugin.js'
 import SyndicationPlugin from './utils/plugins/SyndicationPlugin.js'
 
+import { gumroad, github } from './utils/remoteCollections.js'
+import pkg from './package.json' with { type: 'json' }
+
 const mode = process.env.NODE_ENV === 'production' ? true : false
 const markdownPosts = parseAllMarkdown(resolve('src/markdown'), 'src/views/post.pug')
-
-import { gumroad, github } from './utils/remoteCollections.js'
 
 /* --- Define development server settings. */
 const devServer = {
@@ -22,14 +23,14 @@ const devServer = {
   compress: false,
 }
 
-/* --- Options for HTMLBundlerPlugin. */
+/* --- Options for HTMLBundlerPlugin ---  */
 const bundlerOptions = {
   experiments: {
     topLevelAwait: true,
   },
   preprocessor: 'pug',
   entry: {
-    index: 'src/views/index.pug'
+    index: 'src/views/index.pug',
   },
   js: {
     filename: 'js/[name].[contenthash:8].js',
@@ -38,16 +39,19 @@ const bundlerOptions = {
     filename: 'css/[name].[contenthash:8].css',
   },
   beforePreprocessor: (content, { data, resourcePath, _module }) => {},
+
+  // ... this data then goes to pug
   data: {
     self: {
       posts: markdownPosts,
       products: gumroad,
       repos: github,
-      title: 'castle',
-      description: 'My slice of web',
-      theme: {
-        color: '#FFFFFF',
-      },
+      title: pkg.name,
+      description: pkg.description,
+      version: pkg.version,
+      repository: pkg.repository,
+      author: pkg.author,
+      theme: { color: '#FFFFFF' },
     },
   },
 }
@@ -56,7 +60,7 @@ const bundlerOptions = {
 for (let i = 0; i < markdownPosts.length; i++) {
   bundlerOptions.entry[markdownPosts[i].slug] = {
     import: markdownPosts[i].templatePath,
-    data: { context: markdownPosts[i] }
+    data: { context: markdownPosts[i], self: bundlerOptions.data.self },
   }
 }
 
@@ -109,8 +113,8 @@ const config = {
   plugins: [
     new HtmlBundlerPlugin(bundlerOptions),
     new SyndicationPlugin({ data: bundlerOptions.data }),
-    new JSONWebpackPlugin({ data: bundlerOptions.data })
-  ]
+    new JSONWebpackPlugin({ data: bundlerOptions.data }),
+  ],
 }
 
 export default config

@@ -1,6 +1,12 @@
 import 'dotenv/config'
 import moment from 'moment'
 
+/**
+ * 
+ * @param {*} username 
+ * @param {*} token 
+ * @returns JSON representation of the token owners public projects on github
+ */
 async function repositories(username, token) {
   const apiEndpoint = `https://api.github.com/users/${username}/repos`
 
@@ -41,6 +47,11 @@ async function repositories(username, token) {
   }
 }
 
+/**
+ * 
+ * @param {*} token 
+ * @returns JSON of token owners all gumroad products
+ */
 async function products(token) {
   const apiEndpoint = `https://api.gumroad.com/v2/products?access_token=${token}`
 
@@ -60,14 +71,32 @@ async function products(token) {
   }
 }
 
-async function weather({ token, lat, lon }) {
+/**
+ * 
+ * @param {*} url 
+ * @param {*} options 
+ * @returns JSON of public lastest commit to this project
+ */
+async function _latestCommit (url, options) {
   try {
-    console.log(token, lat, lon)
+    if (!url) { return false }
+    const request = await fetch (url, { ...options })
+    if (request.headers['x-ratelimit-remaining'] > 1) {
+      console.log(`cookin' let's go!`)
+    }
+    return { request }
   } catch (error) {
+    console.error(error)
     return error
   }
+
 }
 
 export const gumroad = await products(process.env.GUMROAD)
-export const github = await repositories(process.env.USERNAME, process.env.GITHUB)
-export const conditions = await weather({ token: process.env.WEATHER, lat: process.env.LAT, lon: process.env.LON })
+
+// export const github = await repositories(process.env.USERNAME, process.env.GITHUB)
+export const castle = await _latestCommit(process.env.LAST_COMMIT, {})
+
+console.log(castle)
+
+export const github = {}

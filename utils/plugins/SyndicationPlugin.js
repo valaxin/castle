@@ -1,3 +1,5 @@
+// make json and xml consuables
+
 import { Feed } from 'feed'
 
 const title = 'valaxin.dev'

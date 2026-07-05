@@ -1,33 +1,30 @@
 footer.footer
-
-  a(href='/').title= self.title
-  h2.subtitle.is-6= self.description
-  ul.links
-    li
-      a(href='/legal.html') Legal
-    li
-      a(href='/feed.xml') XML
-    li
-      a(href='/feed.json') JSON
   
-  ul.social.mt-4
+  .footer-row-top.block
     ul
-      a(href='https://github.com/valaxin')
-        // img(src='@images/logos/svg/github.svg' style='width: 32px; filter: invert(1);')
-        | Github
-        span.material-icons.round.is-small arrow_outward
-    li
-      a(href='https://codepen.com/valaxin')
-        // img(src='@images/logos/svg/codepen.svg' style='width: 32px; filter: invert(1);')
-        | Codepen
-        span.material-icons.round.is-small arrow_outward
-    
-  .controls.is-flex.is-justify-content-flex-start.mt-5
+      li
+        a(href='/').title= self.title
+      li
+        span.subtitle.is-5= self.description
+      li
+        span.subtitle.is-6 version #{self.version}
+  
+  .footer-row-mid.links
     if (context) 
-      button.is-link.is-outlined.return-home.mr-3
+      button.button.is-text.return-home.mr-3
         a(href='/')
           span.material-icons.round home
-    button.is-link.is-outlined.page-top.mr-3(onclick='window.scrollTo(0, 0)')
+    button.button.is-text.page-top.mr-3(onclick='window.scrollTo(0, 0)')
       span.material-icons.round keyboard_double_arrow_up
-    button.is-link.is-outlined.theme-toggle.mr-3
+    button.button.is-text.theme-toggle.mr-3
       span.material-icons.round auto_awesome
+
+    a.button.is-text(href='/legal.html') Legal
+    a.button.is-text(href='/legal.html') Questions
+    a.button.is-text(href='/feed.xml') XML
+    a.button.is-text(href='/feed.json') JSON
+    a.button.is-text(href='https://github.com/valaxin') Github
+      span.i.material-icons.round.is-small arrow_outward
+    a.button.is-text(href='https://codepen.com/valaxin') Codepen
+      span.material-icons.round.is-small arrow_outward
+      
