@@ -22,11 +22,15 @@ export default (async () => {
   // watch for scroll user event
   window.addEventListener('scroll', async (ev) => {
    
-    // fade here
-    image.style.opacity = getOpacity(image, window.scrollY)
-    image.style.marginTop = (image.style.marginTop += window.scrollY) + 'px'
-
-    // [todo] sticky title text
+    if (window.scrollY > image.clientHeight) {
+      console.log(`hero image is no longer visible`)
+      image.style.marginTop = 'auto'
+    } else {
+      // fade here
+      image.style.opacity = getOpacity(image, window.scrollY)
+      // image.style.marginTop = (image.style.marginTop += window.scrollY) + 'px'
+      
+    }
 
   })
 

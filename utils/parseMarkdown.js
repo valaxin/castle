@@ -67,6 +67,13 @@ export function parseAllMarkdown(dirPath, templatePath) {
     const fullPath = join(dirPath, file)
     const { html, frontmatter, birthtime, size, fsize, readTime } = parseMarkdown(fullPath)
     const slug = basename(file, '.md') // simply the file name ex: file.md
+    const subfolder = file.includes('/') ? file.split('/') : false
+
+    if (subfolder) {
+      console.log(subfolder[0], slug)
+    }
+
+    console.log({fullPath, slug, subfolder})
 
     let output = {
       html,

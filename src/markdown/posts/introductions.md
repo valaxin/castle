@@ -2,8 +2,8 @@
 title: Introductions, First Post.
 published: 04/26/2026
 tags: none, another-none, content
-summary: none
-thumbnail: '@images/static/castle.jpg'
+summary: This is the summary text for this article, It's an overview of the markdown processing features available in this build system.
+thumbnail: '@images/static/cityscape.jpg'
 author: valaxin
 visible: true
 ---
@@ -16,7 +16,7 @@ Hey look a website! Thanks for visiting! :smile:
 
 something something something, I'm building this site it's pretty cool
 
-it's available at `/introductions.html`
+it should be available at `/posts/introductions.html` [todo!]
 
 Let's take a look at the ready to use transformations in this app for markdown
 
@@ -57,7 +57,10 @@ here have an image or two
 
 ![Green forest and valley](@images/static/forest-and-valley.jpg)
 <br>
-![Mountian view through the trees](@images/static/through-trees.jpg)
+![Mountian view through the trees](@images/static/elephants.jpg)
+<br>
+![Foggy port view with a bridge in the background](@images/static/bridge-port.jpg)
+
 
 Some more of these block elements
 
@@ -118,7 +121,3 @@ emojis are supported also :fire: :fire: :gift: :star:
 > > > > great!
 
 ---
-
-### youtube embeds
-
-[!youtube](https://youtu.be/Z20dQqE1u0E) 

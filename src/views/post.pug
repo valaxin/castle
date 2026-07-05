@@ -12,9 +12,7 @@ block content
           .info.is-flex
             span.material-icons.round.is-small info
             span.subtitle.ml-2= context.frontmatter.thumbnailAlt
-      br
-      hr
-      h1.title.article__title= context.frontmatter.title
+      h1.title.article__title.mt-5= context.frontmatter.title
 
       div.content.article__content
         != context.html

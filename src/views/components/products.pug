@@ -1,6 +1,5 @@
 section.section.products
-  h1.title.products__title Services
-  h2.subtitle.products__subtitle.is-6 Repairs, Parts, Accessories & Clothing
+  h1.title.is-1.products__title Services
 
   ul
     each product in self.products
@@ -24,13 +23,6 @@ section.section.products
                     | &nbsp;Only #{product.max_purchase_count} Available
             li.product-description.mt-4
               != product.description
-            if (product.name === 'Energy Ball Stickers')
-              li.bottom.mt-4.flex-row
-                span.bottom-text Sold On
-                img.banner-image(src='@images/logos/gumroad-logo.png')
-                span.bottom-text Printed By
-                img.banner-image(src='@images/logos/stickermule-logo.png')
-            
             if (product.variants[0])
               if (product.variants[0].options)
                 span See also:
@@ -43,7 +35,3 @@ section.section.products
                 span key: suggested amounts
               else
                 span Variants Key, No Options.
-            else
-              // button.button.is-outlined.is-warning.mt-3 No Variants
-        hr
-        br

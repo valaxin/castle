@@ -1,25 +1,25 @@
-section.section.cell
+section.section.cell.posts
   h2.title.is-1 Notes
   h3.subtitle.is-6 
   
   each post in self.posts
     if (post.frontmatter.visible === true)
-      .block.mb-5
-        a.item(href= post.slug + '.html')
-          span.title= post.frontmatter.title
-          span.title.material-icons-round.is-flipped arrow_outward
-          ul
-            li
-              img.thumbnail(src= post.frontmatter.thumbnail)
-            li
-              span.subtitle.summary= post.frontmatter.summary
-            li
-              if post.frontmatter.tags
-                each tag in post.frontmatter.tags
-                  span.tag= tag
-            li.mt-2
-              if (post.frontmatter.published)
-                span.button.mt-2.mr-2.is-outlined.is-primary.is-small= post.frontmatter.published
-                span.button.mt-2.mr-2.is-outlined.is-primary.is-small= post.fsize
-              if (post.frontmatter.author)
-                span.button.mt-2.is-outlined.is-primary.is-small= post.frontmatter.author
+      .block
+        a.item.mb-5.is-flex.is-flex-direction-row(href= post.slug + '.html')
+          img.thumbnail(src= post.frontmatter.thumbnail).mr-5
+          .block
+            span.title.is-2.mt-5= post.frontmatter.title
+            span.title.is-3.material-icons-round.is-flipped arrow_outward
+            ul
+              li.mb-5
+                span.subtitle.is-mb-5summary= post.frontmatter.summary
+              li.mt-5
+                if post.frontmatter.tags
+                  each tag in post.frontmatter.tags
+                    span.tag= tag
+              li.mt-2
+                if (post.frontmatter.published)
+                  span.button.mt-2.mr-2.is-outlined.is-primary.is-small= post.frontmatter.published
+                  span.button.mt-2.mr-2.is-outlined.is-primary.is-small= post.fsize
+                if (post.frontmatter.author)
+                  span.button.mt-2.is-outlined.is-primary.is-small= post.frontmatter.author

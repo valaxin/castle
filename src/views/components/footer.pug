@@ -3,11 +3,13 @@ footer.footer
   .footer-row-top.block
     ul
       li
-        a(href='/').title= self.title
+        a(href='/').title.is-1= self.title
       li
-        span.subtitle.is-5= self.description
+        span.subtitle.is-6= self.description
+      br
       li
-        span.subtitle.is-6 version #{self.version}
+        a(href= self.respository)
+          code.is-6 v.#{self.version} - #{self.commit || 'not setup'} 
   
   .footer-row-mid.links
     if (context) 
@@ -20,7 +22,7 @@ footer.footer
       span.material-icons.round auto_awesome
 
     a.button.is-text(href='/legal.html') Legal
-    a.button.is-text(href='/legal.html') Questions
+    a.button.is-text(href='/questions.html') Questions
     a.button.is-text(href='/feed.xml') XML
     a.button.is-text(href='/feed.json') JSON
     a.button.is-text(href='https://github.com/valaxin') Github

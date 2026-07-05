@@ -92,11 +92,10 @@ async function _latestCommit (url, options) {
 
 }
 
+// not cached fetched new every build
 export const gumroad = await products(process.env.GUMROAD)
 
 // export const github = await repositories(process.env.USERNAME, process.env.GITHUB)
-export const castle = await _latestCommit(process.env.LAST_COMMIT, {})
-
-console.log(castle)
+// export const castle = await _latestCommit(process.env.LAST_COMMIT, {})
 
 export const github = {}
