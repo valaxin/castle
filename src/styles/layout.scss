@@ -1,23 +1,23 @@
 @use "@npm/bulma";
 @use "@npm/material-icons/iconfont/material-icons.css";
-// @use "@npm/highlight.js/styles/github.css";
-// @use "@npm/highlight.js/styles/github-dark.css";
+@use "@npm/highlight.js/styles/github.css";
+@use "@npm/highlight.js/styles/github-dark.css";
 
-@use "components/hero";
-@use "components/about";
-@use "components/articles";
-@use "components/alertbox";
-@use "components/products";
-@use "components/animations";
-@use "components/lightbox";
-@use "components/queries";
-@use "components/smalls";
+@use "post";
 
-$app-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-$app-font-code: Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;
+@mixin white-gradient {
+  background: linear-gradient(to right, var(--bulma-body-background-color) 0%, rgba(0, 0, 0, 0) 100%);
+}
 
-$title-size: 3vw;
-$subtitle-size: 1.5vw;
+// Animation
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-250px * 7));
+  }
+}
 
 :root {
   font-synthesis: none;
@@ -25,40 +25,152 @@ $subtitle-size: 1.5vw;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   view-transition-name: none;
+
+  --app-font:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  --app-font-code:
+    Consolas, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New;
+  --text-text-size: 4vw;
+  --subtitle-text-size: 1.25vw;
+  --body-text-size: 1vw;
+  --desktop-width: 70vw;
+  --mobile-width: 90vw;
+  --animation-speed: 45s;
+}
+
+/* -- overrides -- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  font-family: $app-font;
-  max-width: 1028px;
-}
+  font-family: var(--app-font);
+  width: var(--desktop-width);
+  // margin-left: calc(var(--desktop-width) / 9);
 
-img.lightbox-enabled {
-  cursor: zoom-in;
-}
-
-footer.footer {
-  background: transparent;
-
-  .links {
-    font-family: $app-font-code;
-    font-size: 1rem;
+  section.section { margin: 0; }
+  
+  pre,
+  code {
+    font-family: var(--app-font-code);
   }
 
-  .controls {
-    button.button {
-      margin-right: 5px;
-      font-size: .75rem;
+  nav.navbar {
+    margin-top: 50px;
+  }
+
+  .navbar-brand {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  nav.navbar,
+  article.article {
+    margin-left: 30px;
+  }
+
+  img {
+    border-radius: 24px;
+    object-fit: cover;
+  }
+
+  .product-image {
+    max-height: 412px;
+    margin-bottom: 15px;
+  }
+
+  footer.footer {
+    background-color: transparent;
+    margin-left: 30px;
+  }
+
+  .button {
+    text-decoration: none !important;
+  }
+
+  .tag {
+    margin-right: 5px;
+  }
+
+  .is-flipped {
+    transform: rotate(180deg);
+  }
+
+  .image.lightbox-enabled {
+    cursor: zoom-in;
+  }
+
+  section.posts .block a.item {
+    border-radius: 24px;
+    transition: all ease-in-out 200ms;
+
+    &:hover image {
+      transform: scale(1.3), rotate(23deg);
+    }
+
+    img.thumbnail {
+      height: 200px;
+      width: 200px;
+      object-fit: cover;
+      border-radius: 24px;
     }
   }
 }
 
-section.section {
-  .grp {
-    // background-color: red;
-    border-bottom: 2px solid var(--bulma-title-color);
-    
-    .title {
-      font-size: 8vw;
+/* -- lightbox -- */
+
+.lightbox {
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.75);
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+
+  &__close {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    cursor: pointer;
+    scale: 1.5;
+    color: white;
+    &:hover {
+      background-color: rgba(233, 233, 233, 0.05);
     }
+    padding: 4px;
+    border-radius: 25px;
+  }
+
+  &__image {
+    max-height: 90vh;
+    max-width: 90vw;
+    box-shadow: 0 10px 25px 5px rgba(0,0,0,.5);
+  }
+
+  &__image-alt-text {
+    margin-top: 15px;
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+}
+
+/* -- */
+
+@media screen and (max-width: 480px) {
+  body {
+    padding-left: 3vw;
+    padding-right: 3vw;
+    width: 100vw;
   }
 }

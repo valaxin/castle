@@ -6,9 +6,18 @@ html(lang='en' data-theme='auto')
     meta(name='viewport' content='width=device-width, initial-scale=1, user-scalable=no')
     meta(http-equiv='x-ua-compatible' content='ie=edge')
     meta(name='theme-color' content= self.theme.color)
+    meta(property='og:title', content= self.title)
+    meta(property='og:description', content= self.description)
+    meta(property='og:image', content='@images/static/castle.jpeg')
+    meta(property='og:image-alt', content='a castle on a forested mountian side')
+    meta(property='og:url', content= self.title)
+    meta(property='og:type', content='website')
+    meta(property='og:site_name', content= self.title)
+    
     link(rel='shortcut icon' href='@images/favicon.png' type='img/png')
     link(rel='stylesheet' href='@styles/layout.scss')
     link(id='hljs-theme' rel='stylesheet')
+    // TODO: populate meta data, per template
     script(src='@scripts/index.js' type='text/javascript' defer='defer')
     title= self.title
   body

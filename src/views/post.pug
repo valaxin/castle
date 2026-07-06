@@ -1,13 +1,19 @@
 extends layout
 
 block content
-  main
+  include components/navigation
+  main.post
     article.article.mb-5
-      a(href='/').article__backbutton
-        span.material-icons arrow_back
+      <!-- a(href='/').article__backbutton -->
+        <!-- span.material-icons arrow_back -->
       figure.image
         img.article__hero(src=context.frontmatter.thumbnail, alt=context.frontmatter.thumbnailAlt)
-      h1.title.article__title= context.frontmatter.title
+        if (context.frontmatter.thumbnailAlt)
+          .info.is-flex
+            span.material-icons.round.is-small info
+            span.subtitle.ml-2= context.frontmatter.thumbnailAlt
+      h1.title.article__title.mt-5= context.frontmatter.title
+
       div.content.article__content
         != context.html
   

@@ -1,11 +1,10 @@
+# development
 node_modules
 .vscode
 .netlify
 
-# os
-.DS_Store
-
 # configuration files and logs
+.DS_Store
 /*.log
 /*.env
 

@@ -1,6 +1,6 @@
-section.section.projects
-  h1.title.projects__title Projects
-  h2.subtitle.projects__subtitle.is-6 Giv'em A Little Razzle-Dazzle
+section.section.cell
+  h2.title.is-1 Projects
+  h3.subtitle.is-6 -
   
   ul
     each project in self.repos
@@ -12,7 +12,7 @@ section.section.projects
           li
             span= project.description
           li
-            .button.is-outlined.is-info.is-small.mt-2.mr-2 Created #{project.created_at}
+            .button.is-outlined.is-primary.is-small.mt-2.mr-2 Created #{project.created_at}
             .button.is-outlined.is-primary.is-small.mt-2.mr-2 Updated #{project.updated_at}
             if (project.language)
-              .button.is-outlined.is-warning.is-small.mt-2= project.language
+              .button.is-outlined.is-primary.is-small.mt-2= project.language

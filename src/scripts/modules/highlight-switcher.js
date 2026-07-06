@@ -1,14 +1,11 @@
 export default (async () => {
-  const themeLink = document.getElementById('hljs-theme')
   let userTheme = document.documentElement.dataset.theme
-
+  const themeLink = document.getElementById('hljs-theme')
   const gh_dark = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css'
   const gh_light = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css'
 
   function setThemeSystem(e) {
     const dark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    
-    console.log({dark, userTheme})
     
     if (dark) {
       if (userTheme === 'light') {
@@ -49,7 +46,6 @@ export default (async () => {
   // define observer, make do with above cfg
   const observer = new MutationObserver(observerCallback);
   observer.observe(window.document.documentElement, config)
-
   // observer.disconnect() ...
   
   // when sys change

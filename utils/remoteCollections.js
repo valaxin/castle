@@ -1,6 +1,12 @@
 import 'dotenv/config'
 import moment from 'moment'
 
+/**
+ * 
+ * @param {*} username 
+ * @param {*} token 
+ * @returns JSON representation of the token owners public projects on github
+ */
 async function repositories(username, token) {
   const apiEndpoint = `https://api.github.com/users/${username}/repos`
 
@@ -16,22 +22,24 @@ async function repositories(username, token) {
     }
 
     const repos = await response.json()
-    
-    // modify any data before giving to client (e.g. dates)
-    const parsed = repos.map(repo => ({
-      name: repo.name,
-      description: repo.description,
-      owner: repo.owner,
-      created_at: moment(repo.created_at).fromNow(),
-      updated_at: moment(repo.updated_at).fromNow(),
-      visibility: repo.visibility,
-      size: repo.size,
-      language: repo.language,
-      stargazers_count: repo.stargazers_count,
-      open_issues_count: repo. open_issues_count
-    }))
 
-    // console.log({parsed})
+    // modify any data before giving to client (e.g. dates)
+    const parsed = repos.map((repo) => {
+      if (repo.name == 'scrambled' || repo.name == 'castle') {
+        return {
+          name: repo.name,
+          description: repo.description,
+          owner: repo.owner,
+          created_at: moment(repo.created_at).fromNow(),
+          updated_at: moment(repo.updated_at).fromNow(),
+          visibility: repo.visibility,
+          size: repo.size,
+          language: repo.language,
+          stargazers_count: repo.stargazers_count,
+          open_issues_count: repo.open_issues_count,
+        }
+      }
+    }).filter(n => n)
 
     return parsed
   } catch (error) {
@@ -39,6 +47,11 @@ async function repositories(username, token) {
   }
 }
 
+/**
+ * 
+ * @param {*} token 
+ * @returns JSON of token owners all gumroad products
+ */
 async function products(token) {
   const apiEndpoint = `https://api.gumroad.com/v2/products?access_token=${token}`
 
@@ -58,5 +71,31 @@ async function products(token) {
   }
 }
 
+/**
+ * 
+ * @param {*} url 
+ * @param {*} options 
+ * @returns JSON of public lastest commit to this project
+ */
+async function _latestCommit (url, options) {
+  try {
+    if (!url) { return false }
+    const request = await fetch (url, { ...options })
+    if (request.headers['x-ratelimit-remaining'] > 1) {
+      console.log(`cookin' let's go!`)
+    }
+    return { request }
+  } catch (error) {
+    console.error(error)
+    return error
+  }
+
+}
+
+// not cached fetched new every build
 export const gumroad = await products(process.env.GUMROAD)
-export const github = await repositories(process.env.USERNAME, process.env.GITHUB)
+
+// export const github = await repositories(process.env.USERNAME, process.env.GITHUB)
+// export const castle = await _latestCommit(process.env.LAST_COMMIT, {})
+
+export const github = {}

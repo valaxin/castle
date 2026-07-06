@@ -1,0 +1,54 @@
+
+// styles applied or overwritten for the 
+// generated markup present on each 'article'
+
+main.post {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  padding-top: 50px;
+  
+  .article {
+
+    pre {
+      background-color: transparent;
+      border-radius: 24px;
+      padding: 0 0; 
+    }
+
+    blockquote {
+      border-radius: 5px;
+      margin: 0 0;
+    }
+
+    &__backbutton {
+      position: fixed;
+      top: 100px;
+      margin-left: -50px;
+      &:hover {
+        transform: scale(1.25);
+      }
+    }
+
+    &__hero {
+      border-radius: 24px;
+      margin-bottom: 25px;
+      max-height: 480px;
+    }
+
+    &__title {
+      font-size: 10vw;
+    }
+
+    &__content {
+      font-size: 1.25rem;
+      font-weight: 500;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .article {
+    width: 90vw;
+  }
+}

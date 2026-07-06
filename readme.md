@@ -7,7 +7,7 @@ This is my personal public webspace's repository. Here you'll see all the code u
 > [!WARNING]
 > **Work In Progress**
 
-```shell
+```bash
                         # source code directory for /castle
 ./src
 ├── markdown
@@ -32,7 +32,7 @@ This is my personal public webspace's repository. Here you'll see all the code u
     └── post.pug        # template for generated markdown documents
 ```
 
-```shell
+```bash
                                 # build time utilites for /castle
 ./utils
 ├── emojiObject.js              # object of emoji key/value pairs
@@ -42,7 +42,7 @@ This is my personal public webspace's repository. Here you'll see all the code u
 ├── plugins
 │   ├── JSONWebpackPlugin.js    # provide application data to the front-end
 │   └── SyndicationPlugin.js    # provide posts to the bots
-└── remoteCollections.js        # obtain data from remote sources (github/gumroad)
+└── remoteCollections.js        # obtain data from remote sources (github/gumroad/etc...)
 ```
 
 entry point is `./webpack.config.js` these are the bundler options and if you're at all familar with `webpack.js` you understand what's going on here. but basically a blue print for the web application.
@@ -50,6 +50,4 @@ entry point is `./webpack.config.js` these are the bundler options and if you're
 high level it reads, parses and copys content from one directory (`/src`) to another (`/dist`)
 this transformation gives us a browser ready web application.
 
-during devolopment we have hot reload for most changes
-
-
+during devolopment we have hot reload for most changes.

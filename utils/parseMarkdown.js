@@ -3,7 +3,7 @@ import { basename, join } from 'path'
 
 import { Marked } from 'marked'
 import { markedEmoji } from 'marked-emoji'
-import { emojis } from './emojis.js'
+import { emojis } from './emojiObject.js'
 import { markedHighlight } from 'marked-highlight'
 import markedAlert from 'marked-alert'
 import markedFootnote from 'marked-footnote'
@@ -14,6 +14,7 @@ import hljs from 'highlight.js'
 
 import { JSDOM } from 'jsdom'
 
+// define configuration and plugins for marked library
 const marked = new Marked(
   markedAlert(),
   markedFootnote(),
@@ -31,14 +32,20 @@ const marked = new Marked(
   }),
 )
 
-/* --- */
-
+// given a filepath where the resulting file is valid markdown (unchecked)
+// obtain system 1. file information, 2. processed markdown (html), 3. frontmatter data
 export function parseMarkdown(filePath) {
   const file = readFileSync(filePath, 'utf-8')
   const { birthtime, size } = statSync(filePath)
   const { content, data } = matter(file)
   const readTime = readtime(128, content)
   const htmlContent = marked.parse(content) // this will be where markdown it is called
+
+  if (data.tags) {
+    data.tags = data.tags.split(', ')
+  }
+
+  console.log(file.includes('/') ? file.split('/')[0] : false)
 
   return {
     html: addBulmaClasses(htmlContent),
@@ -51,28 +58,38 @@ export function parseMarkdown(filePath) {
   }
 }
 
-/* --- */
-
+/* this calls the above function for each located markdown file */
 export function parseAllMarkdown(dirPath, templatePath) {
-  const files = readdirSync(dirPath).filter((file) => file.endsWith('.md'))
+  const files = readdirSync(dirPath, { recursive: true }).filter((file) => file.endsWith('.md'))
+
+  // return a processed object for each post
   return files.map((file) => {
     const fullPath = join(dirPath, file)
     const { html, frontmatter, birthtime, size, fsize, readTime } = parseMarkdown(fullPath)
-    const slug = basename(file, '.md')
-    return {
+    const slug = basename(file, '.md') // simply the file name ex: file.md
+    const subfolder = file.includes('/') ? file.split('/') : false
+
+    if (subfolder) {
+      console.log(subfolder[0], slug)
+    }
+
+    console.log({fullPath, slug, subfolder})
+
+    let output = {
       html,
       frontmatter,
       templatePath,
       slug,
-      birthtime,
+      birthtime, 
       size,
       fsize,
       readTime
     }
+    
+    // this output is given to pug later for display.
+    return output
   })
 }
-
-/* --  */
 
 function readtime(wpm, markdown) {
   try {
@@ -83,8 +100,6 @@ function readtime(wpm, markdown) {
   }
 }
 
-/* --- */
-
 function formatsize(bytes) {
   try {
     return Math.floor(bytes / 1024) > 0 ? `${Math.floor(bytes / 1024)} Kilobytes` : `${bytes} Bytes`
@@ -94,13 +109,11 @@ function formatsize(bytes) {
   }
 }
 
-/* --- */
-
 function addBulmaClasses(html) {
   const dom = new JSDOM(html)
   const document = dom.window.document
-  const container = document.createElement('div');
-  container.innerHTML = html;
+  const container = document.createElement('div')
+  container.innerHTML = html
 
   const tagClassMap = {
     H1: 'title',
@@ -114,7 +127,7 @@ function addBulmaClasses(html) {
     OL: 'organized menu-list',
     A: 'is-link',
     TABLE: 'table is-striped is-hoverable is-fullwidth',
-    IMG: 'image',
+    IMG: 'image lightbox-enabled',
     INPUT: 'input',
     SELECT: 'select',
     TEXTAREA: 'textarea',
@@ -123,20 +136,24 @@ function addBulmaClasses(html) {
     SECTION: 'section',
     ARTICLE: 'box',
     NAV: 'navbar',
-  };
-
-  for (const [tag, classes] of Object.entries(tagClassMap)) {
-    const elements = container.querySelectorAll(tag.toLowerCase());
-    elements.forEach(el => {
-      if (el.classList.length === 0) {
-        el.className = classes;
-      } else {
-        // Append classes only if not already present
-        const toAdd = classes.split(' ').filter(c => !el.classList.contains(c));
-        if (toAdd.length) el.classList.add(...toAdd);
-      }
-    });
+    '.markdown-alert-warning': 'notification is-warning',
+    '.markdown-alert-important': 'notification is-primary',
+    '.markdown-alert-tip': 'notification is-info',
+    '.markdown-alert-caution': 'notification is-danger'
   }
 
-  return container.innerHTML;
+  for (const [tag, classes] of Object.entries(tagClassMap)) {
+    const elements = container.querySelectorAll(tag.toLowerCase())
+    elements.forEach((el) => {
+      if (el.classList.length === 0) {
+        el.className = classes
+      } else {
+        // Append classes only if not already present
+        const toAdd = classes.split(' ').filter((c) => !el.classList.contains(c))
+        if (toAdd.length) el.classList.add(...toAdd)
+      }
+    })
+  }
+
+  return container.innerHTML
 }

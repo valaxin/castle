@@ -1,22 +1,32 @@
-footer.section.footer
-  a(href='/').title.footer__title= self.title
-  h2.subtitle.footer__subtitle.is-6 My slice of the web
-  .links
-    a(href='/legal.html') Legal
-      | &nbsp;&nbsp;
-    a(href='/feed.xml') XML
-      | |
-    a(href='/feed.json') JSON
-      | &nbsp;&nbsp;
-    a(href='https://github.com/valaxin') Github
-      span.material-icons.round arrow_outward
-      | &nbsp;&nbsp;
-    a(href='https://codepen.com/valaxin') CodePen
-      span.material-icons.round arrow_outward
-    
-  .controls.mt-5
+footer.footer
+  
+  .footer-row-top.block
+    ul
+      li
+        a(href='/').title.is-1= self.title
+      li
+        span.subtitle.is-6= self.description
+      br
+      li
+        a(href= self.respository)
+          code.is-6 v.#{self.version} - #{self.commit || 'not setup'} 
+  
+  .footer-row-mid.links
     if (context) 
-      button.button.button.is-link.is-outlined.return-home
-        a(href='/') INDEX
-    button.button.is-link.is-outlined.page-top(onclick='window.scrollTo(0, 0)') TOP
-    button.button.is-link.is-outlined.theme-toggle AUTO
+      button.button.is-text.return-home.mr-3
+        a(href='/')
+          span.material-icons.round home
+    button.button.is-text.page-top.mr-3(onclick='window.scrollTo(0, 0)')
+      span.material-icons.round keyboard_double_arrow_up
+    button.button.is-text.theme-toggle.mr-3
+      span.material-icons.round auto_awesome
+
+    a.button.is-text(href='/legal.html') Legal
+    a.button.is-text(href='/questions.html') Questions
+    a.button.is-text(href='/feed.xml') XML
+    a.button.is-text(href='/feed.json') JSON
+    a.button.is-text(href='https://github.com/valaxin') Github
+      span.i.material-icons.round.is-small arrow_outward
+    a.button.is-text(href='https://codepen.com/valaxin') Codepen
+      span.material-icons.round.is-small arrow_outward
+      

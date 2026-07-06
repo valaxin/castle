@@ -1,24 +1,29 @@
+// make json and xml consuables
+
 import { Feed } from 'feed'
-import { readFileSync } from 'fs'
+
+const title = 'valaxin.dev'
+const description = ''
+const date = new Date()
 
 const staticMetadata = {
-  title: 'valaxin.dev',
-  description: 'This is my personal feed!',
-  id: 'https://valaxin.dev',
-  link: 'https://valaxin.dev',
+  title,
+  description,
+  id: `https://${title}`,
+  link: `https://${title}`,
   language: 'en',
-  image: 'https://valaxin.dev/_/image.png',
-  favicon: 'https://valaxin.dev/favicon.png',
-  copyright: '2025',
-  updateded: new Date(),
+  image: `https://${title}/_/image.png`,
+  favicon: `https://${title}/favicon.png`,
+  copyright: date.getFullYear(),
+  updated: date,
   feedLinks: {
-    json: 'https://valaxin.dev/feed.json',
-    atom: 'https://valaxin.dev/feed.xml',
+    json: `https://${title}/feed.json`,
+    atom: `https://${title}/feed.xml`,
   },
   author: {
     name: 'valaxin',
     email: '-',
-    link: 'https://valaxin.dev',
+    link: `https://${title}`,
   },
 }
 
