@@ -3,7 +3,7 @@ title: Introductions, First Post.
 published: 04/26/2026
 tags: none, another-none, content
 summary: This is the summary text for this article, It's an overview of the markdown processing features available in this build system.
-thumbnail: '@images/static/cityscape.jpg'
+thumbnail: '@images/static/villa.jpg'
 author: valaxin
 visible: true
 ---
@@ -59,7 +59,7 @@ here have an image or two
 <br>
 ![Mountian view through the trees](@images/static/elephants.jpg)
 <br>
-![Foggy port view with a bridge in the background](@images/static/bridge-port.jpg)
+![Foggy port view with a bridge in the background](@images/static/villa.jpg)
 
 
 Some more of these block elements

@@ -45,7 +45,7 @@ export function parseMarkdown(filePath) {
     data.tags = data.tags.split(', ')
   }
 
-  console.log(file.includes('/') ? file.split('/')[0] : false)
+  // console.log(file.includes('/') ? file.split('/')[0] : false)
 
   return {
     html: addBulmaClasses(htmlContent),
@@ -70,10 +70,10 @@ export function parseAllMarkdown(dirPath, templatePath) {
     const subfolder = file.includes('/') ? file.split('/') : false
 
     if (subfolder) {
-      console.log(subfolder[0], slug)
+      // console.log(subfolder[0], slug)
     }
 
-    console.log({fullPath, slug, subfolder})
+    // console.log({fullPath, slug, subfolder})
 
     let output = {
       html,

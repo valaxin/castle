@@ -1,6 +1,5 @@
 footer.footer
-  
-  .footer-row-top.block
+  .footer-row.block
     ul
       li
         a(href='/').title.is-1= self.title
@@ -11,7 +10,7 @@ footer.footer
         a(href= self.respository)
           code.is-6 v.#{self.version} - #{self.commit || 'not setup'} 
   
-  .footer-row-mid.links
+  .footer-row.links
     if (context) 
       button.button.is-text.return-home.mr-3
         a(href='/')

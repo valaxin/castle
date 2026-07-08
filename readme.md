@@ -51,3 +51,5 @@ high level it reads, parses and copys content from one directory (`/src`) to ano
 this transformation gives us a browser ready web application.
 
 during devolopment we have hot reload for most changes.
+
+idea: simple weblog, markdown posts transpiled into html during build and made available through filename routing.

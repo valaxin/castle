@@ -1,0 +1,21 @@
+  .navbar {
+    margin-top: 25px;
+
+    &-brand {
+      overflow: hidden;
+      border-radius: var(--corner-radius);
+    }
+
+    &-start { 
+      pre {
+        background-color: transparent;
+      }
+    }
+
+    &-end {
+      .button {
+        border-radius: var(--corner-radius);
+      }
+
+    }
+  }
