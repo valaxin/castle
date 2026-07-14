@@ -3,12 +3,12 @@ footer.footer
     ul
       li
         a(href='/').title.is-1= self.title
-      li
-        span.subtitle.is-6= self.description
+      // li
+        // span.subtitle.is-6= self.description
       br
       li
         a(href= self.respository)
-          code.is-6 v.#{self.version} - #{self.commit || 'not setup'} 
+          code.is-6 #{self.version} - #{self.latest_commit || 'xxxxxxxx'} 
   
   .footer-row.links
     if (context) 

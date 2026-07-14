@@ -1,5 +1,7 @@
 import 'dotenv/config'
 import moment from 'moment'
+import { writeFile, readFile } from 'fs'
+import { resolve } from 'path'
 
 /**
  * 
@@ -78,13 +80,18 @@ async function products(token) {
  * @returns JSON of public lastest commit to this project
  */
 async function _latestCommit (url, options) {
+
   try {
     if (!url) { return false }
     const request = await fetch (url, { ...options })
-    if (request.headers['x-ratelimit-remaining'] > 1) {
-      console.log(`cookin' let's go!`)
-    }
-    return { request }
+
+    console.log(`remaining requests ${request.headers.get('x-ratelimit-remaining')}`)
+
+    const data = await request.json()
+
+    console.log(data)
+    
+    return { sha: data.sha.split('').splice(0,8).join('') }
   } catch (error) {
     console.error(error)
     return error
@@ -94,8 +101,5 @@ async function _latestCommit (url, options) {
 
 // not cached fetched new every build
 export const gumroad = await products(process.env.GUMROAD)
-
-// export const github = await repositories(process.env.USERNAME, process.env.GITHUB)
-// export const castle = await _latestCommit(process.env.LAST_COMMIT, {})
-
-export const github = {}
+export const github = await repositories(process.env.USERNAME, process.env.GITHUB)
+export const castle = await _latestCommit(process.env.LAST_COMMIT, {})

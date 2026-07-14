@@ -9,7 +9,7 @@ import { parseAllMarkdown } from './utils/parseMarkdown.js'
 import JSONWebpackPlugin from './utils/plugins/JSONWebpackPlugin.js'
 import SyndicationPlugin from './utils/plugins/SyndicationPlugin.js'
 
-import { gumroad, github } from './utils/remoteCollections.js'
+import { gumroad, github, castle } from './utils/remoteCollections.js'
 import pkg from './package.json' with { type: 'json' }
 
 const mode = process.env.NODE_ENV === 'production' ? true : false
@@ -50,6 +50,7 @@ const bundlerOptions = {
       description: pkg.description,
       version: pkg.version,
       repository: pkg.repository,
+      latest_commit: castle.sha,
       author: pkg.author,
       theme: { color: '#FFFFFF' },
     },

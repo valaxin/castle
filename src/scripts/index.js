@@ -4,7 +4,6 @@ import hljs from '@npm/highlight.js'
 import * as htmx from '@npm/htmx.org'
 // import { animate, createTimeline, stagger, utils, text, onScroll } from '@npm/animejs'
 
-
 import './modules/color-scheme.js'
 import './modules/lightbox-gallery.js'
 import './modules/highlight-switcher.js'
@@ -12,6 +11,10 @@ import './modules/fading-header.js'
 
 let theme = window.matchMedia(`(prefers-color-scheme: dark)`)
 let themePref = document.documentElement.dataset.theme
+let existingPref = window.localStorage.getItem('castle-theme')
+
+console.log(theme, themePref, existingPref)
+
 
 if (theme.matches && themePref != 'dark') {
   themePref = theme
