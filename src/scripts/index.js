@@ -7,7 +7,9 @@ import * as htmx from '@npm/htmx.org'
 import './modules/color-scheme.js'
 import './modules/lightbox-gallery.js'
 import './modules/highlight-switcher.js'
+import './modules/slider-control.js'
 import './modules/fading-header.js'
+import './modules/about.js'
 
 let theme = window.matchMedia(`(prefers-color-scheme: dark)`)
 let themePref = document.documentElement.dataset.theme
@@ -34,3 +36,6 @@ window._log('index.js >> available', {
   htmx: htmx.default,
   hljs
 })
+
+console.log('.navbar-start pre code')
+console.log(document.querySelector('.navbar-start pre code'))

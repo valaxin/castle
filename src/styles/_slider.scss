@@ -1,0 +1,132 @@
+.slider {
+  width: 96vw;
+  height: 95vh;
+  position: relative;
+  top: 25px;
+  left: -8vw;
+  overflow: hidden;
+  touch-action: pan-y;
+  border-radius: var(--corner-radius);
+
+  &__viewport {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  &__track {
+    display: flex;
+    will-change: transform;
+    transition: transform 0.35s ease;
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+    }
+  }
+
+  &__slide {
+    flex: 0 0 100%;
+    max-width: 100%;
+    position: relative;
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+
+  &__caption {
+    position: absolute;
+    inset: 30% 0 0 0;
+    margin: 0;
+    padding: 0 0 0 14vw;
+    font-size: 8vw;
+    font-weight: 900;
+    line-height: 1.4;
+    color: #fff;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.65));
+  }
+
+  &__subtext {
+    font-weight: 700;
+    font-size: 2vw;
+    color: #fff;
+    position: absolute;
+    inset: 48% 0 0 0;
+    margin: 0;
+    padding: 0 0 0 14vw;
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 128px;
+    height: 100%;
+    border: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    span {
+      backdrop-filter: blur(5px);
+      transition: all 100ms ease-in-out;
+      border-radius: var(--corner-radius);
+    }
+
+    &:hover {
+      & > span {
+        transform: scale(2);
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
+
+    &--prev { left: 8px; }
+    &--next { right: 8px; }
+  }
+
+  &__dots {
+    position: absolute;
+    inset: auto 0 10px 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    z-index: 2;
+  }
+
+  &__dot {
+    width: 44px;
+    height: 44px;
+    padding: 0 0 0 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    &[aria-selected='true']::before {
+      background: #fff;
+      transform: scale(1.25);
+    }
+  }
+}

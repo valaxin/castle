@@ -1,0 +1,23 @@
+section.about.section
+  .container.mt-5
+    .columns.is-vcentered.is-variable.is-6
+      .column.is-5
+        figure.about__figure.image
+          img(src=self.about.image.src, alt=self.about.image.alt || '')
+
+      .column.is-7
+        // p.about__eyebrow.is-uppercase.has-text-weight-bold.is-size-7.has-text-primary= self.about.eyebrow
+        h2.title.is-2= self.about.heading
+        p.subtitle.is-4.about__lead= self.about.lead
+
+        .content
+          each paragraph in self.about.paragraphs
+            p= paragraph
+
+        if self.about.stats && self.about.stats.length
+          .level.is-mobile.about__stats(data-about-stats)
+            each stat in self.about.stats
+              .level-item.has-text-centered
+                div
+                  p.title.is-3(data-stat-value)= stat.value
+                  p.heading= stat.label

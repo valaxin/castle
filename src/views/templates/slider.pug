@@ -1,0 +1,17 @@
+.slider(data-slider, role='region', aria-label='Image slider', aria-roledescription='carousel')
+  .slider__viewport
+    .slider__track(data-slider-track)
+      each image, i in self.images
+        .slider__slide(data-slider-slide, role='group', aria-roledescription='slide', aria-label=`${i + 1} of ${self.images.length}`)
+          img.slider__img(src=image.src, alt=image.alt || '', loading=i === 0 ? 'eager' : 'lazy')
+          if image.caption
+            p.slider__caption= image.caption
+            span.slider__subtext= image.subtext
+
+  button.slider__arrow.slider__arrow--prev(type='button', data-slider-prev, aria-label='Previous slide')
+    span.i.material-icons.round.is-large keyboard_arrow_left
+  button.slider__arrow.slider__arrow--next(type='button', data-slider-next, aria-label='Next slide')
+    span.i.material-icons.round.is-large keyboard_arrow_right
+  .slider__dots(data-slider-dots, role='tablist')
+    each image, i in self.images
+      button.slider__dot(type='button', data-slider-dot, data-index=i, role='tab', aria-selected=i === 0 ? 'true' : 'false', aria-label=`Go to slide ${i + 1}`)

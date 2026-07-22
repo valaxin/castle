@@ -2,6 +2,8 @@
 
 :wave:
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4a024c61-0ce8-4e72-b415-51c80b99dc97/deploy-status)](https://app.netlify.com/projects/merry-daffodil-ad9c7e/deploys)
+
 This is my personal public webspace's repository. Here you'll see all the code used to construct what I'm calling `castle`.
 
 > [!WARNING]
@@ -17,7 +19,7 @@ This is my personal public webspace's repository. Here you'll see all the code u
 │   ├── manifest.json   # application manifest
 │   └── robots.txt      # ...
 ├── scripts
-│   ├── components
+│   ├── modules
 │   │   └── *.js        # reusable blocks
 │   └── index.js        # javascript entrypoint
 ├── styles
@@ -25,31 +27,30 @@ This is my personal public webspace's repository. Here you'll see all the code u
 │   │   └── _*.scss     # reusuable blocks
 │   └── layout.scss     # stylesheet entrypoint
 └── views
-    ├── components
+    ├── templates
     │   └── *.pug       # reuseable templates
-    ├── index.pug       # html body
-    ├── layout.pug      # sitewide html head
-    └── post.pug        # template for generated markdown documents
+    ├── index.pug       # index page
+    ├── layout.pug      # sitewide masthead
+    └── post.pug        # page template for posts & pages
 ```
 
 ```bash
                                 # build time utilites for /castle
 ./utils
 ├── emojiObject.js              # object of emoji key/value pairs
-├── interfaceManager.js         # 
-├── arbitraryIncludes.js        # basically what it says (not implimented)
+├── remoteCollections.js         # 
 ├── parseMarkdown.js            # handle turning markdown into pug flavored markup
 ├── plugins
 │   ├── JSONWebpackPlugin.js    # provide application data to the front-end
-│   └── SyndicationPlugin.js    # provide posts to the bots
-└── remoteCollections.js        # obtain data from remote sources (github/gumroad/etc...)
+│   ├── SitemapPlugin.js        # generate from site data a site map xml
+│   └── SyndicationPlugin.js    # provide posts to the bots (xml/json)
+└── remoteCollections.js        # obtain data from remote sources
 ```
 
-entry point is `./webpack.config.js` these are the bundler options and if you're at all familar with `webpack.js` you understand what's going on here. but basically a blue print for the web application.
+---
 
-high level it reads, parses and copys content from one directory (`/src`) to another (`/dist`)
-this transformation gives us a browser ready web application.
+## Abstract
 
-during devolopment we have hot reload for most changes.
+Given some markdown files with frontmatter meta information, generate a small website to be hosted on [`netlify`](https://netlify.com).
 
-idea: simple weblog, markdown posts transpiled into html during build and made available through filename routing.
+[]

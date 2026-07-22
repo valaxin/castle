@@ -9,21 +9,27 @@ import { parseAllMarkdown } from './utils/parseMarkdown.js'
 import JSONWebpackPlugin from './utils/plugins/JSONWebpackPlugin.js'
 import SyndicationPlugin from './utils/plugins/SyndicationPlugin.js'
 
-import { gumroad, github, castle } from './utils/remoteCollections.js'
-import pkg from './package.json' with { type: 'json' }
-
+// Define the working enviroment, and collect markdown posts
 const mode = process.env.NODE_ENV === 'production' ? true : false
 const markdownPosts = parseAllMarkdown(resolve('src/markdown'), 'src/views/post.pug')
 
-/* --- Define development server settings. */
-const devServer = {
-  static: { directory: 'src/public' },
-  devMiddleware: { publicPath: '/' },
-  hot: true,
-  compress: false,
+// Gather more resources
+import { gumroad, github, castle } from './utils/remoteCollections.js'
+import pkg from './package.json' with { type: 'json' }
+import { about, slider } from './utils/localCollections.js'
+
+console.log(about, slider, pkg)
+
+// When Development
+const devServer = {}
+if (!mode) {
+  devServer.static = { directory: 'src/public' }
+  devServer.devMiddleware = { publicPath: '/' }
+  devServer.hot = true
+  devServer.compress = false
 }
 
-/* --- Options for HTMLBundlerPlugin ---  */
+// Options for HTMLBundlerPlugin
 const bundlerOptions = {
   experiments: {
     topLevelAwait: true,
@@ -39,8 +45,6 @@ const bundlerOptions = {
     filename: 'css/[name].[contenthash:8].css',
   },
   beforePreprocessor: (content, { data, resourcePath, _module }) => {},
-
-  // ... this data then goes to pug
   data: {
     self: {
       posts: markdownPosts,
@@ -53,11 +57,13 @@ const bundlerOptions = {
       latest_commit: castle.sha,
       author: pkg.author,
       theme: { color: '#FFFFFF' },
+      about: about,
+      images: slider.images,
     },
   },
 }
 
-/* -- Dynamically add generated posts to bundlerOptions  */
+// Dynamically add generated posts to bundlerOptions
 for (let i = 0; i < markdownPosts.length; i++) {
   bundlerOptions.entry[markdownPosts[i].slug] = {
     import: markdownPosts[i].templatePath,
@@ -65,7 +71,7 @@ for (let i = 0; i < markdownPosts.length; i++) {
   }
 }
 
-/* -- Webpack configuration object */
+// Webpack configuration object
 const config = {
   devtool: mode ? false : 'eval',
   devServer: mode ? false : devServer,

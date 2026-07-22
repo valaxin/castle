@@ -1,0 +1,54 @@
+.about {
+  position: relative;
+  top: 100px;
+  overflow: hidden;
+
+  &__eyebrow {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+
+  }
+
+  &__lead {
+    max-width: 42ch;
+  }
+
+  &__figure {
+    position: relative;
+    margin: 0;
+
+    img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+
+  &__stats {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+
+    .title {
+      margin-bottom: 0.25rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    &__figure::before {
+      display: none;
+    }
+
+    &__stats {
+      .level-item {
+        flex-basis: 50%;
+        margin-bottom: 1.25rem;
+      }
+    }
+  }
+}

@@ -5,6 +5,8 @@
 
 @use "post";
 @use "navbar";
+@use "about";
+@use "slider";
 @use "lightbox";
 
 
@@ -47,13 +49,14 @@
   padding: 0;
 }
 
+
 body {
   font-family: var(--app-font);
   padding: 0 10vw;
   
   .section {
-    margin: 0 !important;
-    padding: 0 !important;
+    // margin: 0 !important;
+    // padding: 0 !important;
   }
 
   pre,
@@ -81,16 +84,26 @@ body {
 
   // ...
   .posts {
+    width: 100vw;
+    margin-left: -10vw;
+    margin-top: 150px;
+    padding: 75px 0;
+    background: rgb(74, 172, 238);
 
     &-container {
+      width: 80vw;
+      margin-left: 10vw;
+
       &-item  {
         overflow: hidden;
         display: flex;
         flex-direction: row;
-        border-radius: var(--corner-radius);    
+        margin-top: 25px;
+        border-radius: var(--corner-radius);  
+        background-color: var(--bulma-background-color);  
 
         &:hover {
-          background-color: var(--bulma-border);  
+          // background-color: var(--bulma-border);  
         }
         
         img.thumbnail {
@@ -99,6 +112,7 @@ body {
           object-fit: cover;
           border-radius: var(--corner-radius);
           padding: 15px;
+          aspect-ratio: 16 / 9;
         }
 
         .group {
