@@ -1,9 +1,7 @@
 .slider {
-  width: 96vw;
-  height: 95vh;
+  width: 80vw;
   position: relative;
   top: 25px;
-  left: -8vw;
   overflow: hidden;
   touch-action: pan-y;
   border-radius: var(--corner-radius);
@@ -42,12 +40,13 @@
     position: absolute;
     inset: 30% 0 0 0;
     margin: 0;
-    padding: 0 0 0 14vw;
-    font-size: 8vw;
+    padding: 0 0 0 12vw;
+    font-size: 7vw;
     font-weight: 900;
     line-height: 1.4;
     color: #fff;
     background: linear-gradient(transparent, rgba(0, 0, 0, 0.65));
+    overflow: hidden;
   }
 
   &__subtext {
@@ -57,7 +56,7 @@
     position: absolute;
     inset: 48% 0 0 0;
     margin: 0;
-    padding: 0 0 0 14vw;
+    padding: 5px 0 0 14vw;
   }
 
   &__arrow {
@@ -97,6 +96,7 @@
 
   &__dots {
     position: absolute;
+    bottom: 54px;
     inset: auto 0 10px 0;
     display: flex;
     justify-content: center;
@@ -105,8 +105,8 @@
   }
 
   &__dot {
-    width: 44px;
-    height: 44px;
+    width: 50px;
+    height: 50px;
     padding: 0 0 0 0;
     border: none;
     background: transparent;
@@ -127,6 +127,16 @@
     &[aria-selected='true']::before {
       background: #fff;
       transform: scale(1.25);
+    }
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .slider {
+    width: 96vw;
+
+    &__arrow {
+      display: none;
     }
   }
 }

@@ -86,9 +86,9 @@ body {
   .posts {
     width: 100vw;
     margin-left: -10vw;
-    margin-top: 150px;
+    // margin-top: 150px;
     padding: 75px 0;
-    background: rgb(74, 172, 238);
+    // background: rgb(74, 172, 238);
 
     &-container {
       width: 80vw;
@@ -131,6 +131,9 @@ body {
     padding: 0 2vw;
 
     .posts {
+      width: 96vw;
+      margin: -2vw;
+
       &-container {
         &-item  {
           display: flex;
