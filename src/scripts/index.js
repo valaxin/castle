@@ -9,7 +9,7 @@ import './modules/lightbox-gallery.js'
 import './modules/highlight-switcher.js'
 import './modules/slider-control.js'
 import './modules/fading-header.js'
-import './modules/about.js'
+import './modules/about-animations.js'
 
 let theme = window.matchMedia(`(prefers-color-scheme: dark)`)
 let themePref = document.documentElement.dataset.theme
@@ -17,10 +17,9 @@ let existingPref = window.localStorage.getItem('castle-theme')
 
 console.log(theme, themePref, existingPref)
 
-
 if (theme.matches && themePref != 'dark') {
   themePref = theme
-  console.log({theme, themePref})
+  console.log({ theme, themePref })
 }
 
 if (window) {
@@ -34,7 +33,7 @@ if (window) {
 window.htmx = htmx.default
 window._log('index.js >> available', {
   htmx: htmx.default,
-  hljs
+  hljs,
 })
 
 console.log('.navbar-start pre code')

@@ -1,5 +1,4 @@
 export default (async () => {
-  
   'use strict'
 
   /**
@@ -12,7 +11,7 @@ export default (async () => {
 
   const imgs = document.body.querySelectorAll('img.lightbox-enabled')
   for (const image of imgs) {
-    image.addEventListener('click', e => {
+    image.addEventListener('click', (e) => {
       // define the contents of the lightbox element
       const lightboxInner = `
         <span class="lightbox__close material-icons round close is-white">close</span>
@@ -25,14 +24,19 @@ export default (async () => {
       lightbox.innerHTML = lightboxInner
       // close button
       const close = lightbox.querySelector('.lightbox__close')
-      close.addEventListener('click', e => { lightbox.remove() })
+      close.addEventListener('click', (e) => {
+        lightbox.remove()
+      })
       // clicking NOT the image
-      lightbox.addEventListener('click', e => { lightbox.remove() })
+      lightbox.addEventListener('click', (e) => {
+        lightbox.remove()
+      })
       // remove...
       const preexisting = document.querySelector('div.lightbox')
-      if (preexisting != null) { preexisting.remove() }
+      if (preexisting != null) {
+        preexisting.remove()
+      }
       document.body.appendChild(lightbox)
     })
   }
-
 })()

@@ -72,27 +72,28 @@ async function products(token) {
  * @returns JSON of public lastest commit to this project
  */
 async function _latestCommit(url, options) {
-  try {
+  // try {
 
-    if (!url) {
-      return false
-    }
+  //   if (!url) {
+  //     return false
+  //   }
 
-    const sfc = await readFile(resolve('.commit'))
+  //   const sfc = await readFile(resolve('.commit'))
 
-    const request = await fetch(url, { ...options })
+  //   const request = await fetch(url, { ...options })
 
-    console.log(`remaining requests commit ${request.headers.get('x-ratelimit-remaining')}`)
+  //   console.log(`remaining requests commit ${request.headers.get('x-ratelimit-remaining')}`)
 
-    const data = await request.json()
+  //   const data = await request.json()
 
-    console.log(data)
+  //   console.log(data)
 
-    return { sha: data.sha.split('').splice(0, 8).join('') }
-  } catch (error) {
-    console.error(error)
-    return error
-  }
+  //   return { sha: data.sha.split('').splice(0, 8).join('') }
+  // } catch (error) {
+  //   console.error(error)
+  //   return error
+  // }
+  return { sha: 'xxxxxxxx' }
 }
 
 // not cached fetched new every build

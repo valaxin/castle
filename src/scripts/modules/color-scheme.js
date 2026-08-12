@@ -1,21 +1,18 @@
-
 /**
  * PURPOSE - HANDLE DARK AND LIGHT MODE
  */
 
 export default (async () => {
-  
   'use strict'
 
   try {
-
     if (!window || !document) {
       throw new Error(`missing 'window' or 'document' objects`)
     }
 
     // given a key and some json data,
     // set or save the data to local storage
-    function save (key, data) {
+    function save(key, data) {
       try {
         if (localStorage) {
           return localStorage.setItem(key, data)
@@ -26,14 +23,14 @@ export default (async () => {
     }
 
     // [helper-method] change element classes
-    function change (key, button, light, dark, auto) {
+    function change(key, button, light, dark, auto) {
       try {
         switch (document.documentElement.dataset.theme) {
           case 'auto': // auto -> light
             button.innerHTML = light
             save(key, 'light')
             return document.documentElement.setAttribute('data-theme', 'light')
-          case 'light':  // light -> dark
+          case 'light': // light -> dark
             button.innerHTML = dark
             save(key, 'dark')
             return document.documentElement.setAttribute('data-theme', 'dark')
@@ -63,11 +60,11 @@ export default (async () => {
     // console.log({ storeKey, toggleButton, toggleSelector, existing_theme, el: { auto_icon, dark_icon, light_icon }})
 
     // attach event to theme change event
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (event) => {
       system_theme = event.matches ? 'dark' : 'light'
       console.log(system_theme, 'changed!')
     })
-  
+
     // set saved level preference into dom, if not present, create and save.
     if (localStorage) {
       switch (!existing_theme) {
@@ -84,9 +81,10 @@ export default (async () => {
       }
     }
     // make btn
-    toggleButton.addEventListener('click', async () => { change(storeKey, toggleButton, light_icon, dark_icon, auto_icon) })
-  } catch(error) {
+    toggleButton.addEventListener('click', async () => {
+      change(storeKey, toggleButton, light_icon, dark_icon, auto_icon)
+    })
+  } catch (error) {
     console.error('error color-scheme', error)
   }
-
 })()

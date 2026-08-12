@@ -6,7 +6,7 @@ export default (async () => {
 
   function setThemeSystem(e) {
     const dark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    
+
     if (dark) {
       if (userTheme === 'light') {
         themeLink.href = gh_light
@@ -30,8 +30,8 @@ export default (async () => {
   setThemeSystem()
 
   const config = {
-    attributes: true,                 // Listen to attribute changes
-    attributeFilter: ['data-theme']   // Only watch specific data 
+    attributes: true, // Listen to attribute changes
+    attributeFilter: ['data-theme'], // Only watch specific data
   }
 
   // observe user state ...
@@ -44,10 +44,10 @@ export default (async () => {
   }
 
   // define observer, make do with above cfg
-  const observer = new MutationObserver(observerCallback);
+  const observer = new MutationObserver(observerCallback)
   observer.observe(window.document.documentElement, config)
   // observer.disconnect() ...
-  
+
   // when sys change
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setThemeSystem)
 })()
