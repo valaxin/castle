@@ -1,8 +1,10 @@
 ---
 title: Questions
-thumbnail: 
-visible: false
-summary: Frequently asked questions, and their anwsers.
 published: 01/01/1970
+summary: Questions Page
+thumbnail: '@images/static/castle.jpg'
+author: Admin
+visible: false
 ---
 
+## Questions Page

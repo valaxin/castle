@@ -1,7 +1,7 @@
 ---
 title: Empty Test Document
 published: 01/01/1970
-tags: nothing, none, null, empty, test, document
+tags: nothing, none, null, empty, test, document, supercalifragilisticexpialidocious
 summary: An empty document, nothing to see here champ
 thumbnail: '@images/static/elephants.jpg'
 author: valaxin

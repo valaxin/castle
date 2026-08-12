@@ -121,3 +121,7 @@ emojis are supported also :fire: :fire: :gift: :star:
 > > > > great!
 
 ---
+
+<h3>This markup should <strong>survive</strong>build</h3>
+
+Thanks! :start: :start: :start:

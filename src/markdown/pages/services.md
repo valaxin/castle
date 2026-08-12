@@ -1,11 +1,10 @@
 ---
 title: Services
-thumbnail: 
-visible: false
-summary: Services Offered
 published: 01/01/1970
+summary: Services Page
+thumbnail: '@images/static/castle.jpg'
+author: Admin
+visible: false
 ---
 
-<div class="anything">Hello World</div>
-
-invalid markdown but survives build
+## Services Page
